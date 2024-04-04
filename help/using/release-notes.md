@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1101'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -25,7 +25,7 @@ ht-degree: 91%
 | 产品 | Adobe Experience Manager (AEM) Dispatcher |
 | 版本 | 4.3.7 |
 | 类型 | 次要版本 |
-| 日期 | 2024年3月27日 |
+| 日期 | 2024 年 3 月 27 日 |
 | 下载 URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
 | 兼容性 | AEM 6.1 或更高版本 |
 
@@ -41,14 +41,14 @@ Adobe 强烈推荐使用最新版本的 AEM Dispatcher 以从最新功能、最�
 
 ## 版本历史记录 {#release-history}
 
-### 4.3.7版（2024年3月27日） {#march}
+### 4.3.7 版（2024 年 3 月 27 日） {#march}
 
 **改进功能**：
 
-* DISP-1009 — 再次设置标头长度
-* DISP-1013 — 添加对linux的openssl 3.0支持
-* DISP-1014 - response.location处理导致无效重定向
-* DISP-1017 — 更改DTD定义
+* DISP-1009 - 再次设置标头长度
+* DISP-1013 - 为 Linux 添加 openssl 3.0 支持
+* DISP-1014 - response.location 处理导致无效重定向
+* DISP-1017 - 更改 DTD 定义
 
 ### 4.3.6 版本（2023 年 7 月 25 日） {#jyly}
 
