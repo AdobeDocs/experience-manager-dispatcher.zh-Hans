@@ -2,7 +2,7 @@
 title: 配置 Dispatcher
 description: 了解如何配置 Dispatcher。了解对 IPv4 和 IPv6、配置文件、环境变量、命名实例、定义场以及识别虚拟主机等功能的支持。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 410346694a134c0f32a24de905623655f15269b4
+source-git-commit: 336e69a4635c9822a97bbffd0b1410807012f9e7
 workflow-type: ht
 source-wordcount: '8857'
 ht-degree: 100%
@@ -1885,3 +1885,4 @@ HTTP 方法既不是 GET，也不是 HEAD。Dispatcher 假定输出包含不应�
 远程服务器返回了一个 `Dispatcher: no_cache` 标头，表示禁止 Dispatcher 缓存输出。
 * **not cacheable: response content length is zero**
 响应的内容长度为零，Dispatcher 不创建长度为零的文件。
+
