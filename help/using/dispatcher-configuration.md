@@ -2,10 +2,10 @@
 title: 配置 Dispatcher
 description: 了解如何配置 Dispatcher。了解对 IPv4 和 IPv6、配置文件、环境变量、命名实例、定义场以及识别虚拟主机等功能的支持。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 336e69a4635c9822a97bbffd0b1410807012f9e7
+source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
 workflow-type: tm+mt
 source-wordcount: '8857'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -1324,7 +1324,7 @@ GET /mypage.html?nocache=true&willbecached=true
 >
 >在 Dispatcher 的 **4.1.11** 版上有此功能可用。
 
-`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在对缓存的资源的后续请求中，存储的标头添加到响应。
+`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在对缓存的资源的后续请求中，存储的标头被添加到响应。
 
 以下显示的是默认配置的示例：
 
