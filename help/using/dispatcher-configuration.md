@@ -3,9 +3,9 @@ title: 配置 Dispatcher
 description: 了解如何配置 Dispatcher。了解对 IPv4 和 IPv6、配置文件、环境变量、命名实例、定义场以及识别虚拟主机等功能的支持。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -213,7 +213,7 @@ AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。�
 
 >[!CAUTION]
 >
->`/homepage` 参数（仅限 IIS）不再有效。您应该改用 [IIS URL 重写模块](https://learn.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
+>`/homepage` 参数（仅限 IIS）不再有效。您应该改用 [IIS URL 重写模块](https://learn.microsoft.com/zh-cn/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
 >如果您在使用 Apache，则应该使用 `mod_rewrite` 模块。有关 `mod_rewrite`（例如，[Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)）的信息，请参阅 Apache 网站文档。在使用 `mod_rewrite` 时，建议使用“passthrough|PT”（传递到下个处理程序）标志强制重写引擎以将内部 `uri` 结构的 `request_rec` 字段设置为 `filename` 字段的值。
 
@@ -1324,7 +1324,7 @@ GET /mypage.html?nocache=true&willbecached=true
 >
 >在 Dispatcher 的 **4.1.11** 版上有此功能可用。
 
-`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在对缓存的资源的后续请求中，存储的标头被添加到响应。
+`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在后续请求缓存资源时，存储的标头会添加到响应中。
 
 以下显示的是默认配置的示例：
 
