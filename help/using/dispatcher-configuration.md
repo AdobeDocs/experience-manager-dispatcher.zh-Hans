@@ -2,10 +2,10 @@
 title: 配置 Dispatcher
 description: 了解如何配置 Dispatcher。了解对 IPv4 和 IPv6、配置文件、环境变量、命名实例、定义场以及识别虚拟主机等功能的支持。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: ht
-source-wordcount: '8857'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '8854'
+ht-degree: 96%
 
 ---
 
@@ -19,7 +19,7 @@ ht-degree: 100%
 
 ## 支持 IPv4 和 IPv6 {#support-for-ipv-and-ipv}
 
-AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。请参阅 [IPV4 和 IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=zh-Hans#ipv-and-ipv)。
+AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。请参阅 [IPV4 和 IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv)。
 
 ## Dispatcher 配置文件 {#dispatcher-configuration-files}
 
@@ -133,7 +133,7 @@ AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。�
 /docroot "${PWD}/cache"
 ```
 
-作为另一个示例，如果您创建名为 `PUBLISH_IP` 的环境变量，该变量存储 AEM 发布实例的主机名，则可以使用 [/renders](#defining-page-renderers-renders) 属性的以下配置：
+作为另一个示例，如果您创建了一个名为的环境变量， `PUBLISH_IP` 存储AEM发布实例的主机名，以下配置的 [/renders](#defining-page-renderers-renders) 属性可用于：
 
 ```xml
 /renders {
@@ -259,7 +259,7 @@ Comment Type: draft
 
 `/clientheaders` 属性定义 Dispatcher 从客户端 HTTP 请求传递到渲染程序（AEM 实例）的 HTTP 标头的列表。
 
-默认情况下，Dispatcher 将标准 HTTP 标头转发到 AEM 实例。在一些实例中，您可能希望转发额外的标头或者删除特定标头：
+默认情况下，Dispatcher 将标准 HTTP 标头转发到 AEM 实例。在某些情况下，您可能希望转发其他标头或删除特定标头：
 
 * 在 HTTP 请求中添加 AEM 实例期望的标头，例如自定义标头。
 * 删除只与 Web 服务器相关的标头，例如身份验证标头。
@@ -402,9 +402,9 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 
 >[!CAUTION]
 >
->将 `/cache` 部分中的 `/allowAuthorized` 设置为 `"0"` 以启用此功能。正如[使用身份验证时缓存](#caching-when-authentication-is-used)部分中详述的那样，当设置 `/allowAuthorized 0 ` 后，将&#x200B;**不**&#x200B;缓存包括身份验证信息的请求。如果需要进行区分权限的缓存，请参阅[缓存受保护内容](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=zh-Hans)页面。
+>将 `/cache` 部分中的 `/allowAuthorized` 设置为 `"0"` 以启用此功能。正如[使用身份验证时缓存](#caching-when-authentication-is-used)部分中详述的那样，当设置 `/allowAuthorized 0 ` 后，将&#x200B;**不**&#x200B;缓存包括身份验证信息的请求。如果需要进行区分权限的缓存，请参阅[缓存受保护内容](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache)页面。
 
-创建安全会话以供访问渲染场，以使用户必须登录才能访问场中的任何页面。在登录之后，用户可以访问场中的各个页面。有关将此功能与 CUG 一起使用的信息，请参阅[创建封闭用户组](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=zh-Hans#creating-the-user-group-to-be-used)。此外，在上线之前，请查看 Dispatcher [安全检查清单](/help/using/security-checklist.md)。
+创建安全会话以供访问渲染场，以使用户必须登录才能访问场中的任何页面。在登录之后，用户可以访问场中的各个页面。有关将此功能与 CUG 一起使用的信息，请参阅[创建封闭用户组](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used)。此外，在上线之前，请查看 Dispatcher [安全检查清单](/help/using/security-checklist.md)。
 
 `/sessionmanagement` 属性是 `/farms` 的子属性。
 
@@ -412,7 +412,7 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 >
 >如果网站的各个部分使用不同的访问要求，则您需要定义多个场。
 
-**/sessionmanagement** 有多个子参数：
+**/sessionmanagement** 具有多个子参数：
 
 **/directory**（必需）
 
@@ -420,7 +420,7 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 
 >[!CAUTION]
 >
-> 配置目录的子参数时，**请勿**&#x200B;指向根文件夹 (`/directory "/"`)，因为这可能会导致严重问题。请始终指定存储了会话信息的文件夹的路径。例如：
+> 配置目录子参数时， **不要** 指向根文件夹(`/directory "/"`)，因为它可能会导致严重问题。 请始终指定存储了会话信息的文件夹的路径。例如：
 
 ```xml
 /sessionmanagement
@@ -513,7 +513,7 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 
 指定允许的响应时间，以毫秒为单位。默认值为 `"600000"`，这会导致 Dispatcher 等待 10 分钟。设置为 `"0"` 可消除超时。
 
-如果在解析响应标头时出现超时，则返回 HTTP 状态 504（网关错误）。如果在读取响应正文时出现超时，则 Dispatcher 向客户端返回不完整的响应。它还会删除任何可能已写入的缓存文件。
+如果在解析响应标头时出现超时，则返回 HTTP 状态 504（网关错误）。如果在读取响应正文时出现超时，则 Dispatcher 向客户端返回不完整的响应。它还会删除可能已写入的任何缓存文件。
 
 **/ipv4**
 
@@ -525,7 +525,7 @@ Amazon Elastic Load Balancing (ELB) 就是这样一种服务，可以使用相�
 
 **/secure**
 
-如果 `/secure` 属性的值为 `"1"`，则 Dispatcher 使用 HTTPS 与 AEM 实例通信。有关其他详细信息，另请参阅 [配置 Dispatcher 使用 SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)。
+如果 `/secure` 属性的值为 `"1"`，则 Dispatcher 使用 HTTPS 与 AEM 实例通信。有关更多详细信息，请参阅 [将Dispatcher配置为使用SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -555,7 +555,7 @@ Amazon Elastic Load Balancing (ELB) 就是这样一种服务，可以使用相�
 
 >[!CAUTION]
 >
->请参阅 [Dispatcher 安全检查清单](security-checklist.md)以了解使用 Dispatcher 限制访问时的更多注意事项。有关 AEM 安装的其他安全详细信息，另请阅读 [AEM 安全检查清单](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=zh-Hans#security)。
+>请参阅 [Dispatcher 安全检查清单](security-checklist.md)以了解使用 Dispatcher 限制访问时的更多注意事项。另请参阅 [AEM安全核对清单](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) 了解有关AEM安装的更多安全详细信息。
 
 `/filter` 部分由一系列规则组成，这些规则根据 HTTP 请求的请求行部分中的模式拒绝或允许访问内容。为 `/filter` 部分使用允许列表策略：
 
@@ -588,7 +588,7 @@ Amazon Elastic Load Balancing (ELB) 就是这样一种服务，可以使用相�
 >
 >`/glob "* *.css *"`
 >
->而要使用
+>使用
 >
 >`/url "*.css"`
 
@@ -670,7 +670,7 @@ HTTP/1.1 如下所示定义[请求行](https://www.w3.org/Protocols/rfc2616/rfc2
 
 >[!NOTE]
 >
->将多个筛选模式应用于一个请求时，最后一个应用的筛选模式有效。
+>对一个请求应用了多个筛选模式时，最后一个应用的筛选模式生效。
 
 #### 示例筛选条件：使用正则表达式 {#example-filter-using-regular-expressions}
 
@@ -680,7 +680,7 @@ HTTP/1.1 如下所示定义[请求行](https://www.w3.org/Protocols/rfc2616/rfc2
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### 示例筛选条件：筛选请求 URL 的额外元素 {#example-filter-filter-additional-elements-of-a-request-url}
+#### 示例筛选条件：筛选请求URL的额外元素 {#example-filter-filter-additional-elements-of-a-request-url}
 
 以下是一个规则示例，它使用路径、选择器和扩展名的筛选条件阻止从 `/content` 路径及其子树抓取内容：
 
@@ -797,15 +797,15 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
    * `/libs/opensocial/proxy*`
 
-根据您的安装，`/libs`、`/apps` 下或其他位置可能会有其他需要使其可用的资源。您可以使用 `access.log` 文件作为一种方法来确定被外部访问的资源。
+根据您的安装，下可能有更多资源 `/libs`， `/apps` 或者在其他地方，必须提供这些信息。 您可以使用 `access.log` 文件作为一种方法来确定被外部访问的资源。
 
 >[!CAUTION]
 >
->对控制台和目录的访问可能会对生产环境带来安全风险。除非您有明确的理由，否则它们应保持停用（被注释掉）。
+>对控制台和目录的访问可能会对生产环境带来安全风险。除非您有明确的理由，否则它们应保持停用状态（被注释掉）。
 
 >[!CAUTION]
 >
->如果您在[发布环境中使用报表](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=zh-Hans#using-reports-in-a-publish-environment)，则应配置 Dispatcher 以拒绝外部访客访问 `/etc/reports`。
+>如果您在[发布环境中使用报表](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment)，则应配置 Dispatcher 以拒绝外部访客访问 `/etc/reports`。
 
 ### 限制查询字符串 {#restricting-query-strings}
 
@@ -937,7 +937,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 >[!NOTE]
 >
->如果渲染器为 AEM 实例，则必须[安装软件发行版中的 VanityURLS-Components 包](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)以启用虚 URL 服务。（有关更多详细信息，请参阅[软件分发](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=zh-Hans#software-distribution)。）
+>如果渲染器为 AEM 实例，则必须[安装软件发行版中的 VanityURLS-Components 包](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)以启用虚 URL 服务。（有关更多详细信息，请参阅[软件分发](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution)。）
 
 使用以下过程启用对虚名 URL 的访问。
 
@@ -1150,7 +1150,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 使用 `/statfileslevel` 属性，根据其路径使缓存的文件失效：
 
 * Dispatcher 在从 docroot 文件夹到您指定的文件夹级别的每个文件夹中创建 `.stat` 文件。docroot 文件夹是级别 0。
-* 文件通过接触 `.stat` 文件而失效。`.stat` 文件的上次修改日期与缓存的文档的上次修改日期相比较。如果 `.stat` 文件较新，则重新提取文档。
+* 文件通过接触 `.stat` 文件而失效。`.stat` 文件的上次修改日期与缓存的文档的上次修改日期相比较。在以下情况下，将重新获取文档： `.stat` 文件较新。
 
 * 当特定级别上的文件失效时，将接触从 docroot **到**&#x200B;失效文件所在的级别或所配置的 `statsfilevel`（其中较小者）的&#x200B;**所有** `.stat` 文件。
 
@@ -1167,7 +1167,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->可以通过发送额外的标头 `CQ-Action-Scope:ResourceOnly` 防止失效。此方法可用于刷新特定资源而不使缓存的其他部分失效。有关其他详细信息，请参阅[此页面](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html)和[手动使 Dispatcher 缓存失效](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=zh-Hans#configuring)。
+>可以通过发送额外的标头 `CQ-Action-Scope:ResourceOnly` 防止失效。此方法可用于刷新特定资源而不使缓存的其他部分失效。请参阅 [此页面](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 和 [手动使Dispatcher缓存失效](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) 以了解更多详细信息。
 
 >[!NOTE]
 >
@@ -1195,7 +1195,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 * 所有具有模式 en.* 的文件从 `/content/wknd/us` 文件夹中删除。
 * 删除 `/content/wknd/us/en./_jcr_content` 文件夹。
-* 与 `/invalidate` 配置匹配的所有其他文件不立即删除。这些文件在下次出现请求时删除。在该示例中并不删除 `/content/wknd.html`，而是在请求 `/content/wknd.html` 时删除它。
+* 与 `/invalidate` 配置匹配的所有其他文件不立即删除。这些文件在下次出现请求时删除。在本例中， `/content/wknd.html` 不会删除。 而是会在以下情况下将其删除： `/content/wknd.html` 已请求。
 
 如果您的选件自动生成了 PDF 和 ZIP 文件以供下载，则您可能还需要自动使这些文件失效。配置示例如下所示：
 
@@ -1229,7 +1229,7 @@ AEM 与 Adobe Analytics 集成，在网站的 `analytics.sitecatalyst.js` 文件
 
 此方法可用于涵盖多个不同的用例。例如，使其他应用程序特有的缓存失效，或处理页面的外部化 URL 及其在 docroot 中的位置与内容路径不匹配的情况。
 
-以下示例脚本将每个失效请求记录到一个文件。
+以下示例脚本将每个失效的请求记录到文件中。
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1324,7 +1324,7 @@ GET /mypage.html?nocache=true&willbecached=true
 >
 >在 Dispatcher 的 **4.1.11** 版上有此功能可用。
 
-`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在后续请求缓存资源时，存储的标头会添加到响应中。
+`/headers` 属性允许您定义 Dispatcher 将要缓存的 HTTP 标头类型。在对未缓存资源的首个请求中，与配置的值之一匹配的所有标头（参见以下配置示例）存储在缓存文件旁的单独文件中。在对缓存的资源的后续请求中，存储的标头添加到响应。
 
 以下显示的是默认配置的示例：
 
@@ -1380,7 +1380,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 `/gracePeriod` 属性定义在上次激活之后几秒内仍可从缓存提供某个陈旧、自动失效的资源。该属性可用于的设置情况是，如果不这样设置，一批激活将会反复地使整个缓存失效。推荐值为 2 秒。
 
-有关其他详细信息，另请参阅以上 `/invalidate` 和 `/statfileslevel` 部分。
+有关更多详细信息，请参阅 `/invalidate` 和 `/statfileslevel`更早。
 
 ### 配置基于时间的缓存失效 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1412,7 +1412,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 >[!NOTE]
 >
->请记住，将 `/enableTTL` 设置为 1 将仅在 Dispatcher 端启用 TTL 缓存。 因此，附加文件（见上文）中包含的 TTL 信息不会提供给任何其他从 Dispatcher 请求此类文件类型的用户代理。 如果您想向下游系统（如 CDN 或浏览器）提供缓存标头，则应该相应地配置 `/cache/headers` 分区。
+>请记住该设置 `/enableTTL` 设置为1仅在Dispatcher端启用TTL缓存。 因此，未向从Dispatcher请求此类文件类型的任何其他用户代理提供附加文件（见上文）中包含的TTL信息。 如果您想向下游系统（如 CDN 或浏览器）提供缓存标头，则应该相应地配置 `/cache/headers` 分区。
 
 >[!NOTE]
 >
@@ -1520,13 +1520,13 @@ Dispatcher 每次请求渲染的页面时，它使用以下算法来选择渲染
 }
 ```
 
-### httpOnly {#httponly}
+### `httpOnly` {#httponly}
 
 启用粘性连接后，Dispatcher 模块将设置 `renderid` Cookie。此 Cookie 没有 `httponly` 标志，但应添加该标志以增强安全性。通过在 `dispatcher.any` 配置文件的 `/stickyConnections` 节点中设置 `httpOnly` 属性而添加 `httponly` 标志。该属性的值（`0` 或 `1`）定义 `renderid` Cookie 是否追加了 `HttpOnly` 属性。默认值为 `0`，这意味着不添加该属性。
 
-有关 `httponly` 标记的更多信息，请阅读[此页面](https://www.owasp.org/index.php/HttpOnly)。
+有关 `httponly` 标记的更多信息，请阅读[此页面](https://owasp.org/www-community/HttpOnly)。
 
-### secure {#secure}
+### `secure` {#secure}
 
 启用粘性连接后，Dispatcher 模块将设置 `renderid` Cookie。此 Cookie 没有 `secure` 标志，但应添加该标志以增强安全性。通过在 `dispatcher.any` 配置文件的 `/stickyConnections` 节点中设置 `secure` 属性而添加 `secure` 标志。该属性的值（`0` 或 `1`）定义 `renderid` Cookie 是否追加了 `secure` 属性。默认值为 `0`，这意味着&#x200B;**如果**&#x200B;传入请求是安全的，则添加该属性。如果将该值设置为 `1`，则无论传入请求是否安全，都将添加 secure 标志。
 
@@ -1550,7 +1550,7 @@ Dispatcher 每次请求渲染的页面时，它使用以下算法来选择渲染
 
 `/retryDelay` 属性设置 Dispatcher 在场渲染的连接尝试轮次之间等待的时间（以秒为单位）。对于每一轮，Dispatcher 连接到渲染的最大尝试次数是场中的渲染数量。
 
-如果没有明确定义 `/retryDelay`，Dispatcher 使用值 `"1"`。默认值适用于大多数情况。
+如果没有明确定义 `/retryDelay`，Dispatcher 使用值 `"1"`。默认值是合适的。
 
 ```xml
 /retryDelay "1"
@@ -1619,7 +1619,7 @@ read more data
 
 ## 为 glob 属性设计模式 {#designing-patterns-for-glob-properties}
 
-Dispatcher 配置文件中的多个部分使用 `glob` 属性作为客户端请求的选择标准。`glob` 属性的值是 Dispatcher 与请求的某个方面进行比较的模式，例如所请求资源的路径或者客户端的 IP 地址。例如，`/filter` 部分中的项使用 `glob` 模式来确定 Dispatcher 所操作或拒绝的页面的路径。
+Dispatcher配置文件中的多个部分可以使用 `glob` 属性作为客户端请求的选择标准。 `glob` 属性的值是 Dispatcher 与请求的某个方面进行比较的模式，例如所请求资源的路径或者客户端的 IP 地址。例如，`/filter` 部分中的项使用 `glob` 模式来确定 Dispatcher 所操作或拒绝的页面的路径。
 
 `glob` 值可以包括通配符字符和字母数字字符来定义模式。
 
@@ -1751,7 +1751,7 @@ The following table describes the wildcard characters.
 >
 >安装后，默认日志级别为高（即，级别 3 = 调试），因此 Dispatcher 记录所有错误和警告。此级别在初始阶段有用。
 >
->但是，这样的级别需要额外的资源。当 Dispatcher *根据您的要求*&#x200B;顺利工作时，您可降低日志级别。
+>然而，达到这一水平需要更多的资源。 当 Dispatcher *根据您的要求*&#x200B;顺利工作时，您可降低日志级别。
 
 ### 跟踪日志记录 {#trace-logging}
 

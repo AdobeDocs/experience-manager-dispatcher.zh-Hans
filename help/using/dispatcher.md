@@ -1,18 +1,14 @@
 ---
 title: Dispatcher 概述
-seo-title: Adobe AEM Dispatcher Overview
 description: 了解如何使用 Dispatcher 改进 AEM Cloud Services 的安全性、缓存等。
-seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
-uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 7dd2ba37e149af960ba428421d64a5a24542eeeb
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '3154'
-ht-degree: 100%
+source-wordcount: '3058'
+ht-degree: 94%
 
 ---
 
@@ -22,12 +18,12 @@ ht-degree: 100%
 >
 >Dispatcher 版本独立于 AEM。您可能是在单击以前版本的 AEM 文档中嵌入的 Dispatcher 文档链接后重定向到此页面。
 
-Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用的缓存和负载平衡工具。
+Dispatcher是Adobe Experience Manager的缓存和负载平衡工具，与企业级Web服务器一起使用。
 
 部署 Dispatcher 的过程与所选的 Web 服务器和操作系统平台无关：
 
 1. 了解 Dispatcher（此页面）。另请参阅[有关 Dispatcher 的常见问题解答](/help/using/dispatcher-faq.md)。
-1. 按照 Web 服务器文档安装[支持的 Web 服务器](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=zh-Hans)。
+1. 按照 Web 服务器文档安装[支持的 Web 服务器](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements)。
 1. 在 Web 服务器上[安装 Dispatcher 模块](dispatcher-install.md)，并相应地配置 Web 服务器。
 1. [配置 Dispatcher](dispatcher-configuration.md)（dispatcher.any 文件）。
 1. [配置 AEM](page-invalidate.md)，以便内容更新后，使缓存失效。
@@ -40,12 +36,11 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 >* 访问[此存储库](https://github.com/adobe/aem-dispatcher-experiments)。它包含一系列“家用版”实验室格式的实验。
 
 
-
 根据需要使用以下信息：
 
 * [Dispatcher 安全核对清单](security-checklist.md)
 * [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)
-* [优化网站缓存性能](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/configuring-performance.html)
+* [优化网站缓存性能](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [在多个域中使用 Dispatcher](dispatcher-domains.md)
 * [将 SSL 与 Dispatcher 结合使用](dispatcher-ssl.md)
 * [实施权限敏感型缓存](permissions-cache.md)
@@ -63,7 +58,7 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 有两种基本方法可进行 Web 发布：
 
 * **静态 Web 服务器**：例如 Apache 或 IIS，简易，但速度快。
-* **内容管理服务器**：提供动态、实时、智能的内容，但需要更多的计算时间和其他资源。
+* **内容管理服务器**：提供动态、实时、智能的内容，但需要较多的计算时间和其他资源。
 
 Dispatcher 可帮助实现既快速又动态的环境。它在静态 HTML 服务器（比如 Apache）中使用的目的是：
 
@@ -86,7 +81,7 @@ Dispatcher 包含根据动态站点内容生成和更新静态 HTML 的机制。
 
 一个静态 Web 服务器（如 Apache 或 IIS）为网站的访客提供静态 HTML 文件。仅创建一次静态页面，因此对于每个请求都传送相同的内容。
 
-此过程简单而又高效。如果访客请求某个文件（如 HTML 页面），则直接从内存取得该文件；在最差的情况下，从本地驱动器读取它。静态 Web 服务器问世已很久，因此有许多用于管理和安全管理的工具，而且它们与网络基础结构集成得很好。
+此过程简单而又高效。如果访客请求某个文件（如 HTML 页面），则直接从内存取得该文件；在最差的情况下，从本地驱动器读取它。静态Web服务器问世已有相当长的一段时间，因此有多种用于管理和安全管理的工具，并且它们与网络基础架构很好地集成。
 
 ### 内容管理服务器 {#content-management-servers}
 
@@ -104,7 +99,7 @@ Dispatcher 包含根据动态站点内容生成和更新静态 HTML 的机制。
 
 >[!NOTE]
 >
->如果没有配置 HTTP 标头缓存，则 Dispatcher 仅存储页面的 HTML 代码 - 它不会存储 HTTP 标头。如果在网站内使用不同的编码，由于可能会丢失这些页面，所以此场景可能会成为一个问题。要启用 HTTP 标头缓存，请参阅[配置 Dispatcher 缓存](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hans)。
+>如果没有配置 HTTP 标头缓存，则 Dispatcher 仅存储页面的 HTML 代码 - 它不会存储 HTTP 标头。如果在网站内使用不同的编码，由于可能会丢失这些页面，所以此场景可能会成为一个问题。要启用 HTTP 标头缓存，请参阅[配置 Dispatcher 缓存](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。
 
 >[!NOTE]
 >
@@ -158,7 +153,7 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 
 ### 确定文档是否实施了缓存
 
-您可以[在配置文件中定义 Dispatcher 缓存的文档](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hans)。Dispatcher 根据可缓存文档列表检查请求。如果文档不在此列表中，则 Dispatcher 从 AEM 实例中请求该文档。
+您可以[在配置文件中定义 Dispatcher 缓存的文档](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。Dispatcher 根据可缓存文档列表检查请求。如果文档不在此列表中，则 Dispatcher 从 AEM 实例中请求该文档。
 
 在以下情况下，Dispatcher 始终直接从 AEM 实例请求文档：
 
@@ -168,7 +163,7 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 
 >[!NOTE]
 >
->GET 或 HEAD（针对 HTTP 标头）方法可由 Dispatcher 缓存。有关响应标头缓存的其他信息，请参阅[缓存 HTTP 响应标头](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hans)部分。
+>GET 或 HEAD（针对 HTTP 标头）方法可由 Dispatcher 缓存。有关响应标头缓存的其他信息，请参阅[缓存 HTTP 响应标头](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)部分。
 
 ### 确定文档是否已缓存
 
@@ -177,11 +172,11 @@ Dispatcher 将缓存文件存储在 Web 服务器上，当做静态网站的一�
 * 如果文档已缓存，则 Dispatcher 返回该文件。
 * 如果未缓存，则 Dispatcher 从 AEM 实例请求该文档。
 
-### 确定文档是否为最新状态
+### 确定文档是否为最新版本
 
 为确定文档是否为最新状态，Dispatcher 将执行两个步骤：
 
-1. 它检查文档是否遵循自动失效机制。如果不遵循，则该文档是最新状态。
+1. 它检查文档是否遵循自动失效机制。如果不会，则将该文档视为最新版本。
 1. 如果该文档配置为自动失效，则 Dispatcher 检查它比最后一次可用更改旧还是新。如果较旧，则 Dispatcher 从 AEM 实例请求当前版本，并替换缓存中的版本。
 
 >[!NOTE]
@@ -206,7 +201,7 @@ Dispatcher 将缓存文件存储在 Web 服务器上，当做静态网站的一�
 
 >[!NOTE]
 >
->负载平衡可以有效分布负载，而缓存有助于减少负载。因此，在设置负载平衡之前，请尝试优化缓存并降低整体负载。良好的缓存机制可能会提高负载平衡器的性能，或者弃用不必要的负载平衡。
+>负载平衡可以有效分布负载，而缓存有助于减少负载。因此，在设置上载平衡之前，请尝试优化缓存并降低整体负载。 良好的缓存机制可能会提高负载平衡器的性能，或者弃用不必要的负载平衡。
 
 >[!CAUTION]
 >
@@ -265,7 +260,7 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 
 ## 控制 CDN 缓存 {#controlling-a-cdn-cache}
 
-有若干方法可控制 CDN 缓存某个资源多久后再从 Dispatcher 重新获取该资源。
+有多种方法可控制CDN在从Dispatcher重新获取资源之前缓存资源的时间。
 
 1. 显式配置\
    根据 mime 类型、扩展名、请求类型等，配置特定资源在 CDN 缓存中保留多久。
@@ -278,7 +273,7 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 1. 基于 API 的失效\
    大多数 CDN 还提供使得可从缓存中删除资源的 REST 和/或 SOAP API。
 
-在典型的 AEM 设置中，按扩展名和/或路径进行配置（可通过上述第 1 点和第 2 点实现）使得可为经常使用但不经常变更的资源（如设计图像和客户端库）设置合理的缓存期限。在部署新版本时，通常需要手动进行失效操作。
+在典型的AEM设置中，通过扩展来配置、通过路径来配置或同时通过这两者进行配置，这可以通过上面第1点和第2点实现，从而提供设置合理缓存周期的可能性。 这是为经常使用但不经常更改的资源完成的。 此类示例包括设计图像和客户端库。 在部署新版本时，通常需要手动进行失效操作。
 
 如果将此方法用于缓存受管内容，则意味着仅在配置的缓存期限到期且再次从 Dispatcher 中获取文档后，内容变更才对最终用户可见。
 
@@ -286,13 +281,13 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 
 >[!NOTE]
 >
->另请参阅 [AEM (CQ) Dispatcher 安全性和 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)和有关 [Dispatcher 缓存](https://experienceleague.adobe.com/docs/experience-manager-gems-events/gems/gems2015/aem-dispatcher-caching-new-features-and-optimizations.html?lang=zh-Hans)的录制演讲。
+>另请参阅 [AEM (CQ) Dispatcher 安全性和 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)和有关 [Dispatcher 缓存](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)的录制演讲。
 
 ## 将 Dispatcher 与创作服务器一起使用 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/docs/experience-manager-65/developing/introduction/touch-ui-concepts.html?lang=zh-Hans)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
+>如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
 
 ```xml
 /rules
@@ -311,7 +306,7 @@ Dispatcher 可在创作实例之前使用以提高创作性能。要配置创作
 1. 在文本编辑器中打开 `author_dispatcher.any`，并进行以下更改：
 
    1. 更改 `/renders` 部分的 `/hostname` 和 `/port`，以使其指向您的创作实例。
-   1. 更改 `/cache` 部分的 `/docroot`，以使其指向缓存目录。如果您将 [AEM 与 Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/developing/introduction/touch-ui-concepts.html?lang=zh-Hans) 一起使用，请查看上面的警告。
+   1. 更改 `/cache` 部分的 `/docroot`，以使其指向缓存目录。如果您将 [AEM 与 Touch UI](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts) 一起使用，请查看上面的警告。
    1. 保存更改。
 
 1. 删除您在前面配置的 `/cache` > `/docroot` 目录中的所有现有文件。

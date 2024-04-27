@@ -1,9 +1,6 @@
 ---
 title: Dispatcher 问题疑难解答
-seo-title: Troubleshooting AEM Dispatcher Problems
 description: 了解如何解决 Dispatcher 问题。
-seo-description: Learn to troubleshoot AEM Dispatcher issues.
-uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,12 +8,11 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '560'
-ht-degree: 100%
+source-wordcount: '538'
+ht-degree: 96%
 
 ---
 
@@ -30,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->请查看 [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)、[解决 Dispatcher 刷新问题](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])和 [Dispatcher 常见问题解答](dispatcher-faq.md)以了解更多信息。
+>查看 [Dispatcher知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)， [Dispatcher刷新问题疑难解答](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])，和 [Dispatcher常见问题解答](dispatcher-faq.md) 以了解详细信息。
 
 ## 检查基本配置 {#check-the-basic-configuration}
 
@@ -44,10 +40,10 @@ ht-degree: 100%
    * 您是否有多个 Dispatcher？
 
       * 您是否已确定哪个 Dispatcher 正在处理您所调查的网站/页面？
+
    * 您是否已实施过滤器？
 
       * 这些筛选条件是否影响您调查的事情？
-
 
 ## IIS 诊断工具 {#iis-diagnostic-tools}
 
