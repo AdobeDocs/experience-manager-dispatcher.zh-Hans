@@ -1,11 +1,11 @@
 ---
-title: Dispatcher常见问题
-description: Adobe Experience Manager Dispatcher常见问题。
+title: Dispatcher 热门问题
+description: Adobe Experience Manager Dispatcher 的热门问题。
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1542'
-ht-degree: 87%
+ht-degree: 100%
 
 ---
 
@@ -17,7 +17,7 @@ ht-degree: 87%
 
 ### 什么是 Dispatcher？
 
-Dispatcher 是 Adobe Experience Manager 的缓存和/或负载平衡工具，有助于实现快速且动态的 Web 创作环境。对于缓存，Dispatcher 充当 HTTP 服务器（如 Apache）的一部分。其目的是为了存储（或“缓存”）尽可能多的静态网站内容，并尽可能少地访问网站引擎的布局。 用于负载平衡时，Dispatcher 将用户请求（负载）分散在不同的 AEM 实例（渲染器）间。
+Dispatcher 是 Adobe Experience Manager 的缓存和/或负载平衡工具，有助于实现快速且动态的 Web 创作环境。对于缓存，Dispatcher 充当 HTTP 服务器（如 Apache）的一部分。它旨在存储（即“缓存”）尽可能多的静态网站内容，并尽可能不频繁地访问网站的版面引擎。用于负载平衡时，Dispatcher 将用户请求（负载）分散在不同的 AEM 实例（渲染器）间。
 
 对于执行缓存，Dispatcher 模块利用 Web 服务器的功能来提供静态内容。Dispatcher 将缓存文档放在 Web 服务器的文档根目录下。
 
@@ -80,9 +80,9 @@ Dispatcher 利用 Web 服务器的功能来提供静态内容。Dispatcher 将�
 
 ### Dispatcher 和 AEM 发布实例是否能驻留在同一台物理计算机上？
 
-可以，但前提是计算机的功能足够强大。但是，您应在不同的计算机上设置Dispatcher和AEM Publish实例。
+可以，但前提是计算机的功能足够强大。但是，您应该在不同的计算机上设置 Dispatcher 和 AEM Publish 实例。
 
-通常，发布实例驻留在防火墙内，Dispatcher驻留在DMZ中。 如果您决定让发布实例和Dispatcher驻留在同一台物理计算机上，请确保防火墙设置禁止从外部网络直接访问发布实例。
+通常，发布实例位于防火墙内，而 Dispatcher 位于 DMZ 中。如果您决定让发布实例和 Dispatcher 驻留在同一台物理计算机上，请确保防火墙设置禁止从外部网络直接访问发布实例。
 
 ### 是否能仅缓存带特定扩展名的文件？
 
@@ -103,8 +103,8 @@ Content-Length: 0
 
 Dispatcher 删除名称与 CQ-Handle 标头值匹配的缓存的文件和文件夹。例如，`/content/geomtrixx-outdoors/en` 的 CQ-Handle 与以下项匹配：
 
-geometrixx-outdoors目录中名称（任何文件扩展名）为en的所有文件。
-任何命名的目录 `_jcr_content` en目录下（如果存在，则包含页面的子节点的缓存渲染）。
+geometrixx-outdoors 目录中名称（任何文件扩展名）为 en 的所有文件。
+en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含页面子节点的缓存渲染）。
 只有 `CQ-Action` 为 `Delete` 或 `Deactivate`，才能删除 `en` 目录。
 
 有关此主题的其他详细信息，请参阅[手动使 Dispatcher 缓存失效](page-invalidate.md)。
@@ -139,7 +139,7 @@ geometrixx-outdoors目录中名称（任何文件扩展名）为en的所有文�
 
 ### 如何从 Dispatcher 缓存刷新 DAM 资产？
 
-您可以使用“链复制”功能。启用此功能后，Dispatcher的刷新代理会在收到来自作者的复制时发送刷新请求。
+您可以使用“链复制”功能。启用此功能后，当收到来自作者的复制时，Dispatcher的刷新代理会发送一个刷新请求。
 
 要启用该功能：
 
@@ -148,10 +148,10 @@ geometrixx-outdoors目录中名称（任何文件扩展名）为en的所有文�
 
 ## 其他
 
-Dispatcher如何确定文档是否为最新版本？
-要确定文档是否为最新版本，Dispatcher会执行以下操作：
+Dispatcher 如何确定文档是否为最新版本？
+为了确定文档是否为最新版本，Dispatcher 会执行以下操作：
 
-它检查文档是否遵循自动失效机制。如果不会，则将该文档视为最新版本。
+它检查文档是否遵循自动失效机制。如果不是，则认为该文档是最新的。
 如果该文档配置为自动失效，则 Dispatcher 检查它比最后一次可用更改旧还是新。如果较旧，则 Dispatcher 从 AEM 实例请求当前版本，并替换缓存中的版本。
 
 ### Dispatcher 如何返回文档？

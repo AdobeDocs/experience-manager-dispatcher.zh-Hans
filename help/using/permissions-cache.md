@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '910'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -32,7 +32,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 ![](assets/chlimage_1.png)
 
 1. Dispatcher 确定请求的内容已缓存且有效。
-1. Dispatcher 向渲染器发送请求消息。HEAD部分包含来自浏览器请求的所有标头行。
+1. Dispatcher 向渲染器发送请求消息。HEAD 部分包括来自浏览器请求的所有标头行。
 1. 渲染器调用授权检查程序 servlet 以执行安全检查并向 Dispatcher 发出响应。响应消息包含 HTTP 状态代码 200 以表示用户已获得授权。
 1. Dispatcher 向浏览器发送一条响应消息，其中包含渲染器响应中的标头行和正文中的缓存内容。
 
@@ -69,8 +69,8 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 
 >[!NOTE]
 >
->当Dispatcher前面有CDN（或任何其他缓存）时，您应该相应地设置缓存标头，以便CDN不会缓存私有内容。 例如：`Header always set Cache-Control private`。
->对于AEMas a Cloud Service，请参阅 [缓存](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) 页面，了解有关如何设置专用缓存标头的更多详细信息。
+>当 Dispatcher 前面有 CDN（或任何其他缓存）时，您应设置相应的缓存标头，以使 CDN 不缓存专用内容。例如：`Header always set Cache-Control private`。
+>对于 AEM as a Cloud Service，请参阅[缓存](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching)页面，了解有关如何设置专用缓存标头的更多详细信息。
 
 ## 创建授权检查程序 servlet {#create-the-auth-checker-servlet}
 
@@ -78,7 +78,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 
 此 servlet 必须可供所有用户访问。因此，您的 servlet 应扩展 `org.apache.sling.api.servlets.SlingSafeMethodsServlet` 类，此类提供对系统的只读访问权限。
 
-此servlet仅接收来自渲染器的HEAD请求，因此您必须仅实施 `doHead` 方法。
+servlet 仅接收来自渲染器的 HEAD 请求，因此您只需要实施 `doHead` 方法。
 
 渲染器包含请求的资源的 URI 作为 HTTP 请求的参数。例如，通过 `/bin/permissioncheck` 访问授权 servlet。要对 /content/geometrixx-outdoors/en.html 页面执行安全检查，渲染器在 HTTP 请求中包含以下 URL：
 
@@ -147,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->如果您的要求允许缓存经过身份验证的文档，请将 /cache 分区下的 /allowAuthorized 属性设置为 `/allowAuthorized 1`。 请参阅主题 [使用身份验证时缓存](/help/using/dispatcher-configuration.md) 以了解更多详细信息。
+>如果您的要求允许缓存经过身份验证的文档，请将 /cache 分区下的 /allowAuthorized 属性设置为 `/allowAuthorized 1`。 有关详细信息，请参阅主题[使用身份验证时缓存](/help/using/dispatcher-configuration.md)。
 
 dispatcher.any 文件的 auth_checker 部分控制权限敏感型缓存的行为。auth_checker 部分包含以下子部分：
 

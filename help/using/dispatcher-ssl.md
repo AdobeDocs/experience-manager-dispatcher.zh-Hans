@@ -10,15 +10,15 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1302'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
 # 将 SSL 与 Dispatcher 结合使用 {#using-ssl-with-dispatcher}
 
-在Dispatcher和渲染计算机之间使用SSL连接：
+在 Dispatcher 和渲染计算机之间使用 SSL 连接：
 
 * [单向 SSL](#use-ssl-when-dispatcher-connects-to-aem)
 * [双向 SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -129,14 +129,14 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 要配置双向 SSL，请执行以下步骤：
 
-1. [安装](dispatcher-install.md)适用于您的平台的最新版本的 Dispatcher。使用支持SSL的Dispatcher二进制文件(SSL包含在文件名中，例如 `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`)。
+1. [安装](dispatcher-install.md)适用于您的平台的最新版本的 Dispatcher。使用支持 SSL 的 Dispatcher 二进制文件（SSL 在文件名中，例如 `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`）。
 1. 为 Dispatcher 和渲染实例[创建或获取 CA 签名证书](dispatcher-ssl.md#main-pars-title-3)
 1. [创建包含渲染证书的密钥库](dispatcher-ssl.md#main-pars-title-6)并配置渲染器的 HTTP 服务。
 1. 为双向 SSL [配置 Dispatcher Web Server 模块](dispatcher-ssl.md#main-pars-title-4)。
 
 ### 创建或获取 CA 签名证书 {#creating-or-obtaining-ca-signed-certificates}
 
-创建或获取用于对发布实例和Dispatcher进行身份验证的CA签名证书。
+创建或获取用于对发布实例和 Dispatcher 进行身份验证的 CA 签名证书。
 
 #### 创建您的 CA {#creating-your-ca}
 
@@ -157,10 +157,10 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 使用 OpenSSL 可创建要发送给第三方 CA 或通过您的 CA 签名的证书请求。
 
-创建证书时，OpenSSL 使用公用名属性来标识证书所有者。对于渲染实例的证书，如果您将Dispatcher配置为接受证书，请使用实例计算机的主机名作为公用名。 仅当与发布实例的主机名匹配时，才执行此操作。 请参阅 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 属性。
+创建证书时，OpenSSL 使用公用名属性来标识证书所有者。对于渲染实例的证书，如果您配置 Dispatcher 以接受证书，则请使用实例计算机的主机名作为通用名称。仅当该名称与发布实例的主机名匹配时才执行此操作。参阅 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 属性。
 
 1. 打开终端并将当前目录更改为包含 OpenSSL 库的 CH.sh 文件的目录。
-1. 输入以下命令，并在系统提示时提供值。如有必要，请使用发布实例的主机名作为公用名。 主机名是渲染器的 IP 地址的 DNS 可解析名称：
+1. 输入以下命令，并在系统提示时提供值。如有必要，可使用发布实例的主机名作为公用名。主机名是渲染器的 IP 地址的 DNS 可解析名称：
 
    ```shell
    ./CA.sh -newreq
@@ -247,7 +247,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### 配置渲染实例 {#configuring-the-render-instance}
 
-要将渲染实例的HTTP服务配置为使用SSL，请使用渲染证书以及 *`Enable SSL on the Publish Instance`* 部分：
+若要将渲染实例的 HTTP 服务配置为使用 SSL，请按照 *`Enable SSL on the Publish Instance`* 部分中的说明使用渲染证书：
 
 * AEM 6.2：[启用 HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * AEM 6.1：[启用 HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)

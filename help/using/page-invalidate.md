@@ -1,6 +1,6 @@
 ---
 title: 使从 AEM 中缓存的页面失效
-description: 了解如何配置Dispatcher和Adobe Experience Manager之间的交互以确保高效的缓存管理。
+description: 了解如何配置 Dispatcher 和 Adobe Experience Manager 之间的交互以确保高效的缓存管理。
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1408'
-ht-degree: 65%
+ht-degree: 100%
 
 ---
 
@@ -22,9 +22,9 @@ ht-degree: 65%
 
 ## 设置 AEM 用户帐户 {#setting-up-aem-user-accounts}
 
-默认 `admin` 用户帐户用于对默认安装的复制代理进行身份验证。创建用于复制代理的专用用户帐户。
+默认 `admin` 用户帐户用于对默认安装的复制代理进行身份验证。创建一个用于复制代理的专用用户帐户。
 
-欲了解更多信息，请参见 [配置复制和转移用户](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) AEM部分。
+有关更多信息，请参阅 AEM 安全检查清单的[配置复制和传输用户](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
@@ -58,30 +58,30 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 1. （可选）要启用别名或虚名路径失效请求，请选择&#x200B;**“别名更新”**&#x200B;选项。
 1. 在“传输”选项卡上，输入访问 Dispatcher 所需的 URI。\
-   如果您使用的是标准Dispatcher Flush代理，请更新主机名和端口；例如https://&lt;*dispatcherHost*>：&lt;*portApache*>/dispatcher/invalidate.cache
+   如果您使用的是标准 Dispatcher Flush 代理，则可能需要更新主机名和端口；例如，https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
 
-   **注意：** 对于Dispatcher Flush代理，仅在您使用基于路径的虚拟主机条目来区分场时使用URI属性。 您可以使用此字段来定位要使其失效的场。例如，场 #1 的虚拟主机为 `www.mysite.com/path1/*`，场 #2 的虚拟主机为 `www.mysite.com/path2/*`。您可以使用 URL `/path1/invalidate.cache` 定位第一个场，使用 `/path2/invalidate.cache` 定位第二个场。有关更多信息，请参阅[在多个域中使用 Dispatcher](dispatcher-domains.md)。
+   **注意：**&#x200B;对于 Dispatcher Flush 代理，仅在您使用基于路径的虚拟主机条目来区分场时使用 URI 属性。您可以使用此字段来定位要使其失效的场。例如，场 #1 的虚拟主机为 `www.mysite.com/path1/*`，场 #2 的虚拟主机为 `www.mysite.com/path2/*`。您可以使用 URL `/path1/invalidate.cache` 定位第一个场，使用 `/path2/invalidate.cache` 定位第二个场。有关更多信息，请参阅[在多个域中使用 Dispatcher](dispatcher-domains.md)。
 
 1. 根据需要配置其他参数。
-1. 单击“确定”以激活代理。
+1. 单击“确定”即可激活代理。
 
 或者，您也可以从 [AEM Touch UI](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent) 访问和配置 Dispatcher Flush 代理。
 
-有关如何启用对虚名URL的访问权限的更多详细信息，请参阅 [启用对虚名URL的访问](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
+有关如何启用对虚名 URL 的访问的详细信息，请参阅[启用对虚名 URL 的访问](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)。
 
 >[!NOTE]
 >
->用于刷新Dispatcher缓存的代理不必具有用户名和密码，但如果已配置用户名和密码，则会通过基本身份验证发送它们。
+>用于刷新 Dispatcher 缓存的代理无需具有用户名和密码，但如果已配置用户名和密码，则将通过基本身份验证发送它们。
 
 此方法可能存在两个问题：
 
-* 必须可从创作实例访问 Dispatcher。如果您的网络（例如防火墙）配置为限制两者之间的访问，则情况可能并非如此。
+* 必须可从创作实例访问 Dispatcher。如果您的网络（例如防火墙）配置为限制两者之间的此类访问，但可能并不是这样。
 
 * 发布和缓存失效同时发生。根据时机的不同，用户可能会在刚从缓存中删除一个页面之后、在发布新页面之前请求该页面。AEM 此时会返回旧页面，并且 Dispatcher 会再次缓存它。对于大型网站来说，这个问题更突出。
 
 ## 使发布实例中的 Dispatcher 缓存失效 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
-在某些情况下，可以通过将缓存管理从创作环境转移到发布实例来提高性能。 然后在收到已发布的页面时，发布环境(而不是AEM创作环境)会向Dispatcher发送缓存失效请求。
+在某些情况下，可以通过将缓存管理从创作环境转移到发布实例来提高性能。随后，发布环境（而不是 AEM 创作环境）会在收到发布的页面时向 Dispatcher 发送缓存失效请求。
 
 此类情况包括：
 
@@ -94,27 +94,27 @@ Comment Type: draft
  -->
 
 * 防止 Dispatcher 和发布实例之间可能发生的时机冲突（请参阅[使创作环境中的 Dispatcher 缓存失效](#invalidating-dispatcher-cache-from-the-authoring-environment)）。
-* 该系统包括驻留在高性能服务器上的多个发布实例，并且仅包含一个创作实例。
+* 系统包括多个驻留在高性能服务器上的发布实例，并且仅包含一个创作实例。
 
 >[!NOTE]
 >
 >应由经验丰富的 AEM 管理员决定使用此方法。
 
-Dispatcher刷新由在发布实例上运行的复制代理控制。 不过，将在创作环境中进行配置，然后通过激活代理来传输配置：
+Dispatcher 刷新由在发布实例上运行的复制代理控制。不过，将在创作环境中进行配置，然后通过激活代理来传输配置：
 
 1. 打开 AEM 工具控制台。
 1. 打开发布实例上的 Tools/replication/Agents 下的所需复制代理。您可以使用默认安装的 Dispatcher Flush 代理。
 1. 单击“编辑”，在“设置”选项卡中，确保选中&#x200B;**“已启用”**。
 1. （可选）要启用别名或虚名路径失效请求，请选择&#x200B;**“别名更新”**&#x200B;选项。
 1. 在“传输”选项卡上，输入访问 Dispatcher 所需的 URI。\
-   如果您使用的是标准Dispatcher Flush代理，则必须更新主机名和端口。 例如，
+   如果您使用标准 Dispatcher Flush 代理，则必须更新主机名和端口。例如，
 
    `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
-   **注意：** 对于Dispatcher Flush代理，仅在您使用基于路径的虚拟主机条目来区分场时使用URI属性。 您可以使用此字段来定位要使其失效的场。例如，场 #1 的虚拟主机为 `www.mysite.com/path1/*`，场 #2 的虚拟主机为 `www.mysite.com/path2/*`。您可以使用 URL `/path1/invalidate.cache` 定位第一个场，使用 `/path2/invalidate.cache` 定位第二个场。有关更多信息，请参阅[在多个域中使用 Dispatcher](dispatcher-domains.md)。
+   **注意：**&#x200B;对于 Dispatcher Flush 代理，仅在您使用基于路径的虚拟主机条目来区分场时使用 URI 属性。您可以使用此字段来定位要使其失效的场。例如，场 #1 的虚拟主机为 `www.mysite.com/path1/*`，场 #2 的虚拟主机为 `www.mysite.com/path2/*`。您可以使用 URL `/path1/invalidate.cache` 定位第一个场，使用 `/path2/invalidate.cache` 定位第二个场。有关更多信息，请参阅[在多个域中使用 Dispatcher](dispatcher-domains.md)。
 
 1. 根据需要配置其他参数。
-1. 登录到发布实例并验证刷新代理配置。 此外，还要确保启用了它。
+1. 登录到发布实例并验证刷新代理配置。此外，还要确保启用了它。
 1. 对每个受影响的发布实例重复此操作。
 
 配置后，在激活创作中的页面以进行发布时，此代理将启动标准复制。日志包含指示来自发布服务器的请求的消息，类似于以下示例：
@@ -123,7 +123,7 @@ Dispatcher刷新由在发布实例上运行的复制代理控制。 不过，将
 
 ## 手动使 Dispatcher 缓存失效 {#manually-invalidating-the-dispatcher-cache}
 
-要在不激活页面的情况下使Dispatcher缓存失效（或进行刷新），您可以向Dispatcher发出HTTP请求。 例如，您可以创建一个 AEM 应用程序，以便管理员或其他应用程序能够刷新缓存。
+要在不激活页面的情况下使 Dispatcher 缓存失效（或进行刷新），您可以向 Dispatcher 发出 HTTP 请求。例如，您可以创建一个 AEM 应用程序，以便管理员或其他应用程序能够刷新缓存。
 
 HTTP 请求促使 Dispatcher 从缓存中删除特定文件。（可选）Dispatcher 随后使用新副本刷新缓存。
 
@@ -144,17 +144,17 @@ Dispatcher 刷新（删除）名称与 `CQ-Handler` 标头值匹配的缓存的�
 
 * `geometrixx-outdoors` 目录中名称（任何文件扩展名）为 `en` 的所有文件
 
-* 任何名为“”的目录 `_jcr_content`”在en目录下（如果存在，则包含页面的子节点的缓存渲染）
+* en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含页面子节点的缓存渲染）
 
-Dispatcher缓存中的所有其他文件(或向上至特定级别，具体取决于 `/statfileslevel` 设置)通过接触 `.stat` 文件。 将此文件的上次修改日期与缓存的文档的上次修改日期进行比较，如果 `.stat` 文件较新。 有关详细信息，请参阅[按文件夹级别使文件失效](dispatcher-configuration.md#main-pars_title_26)。
+通过接触 `.stat` 文件使 Dispatcher 缓存中的所有其他文件（或向上至特定级别，取决于 `/statfileslevel` 设置）失效。将此文件的上次修改日期与缓存的文档的上次修改日期进行比较，如果 `.stat` 文件更新，则重新获取该文档。有关详细信息，请参阅[按文件夹级别使文件失效](dispatcher-configuration.md#main-pars_title_26)。
 
-可以通过发送额外的标头防止失效（即接触.stat文件） `CQ-Action-Scope: ResourceOnly`. 这可用于刷新特定资源而不会使缓存的其他部分（例如动态创建的JSON数据）失效，并且需要独立于缓存的定期刷新。 例如，表示从第三方系统获取的用于显示新闻和股票行情的数据。
+可以通过发送额外的标头 `CQ-Action-Scope: ResourceOnly` 防止失效（即接触 .stat 文件）。这可用于刷新特定资源而不使缓存的其他部分无效，例如动态创建且需要独立于缓存定期刷新的 JSON 数据。例如，表示从第三方系统获取的数据以显示新闻和股票行情。
 
 ### 删除和重新缓存文件 {#delete-and-recache-files}
 
-发出 HTTP 请求以促使 Dispatcher 删除缓存的文件，并立即检索和重新缓存文件。当网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。 立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
+发出 HTTP 请求以促使 Dispatcher 删除缓存的文件，并立即检索和重新缓存文件。在网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
 
-**注意：** 应仅在发布实例上执行文件删除和重新缓存操作。 在从创作实例执行时，在资源发布之前尝试重新缓存资源时会发生争用情况。
+**注意：**&#x200B;应仅在发布实例上执行文件删除和重新缓存操作。在从创作实例执行时，在资源发布之前尝试重新缓存资源时会发生争用情况。
 
 HTTP 请求具有以下形式：
 
@@ -184,7 +184,7 @@ Content-Length: 36
 
 ### 示例刷新 servlet {#example-flush-servlet}
 
-以下代码实施一个向Dispatcher发送失效请求的servlet。 此 servlet 接收包含 `handle` 和 `page` 参数的请求消息。这些参数分别提供要重新缓存的页面的 `CQ-Handle` 标头和路径的值。此 servlet 使用这些值为 Dispatcher 构造 HTTP 请求。
+以下代码实施一个向 Dispatcher 发送失效请求的 servlet。此 servlet 接收包含 `handle` 和 `page` 参数的请求消息。这些参数分别提供要重新缓存的页面的 `CQ-Handle` 标头和路径的值。此 servlet 使用这些值为 Dispatcher 构造 HTTP 请求。
 
 在将 servlet 部署到发布实例时，以下 URL 会促使 Dispatcher 删除 /content/geometrixx-outdoors/en.html 页面，然后缓存一个新副本。
 
