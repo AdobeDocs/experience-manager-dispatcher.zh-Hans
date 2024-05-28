@@ -1,17 +1,17 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '715'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '714'
+ht-degree: 69%
 
 ---
 # Adobe Experience Manager 文档内容贡献准则
 
 ## 文档理念
 
- Adobe Experience Manager 用户在竞争非常激烈的环境中工作，他们努力提供优质的数字体验，让自己在众多竞争对手中独树一帜。因此，当 Adobe 在 AEM 中提供先进的新工具时，这些工具必须辅以准确和清晰的文档，以便客户立即利用 AEM 并最大限度地提高 ROI，这一点至关重要。
+ Adobe Experience Manager 用户在竞争非常激烈的环境中工作，他们努力提供优质的数字体验，让自己在众多竞争对手中独树一帜。因此，当Adobe在AEM中提供高级工具时，这些工具将辅以准确和清晰的文档。 它让客户能够立即使用其AEM投资并最大限度地提高投资回报。
 
-撰写 AEM 文档的目标是，尽快将相应的文档提供给 AEM 用户。因此，Adobe 优先考虑提供准确的可用文档，并努力不断更新和改进文档。
+撰写 AEM 文档的目标是，尽快将相应的文档提供给 AEM 用户。因此，Adobe会优先考虑准确、可用的文档，并努力不断更新和改进文档。
 
 ## 贡献文档内容
 
@@ -19,25 +19,25 @@ ht-degree: 100%
 
 ## 文档标准
 
-虽然 Adobe 欢迎大家贡献文档内容，但是针对 AEM 文档的任何贡献内容（无论是以拉取请求还是创建问题的形式提供）均应符合 Adobe 的贡献内容和文档标准。
+虽然Adobe欢迎向其文档投稿，但在拉取请求或问题中向AEM文档投稿的任何内容都应符合Adobe的投稿和文档标准。
 
 我们会拒绝不符合这些标准的投稿。
 
-### Adobe 文档记录标准用例。
+### 标准用例记录在Adobe中。
 
 AEM 文档涵盖标准用例。超出产品标准安装和使用范围的用例不会包含在 AEM 文档中。
 
 ### Adobe 通常不记录错误或其解决方法。
 
-AEM 文档涵盖标准用例。因此，不会记录错误、错误产生的影响以及相应的解决方法。
+AEM 文档涵盖标准用例。因此，未记录错误、错误产生的影响以及相应的解决方法。
 
-例外情况是，发行说明不适用这项规则。发行说明中会列出已知问题，以及已获 AEM 产品管理部门批准的可行解决方案。
+此规则的例外情况适用于发行说明，发行说明中可能会列出已知问题和产品管理部门批准的可能解决方案。
 
 ### 贡献的文档内容不用于回答技术问题。
 
 如果您有关于改进 AEM 文档的任何想法，欢迎贡献内容。但是，任何评论、问题和拉取请求仅适用于&#x200B;*贡献内容*。它们不用于回答有关如何使用 AEM、实施 AEM 项目，或解决技术难题的问题。
 
-如果您对 AEM 的使用或技术错误有任何疑问，应采用常规支持流程通过 [Experience Cloud 企业支持门户](https://experienceleague.adobe.com/?support-solution=General#support)报告，或在 [Experience Manager 社区](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community)中讨论。
+您可以报告有关AEM使用情况或技术错误的任何问题。 通过以下方式使用常规支持流程 [Experience Cloud企业支持门户](https://experienceleague.adobe.com/?support-solution=General#support) 或在 [Experience Manager社区](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
 
 ***AEM 文档贡献内容不是 Adobe 客户服务的替代品***，任何试图获取支持相关问题答案的此类贡献内容都将遭到拒绝。
 
@@ -45,7 +45,7 @@ AEM 文档涵盖标准用例。因此，不会记录错误、错误产生的影�
 
 如果创建问题以建议对文档进行改进，则必须包含指向受影响页面的链接。如果使用文档页面上的&#x200B;**编辑此页面**&#x200B;链接创建问题，则会创建问题并自动包含指向该页面的链接。
 
-这不适用于拉取请求，因为拉取请求本质上会引用受影响的页面。
+此过程不适用于拉取请求，因为拉取请求本质上会引用受影响的页面。
 
 ## 文档准则
 
@@ -63,7 +63,7 @@ Adobe 要求所有针对文档贡献的内容都必须遵循特定的风格准�
 
 请记住，AEM 文档的读者遍布全球，他们可能不是以英语为母语或者英语并不流利。应避免口语，尽量使用清晰简单的语言。
 
-#### 遵循 Microsoft® 风格指南
+#### 遵循Microsoft®写作风格指南
 
 [Microsoft® 写作风格指南](https://learn.microsoft.com/en-us/style-guide/welcome/)是免费提供的文档风格指南，重点针对的是软件文档和 AEM 文档，应尽量遵循该指南。
 
@@ -83,10 +83,12 @@ Adobe 要求所有针对文档贡献的内容都必须遵循特定的风格准�
 
 ### 特定于版本的引用
 
-尽量避免在整个文档内容中直接引用特定版本。这样可使未来版本的文档可以更加灵活和可扩展。
+尽量避免在整个文档内容中直接引用特定版本。此建议使未来版本的文档更加灵活和可扩展。
 
 ### Day、AEM、CQ、CRX 的使用
 
-在文章中首次引用产品时应始终使用其全名 **Adobe Experience Manager**，之后可简称为 **AEM**。
+在文章中，始终按全名引用产品 **Adobe Experience Manager** 首次使用时。 此后，可以称为 **AEM**.
 
 除类名或引用 AEM 历史记录等无法避免的情况外，不应使用 Day、Day Software、CQ 和 CRX。
+
+

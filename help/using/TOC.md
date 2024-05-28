@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '78'
-ht-degree: 100%
+source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+workflow-type: tm+mt
+source-wordcount: '83'
+ht-degree: 73%
 
 ---
 
@@ -26,13 +26,13 @@ ht-degree: 100%
    + [Dispatcher 安全核对清单](security-checklist.md)
    + [AEM Dispatcher 发行说明](release-notes.md)
 + 配置 {#configuring}
-   + [配置 Dispatcher](dispatcher-configuration.md)
+   + [配置AEM调度程序](dispatcher-configuration.md)
    + [使从 AEM 中缓存的页面失效](page-invalidate.md)
    + [优化网站缓存性能](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [缓存受保护内容](permissions-cache.md)
-   + [在多个域中使用 Dispatcher](dispatcher-domains.md)
-   + [将 SSL 与 Dispatcher 结合使用](dispatcher-ssl.md)
-   + [配置 Dispatcher 以防御 CSRF 攻击](configuring-dispatcher-to-prevent-csrf.md)
+   + [在多个域中使用AEM Dispatcher](dispatcher-domains.md)
+   + [将SSL与AEM Dispatcher一起使用](dispatcher-ssl.md)
+   + [配置AEM Dispatcher以防御CSRF攻击](configuring-dispatcher-to-prevent-csrf.md)
 + 疑难解答 {#troubleshooting}
    + [Dispatcher 问题疑难解答](dispatcher-troubleshooting.md)
    + [Dispatcher 常见问题解答](dispatcher-faq.md)

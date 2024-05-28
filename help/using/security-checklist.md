@@ -1,6 +1,6 @@
 ---
 title: Dispatcher 安全核对清单
-description: 应在开始生产前完成的安全核对清单。
+description: 了解应在开始生产前完成的Dispatcher安全核对清单。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -10,10 +10,10 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '591'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '590'
+ht-degree: 64%
 
 ---
 
@@ -38,11 +38,11 @@ Adobe 建议您在开始生产前完成以下核对清单。
 
 ## 使用最新版本的 Dispatcher {#use-the-latest-version-of-dispatcher}
 
-安装适用于您平台的最新可用版本。请务必升级您的 Dispatcher 实例，以便通过最新版本利用产品和安全增强功能。请参阅[安装 Dispatcher](dispatcher-install.md)。
+安装适用于您的平台的最新可用版本。 升级您的Dispatcher实例以使用最新版本以利用产品和安全增强功能。 请参阅[安装 Dispatcher](dispatcher-install.md)。
 
 >[!NOTE]
 >
->通过查看 Dispatcher 日志文件来查看 Dispatcher 安装的当前版本。
+>您可以通过查看Dispatcher日志文件来检查Dispatcher安装的当前版本。
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
@@ -52,9 +52,9 @@ Adobe 建议您在开始生产前完成以下核对清单。
 
 Adobe 建议您[限制可以刷新缓存的客户端。](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## 为传输层安全性启用 HTTPS {#enable-https-for-transport-layer-security}
+## 为传输层安全性启用HTTPS {#enable-https-for-transport-layer-security}
 
-Adobe 建议在创作实例和发布实例上启用 HTTPS 传输层。
+Adobe建议在创作实例和发布实例上启用HTTPS传输层。
 
 <!-- 
 
@@ -89,22 +89,22 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## 以专用系统用户身份运行 Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
-在配置 Dispatcher 时，您应确保 Web 服务器由具有最低权限的专用用户运行。建议只授予对 Dispatcher 缓存文件夹的写访问权限。
+配置Dispatcher时，请确保Web服务器由具有最低权限的专用用户运行。 建议您只授予对Dispatcher缓存文件夹的写入权限。
 
 此外，IIS 用户必须按如下方式配置其网站：
 
-1. 在网站的物理路径设置中，选择&#x200B;**“以特定用户身份连接”**。
+1. 在网站的物理路径设置中，选择 **以特定用户身份连接**.
 1. 设置用户。
 
 ## 防御拒绝服务 (DoS) 攻击 {#prevent-denial-of-service-dos-attacks}
 
 拒绝服务 (DoS) 攻击是一种试图让计算机资源对其目标用户不可用的攻击。
 
-在 Dispatcher 级别，可通过[两种配置方法来防御 DoS 攻击](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780)。
+在Dispatcher级别，可通过两种配置方法来防御DoS攻击： [过滤器](https://experienceleague.adobe.com/en/docs#/filter)
 
 * 使用 mod_rewrite 模块（例如 [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)）执行 URL 验证（如果 URL 模式规则不是太复杂）。
 
-* 通过使用[过滤器](dispatcher-configuration.md#configuring-access-to-conten-tfilter)防止 Dispatcher 缓存带假扩展的 URL。\
+* 通过使用[过滤器](dispatcher-configuration.md#configuring-access-to-content-filter)防止 Dispatcher 缓存带假扩展的 URL。\
   例如，更改缓存规则以仅允许缓存预期的 MIME 类型，例如：
 
    * `.html`
@@ -116,9 +116,9 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
    * `.pdf`
    * `.ppt`
 
-  可以看到用于[限制外部访问](#restrict-access)的示例配置文件，其中包括对 MIME 类型的限制。
+  可以看到以下项的示例配置文件 [限制外部访问](#restrict-access). 其中包括对MIME类型的限制。
 
-要在发布实例上安全地启用全部功能，请配置过滤器以阻止对以下节点的访问：
+要在发布实例上启用全部功能，请配置过滤器以阻止对以下节点的访问：
 
 * `/etc/`
 * `/libs/`
@@ -148,9 +148,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## 配置 Dispatcher 以防御 CSRF 攻击 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM 提供了一个用于防御跨站点请求伪造攻击的[框架](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)。若要正确使用此框架，您必须在 Dispatcher 中将 CSRF 令牌支持列入允许名单。
-<!-- OLD URL ABOVE USED TO BE https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps -->
-可执行以下步骤来实现这一点：
+AEM 提供了一个用于防御跨站点请求伪造攻击的[框架](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)。要正确使用此框架，请执行以下操作以列入允许列表Dispatcher中的CSRF令牌支持：
 
 1. 创建过滤器以允许 `/libs/granite/csrf/token.json` 路径；
 1. 将 `CSRF-Token` 标头添加到 Dispatcher 配置的 `clientheaders` 部分。
@@ -163,4 +161,5 @@ AEM 提供了一个用于防御跨站点请求伪造攻击的[框架](https://ex
 
 ## 执行渗透测试 {#perform-a-penetration-test}
 
-Adobe 建议您在开始生产之前对 AEM 基础架构执行渗透测试。
+Adobe强烈建议您在开始生产之前对AEM基础架构执行渗透测试。
+
