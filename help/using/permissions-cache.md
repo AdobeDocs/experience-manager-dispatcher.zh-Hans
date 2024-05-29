@@ -6,16 +6,16 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '910'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '924'
+ht-degree: 86%
 
 ---
 
 # 缓存受保护内容 {#caching-secured-content}
 
-利用权限敏感型缓存，您可以缓存受保护页面。Dispatcher 会先检查用户对页面的访问权限，然后再传递缓存页面。
+利用权限敏感型缓存，您可以缓存受保护页面。Dispatcher在传递缓存的页面之前检查用户对页面的访问权限。
 
 Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活此模块后，Dispatcher 会调用 AEM servlet 以对请求的内容执行用户身份验证和授权。servlet 响应将确定是否将内容从缓存传送到 Web 浏览器。
 
@@ -42,7 +42,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 
 1. Dispatcher 确定内容未缓存或需要更新。
 1. Dispatcher 将原始请求转发到渲染器。
-1. 渲染器调用 AEM 授权程序 servlet（不是 Dispatcher AuthChcker servlet）以执行安全检查。当用户获得授权时，渲染器将在响应消息的正文中包含渲染的页面。
+1. 渲染器调用AEM授权程序servlet（此servlet不是Dispatcher AuthChcker servlet）以执行安全检查。 当用户获得授权时，渲染器将在响应消息的正文中包含渲染的页面。
 1. Dispatcher 将响应转发到浏览器。Dispatcher 将渲染器的响应消息正文添加到缓存。
 
 ## 未向用户授权 {#user-is-not-authorized}
@@ -51,9 +51,9 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 
 1. Dispatcher 检查缓存。
 1. Dispatcher 向渲染器发送一条请求消息，其中包含浏览器请求中的所有标头行。
-1. 渲染器调用授权检查程序 servlet 以执行安全检查，检查未通过，渲染器将原始请求转发到 Dispatcher。
+1. 渲染器调用授权检查程序servlet以执行安全检查，检查未通过，渲染器将原始请求转发到Dispatcher。
 1. Dispatcher 将原始请求转发到渲染器。
-1. 渲染器调用 AEM 授权程序 servlet（不是 Dispatcher AuthChcker servlet）以执行安全检查。当用户获得授权时，渲染器将在响应消息的正文中包含渲染的页面。
+1. 渲染器调用AEM授权程序servlet（此servlet不是Dispatcher AuthChcker servlet）以执行安全检查。 当用户获得授权时，渲染器将在响应消息的正文中包含渲染的页面。
 1. Dispatcher 将响应转发到浏览器。Dispatcher 将渲染器的响应消息正文添加到缓存。
 
 ## 实施权限敏感型缓存 {#implementing-permission-sensitive-caching}
@@ -74,7 +74,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 
 ## 创建授权检查程序 servlet {#create-the-auth-checker-servlet}
 
-创建并部署一个 servlet 来对请求 Web 内容的用户执行身份验证和授权。此 servlet 可以使用任何身份验证方法和授权方法，例如 AEM 用户帐户和存储库 ACL，或 LDAP 查找服务。您将 servlet 部署到 Dispatcher 用作渲染器的 AEM 实例。
+创建并部署一个 servlet 来对请求 Web 内容的用户执行身份验证和授权。此servlet可以使用任何身份验证。 它还可以使用任何授权方法。 例如，它可以使用AEM用户帐户和存储库ACL。 或者，它可以使用LDAP查找服务。 您将 servlet 部署到 Dispatcher 用作渲染器的 AEM 实例。
 
 此 servlet 必须可供所有用户访问。因此，您的 servlet 应扩展 `org.apache.sling.api.servlets.SlingSafeMethodsServlet` 类，此类提供对系统的只读访问权限。
 
@@ -161,7 +161,7 @@ dispatcher.any 文件的 auth_checker 部分控制权限敏感型缓存的行为
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-以下示例 auth_checker 部分将 Dispatcher 配置为使用上一个主题的 servlet。过滤器部分可促使仅对安全 HTML 资源执行权限检查。
+以下示例auth_checker部分将Dispatcher配置为使用上一个主题的servlet。 过滤器部分可促使仅对安全 HTML 资源执行权限检查。
 
 ### 示例配置 {#example-configuration}
 

@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 73%
+source-wordcount: '82'
+ht-degree: 74%
 
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 73%
    + [Dispatcher 安全核对清单](security-checklist.md)
    + [AEM Dispatcher 发行说明](release-notes.md)
 + 配置 {#configuring}
-   + [配置AEM调度程序](dispatcher-configuration.md)
+   + [配置Dispatcher](dispatcher-configuration.md)
    + [使从 AEM 中缓存的页面失效](page-invalidate.md)
    + [优化网站缓存性能](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [缓存受保护内容](permissions-cache.md)

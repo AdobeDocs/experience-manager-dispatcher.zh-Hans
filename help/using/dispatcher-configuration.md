@@ -1,10 +1,10 @@
 ---
 title: 配置AEM调度程序
-description: 了解如何配置AEM调度程序。 了解对IPv4和IPv6、配置文件、环境变量和命名实例的支持。 阅读有关定义场、识别虚拟主机等的信息。
+description: 了解如何配置Dispatcher。 了解对IPv4和IPv6、配置文件、环境变量和命名实例的支持。 阅读有关定义场、识别虚拟主机等的信息。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '8898'
+source-wordcount: '8876'
 ht-degree: 82%
 
 ---
@@ -25,7 +25,7 @@ AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。�
 
 默认情况下，Dispatcher 配置存储在 `dispatcher.any` 文本文件中，不过您可以在安装期间更改此文件的名称和位置。
 
-配置文件包含一系列单值或多值属性，这些属性控制AEM Dispatcher的行为：
+配置文件包含一系列单值或多值属性，这些属性控制Dispatcher的行为：
 
 * 属性名称使用正斜杠 `/` 作为前缀。
 * 多值属性使用大括号 `{ }` 括起子项。
@@ -152,7 +152,7 @@ AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。�
 
 `/farms` 属性定义一组或多组 Dispatcher 行为，每组行为与不同的网站或 URL 关联。`/farms` 属性可以包括单个场或多个场：
 
-* 当您希望AEM Dispatcher以相同方式处理您的所有网页或网站时，请使用单个场。
+* 当您希望Dispatcher以相同方式处理您的所有网页或网站时，请使用单个场。
 * 当您的网站的不同区域或不同网站需要不同的 Dispatcher 行为时，请创建多个场。
 
 `/farms` 属性是配置结构中的顶级属性。要定义场，请向 `/farms` 属性添加一个子属性。使用在 Dispatcher 实例中唯一标识场的属性名称。
@@ -197,7 +197,7 @@ AEM 和 Dispatcher 的所有元素都可以安装在 IPv4 和 IPv6 网络中。�
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | 这个农场的虚拟主机。 |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | 支持会话管理和身份验证。 |
 | [/renders](#defining-page-renderers-renders) | 提供已渲染页面的服务器（通常是 AEM 发布实例）。 |
-| [/filter](#configuring-access-to-content-filter) | 定义AEM调度程序允许访问的URL。 |
+| [/filter](#configuring-access-to-content-filter) | 定义Dispatcher允许访问的URL。 |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | 配置对虚名 URL 的访问。 |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | 支持转发联合请求。 |
 | [/cache](#configuring-the-dispatcher-cache-cache) | 配置缓存行为。 |
@@ -259,7 +259,7 @@ Comment Type: draft
 
 `/clientheaders` 属性定义 Dispatcher 从客户端 HTTP 请求传递到渲染程序（AEM 实例）的 HTTP 标头的列表。
 
-默认情况下，AEM Dispatcher将标准HTTP标头转发到AEM实例。 在某些情况下，您可能希望转发其他标头或删除特定标头：
+默认情况下，Dispatcher将标准HTTP标头转发到AEM实例。 在某些情况下，您可能希望转发其他标头或删除特定标头：
 
 * 在 HTTP 请求中添加 AEM 实例期望的标头，例如自定义标头。
 * 删除只与 Web 服务器相关的标头，例如身份验证标头。
@@ -455,7 +455,7 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 
 ## 定义页面渲染程序 {#defining-page-renderers-renders}
 
-此 `/renders` 属性定义URL，AEM Dispatcher将请求发送到该URL以呈现文档。 以下示例 `/renders` 部分标识了单个 AEM 示例用于渲染：
+此 `/renders` 属性定义URL，Dispatcher将请求发送到该URL以呈现文档。 以下示例 `/renders` 部分标识了单个 AEM 示例用于渲染：
 
 ```xml
 /renders
@@ -618,7 +618,7 @@ HTTP/1.1 如下所示定义[请求行](https://www.w3.org/Protocols/rfc2616/rfc2
 
 #### 示例筛选条件：全部拒绝 {#example-filter-deny-all}
 
-以下示例筛选条件部分导致AEM Dispatcher拒绝对所有文件的请求。 拒绝访问所有文件，然后允许访问特定区域。
+以下示例筛选条件部分导致Dispatcher拒绝对所有文件的请求。 拒绝访问所有文件，然后允许访问特定区域。
 
 ```xml
 /0001  { /type "deny" /url "*"  }
@@ -695,7 +695,7 @@ HTTP/1.1 如下所示定义[请求行](https://www.w3.org/Protocols/rfc2616/rfc2
 
 ### 示例 `/filter` 部分 {#example-filter-section}
 
-配置AEM Dispatcher时，请尽可能限制外部访问。 以下示例为外部访客提供了最低访问权限：
+在配置 Dispatcher 时应尽可能多地限制外部访问。以下示例为外部访客提供了最低访问权限：
 
 * `/content`
 * 设计和客户端库等各种内容。例如：
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-配置AEM Dispatcher以启用对为AEM页面配置的虚名URL的访问。
+配置Dispatcher以启用对为AEM页面配置的虚名URL的访问。
 
 启用了对虚名 URL 的访问时，Dispatcher 定期调用在渲染实例上运行的服务以获取虚名 URL 的列表。Dispatcher 将此列表存储在本地文件中。由于 `/filter` 部分中的筛选条件而拒绝了对页面的请求时，Dispatcher 会参考虚名 URL 的列表。如果被拒绝的 URL 位于列表上，Dispatcher 将允许对虚名 URL 的访问。
 
@@ -932,7 +932,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 * `/url`：在渲染实例上运行的虚名 URL 服务的路径。此属性的值必须为 `"/libs/granite/dispatcher/content/vanityUrls.html"`。
 
-* `/file`：Dispatcher 存储虚名 URL 列表的本地文件的路径。确保AEM Dispatcher具有此文件的写入权限。
+* `/file`：Dispatcher 存储虚名 URL 列表的本地文件的路径。确保Dispatcher具有此文件的写入权限。
 * `/delay`：对虚名 URL 服务调用所间隔的时间（秒）。
 
 >[!NOTE]
@@ -1003,7 +1003,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 >[!NOTE]
 >
->该值必须是与Web服务器的文档根目录相同的路径，以便AEM Dispatcher和Web服务器处理相同的文件。\
+>该值必须是与Web服务器的文档根目录相同的路径，以便Dispatcher和Web服务器处理相同的文件。\
 >在使用 Dispatcher 缓存文件时，由 Web 服务器负责传送正确的状态代码，正因如此，服务器能够找到该文件非常重要。
 
 如果您使用多个场，则每个场必须使用不同的文档根。
@@ -1012,7 +1012,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 `/statfile` 属性标识要用作 statfile 的文件。Dispatcher 使用此文件来注册最近更新内容的时间。statfile 可以是 Web 服务器上的任意文件。
 
-statfile 不包括内容。更新内容后，AEM Dispatcher会更新时间戳。 默认 statfile 的名称为 `.stat`，存储在 docroot 中。Dispatcher 阻止对 statfile 的访问。
+statfile 不包括内容。内容更新后，Dispatcher会更新时间戳。 默认 statfile 的名称为 `.stat`，存储在 docroot 中。Dispatcher 阻止对 statfile 的访问。
 
 >[!NOTE]
 >
@@ -1020,9 +1020,9 @@ statfile 不包括内容。更新内容后，AEM Dispatcher会更新时间戳。
 
 ### 在出错时提供旧文档 {#serving-stale-documents-when-errors-occur}
 
-`/serveStaleOnError` 属性控制 Dispatcher 在渲染服务器返回错误时，是否返回失效的文档。默认情况下，在接触了statfile并使缓存的内容失效时，AEM Dispatcher会删除缓存的内容。 在下次请求时执行此操作。
+`/serveStaleOnError` 属性控制 Dispatcher 在渲染服务器返回错误时，是否返回失效的文档。默认情况下，在接触了statfile并使缓存的内容失效时，Dispatcher会删除缓存的内容。 在下次请求时执行此操作。
 
-如果 `/serveStaleOnError` 设置为 `"1"`， Dispatcher不会从缓存中删除失效的内容。 也就是说，除非渲染服务器返回了成功的响应。 来自AEM的5xx响应或连接超时导致AEM Dispatcher提供过期的内容，并使用HTTP状态111（重新验证失败）响应。
+如果 `/serveStaleOnError` 设置为 `"1"`， Dispatcher不会从缓存中删除失效的内容。 也就是说，除非渲染服务器返回了成功的响应。 来自AEM的5xx响应或连接超时导致Dispatcher提供过期的内容，并使用HTTP状态111（重新验证失败）响应。
 
 ### 使用身份验证时缓存 {#caching-when-authentication-is-used}
 
@@ -1349,7 +1349,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 >[!NOTE]
 >
->如果您需要AEM Dispatcher从AEM存储和传递ETag响应标头，请执行以下操作：
+>如果您需要Dispatcher从AEM存储和传递ETag响应标头，请执行以下操作：
 >
 >* 在 `/cache/headers` 部分中添加标头名称。
 >* 在与 Dispatcher 相关的部分中添加以下 [Apache 指令](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)：
@@ -1389,7 +1389,7 @@ GET /mypage.html?nocache=true&willbecached=true
 在 Dispatcher 4.3.5 之前，TTL 失效逻辑仅基于所配置的 TTL 值。在 Dispatcher 4.3.5 中，将所设置的 TTL **和** Dispatcher 缓存失效规则都考虑在内。因此，对于缓存的文件：
 
 1. 如果将 `/enableTTL` 设置为 1，则检查该文件是否到期。如果根据所设置的 TTL，该文件已到期，则不执行其他检查，并从后端重新请求缓存的文件。
-2. 如果文件未过期，或者 `/enableTTL` 配置，则会应用标准缓存失效规则，例如 [`/statfileslevel`](#invalidating-files-by-folder-level) 和 [`/invalidate`](#automatically-invalidating-cached-files) 设置。 此流意味着AEM Dispatcher可以使TTL未过期的文件失效。
+2. 如果文件未过期，或者 `/enableTTL` 配置，则会应用标准缓存失效规则，例如 [`/statfileslevel`](#invalidating-files-by-folder-level) 和 [`/invalidate`](#automatically-invalidating-cached-files) 设置。 此流意味着Dispatcher可以使TTL未过期的文件失效。
 
 此新实施支持文件TTL较长的用例（例如，在CDN上）。 但是，即使TTL未过期，这些文件仍可以失效。 它更注重内容新鲜度而不是 Dispatcher 上的缓存命中率。
 
@@ -1431,7 +1431,7 @@ Dispatcher 支持最多 8 个统计类别。如果您定义的类别超过了 8 
 
 **渲染选择**
 
-每当AEM Dispatcher请求渲染的页面时，它使用以下算法来选择渲染：
+每当Dispatcher请求渲染的页面时，它使用以下算法来选择渲染：
 
 1. 如果请求在 `renderid` cookie 中包含渲染名称，Dispatcher 使用该渲染。
 1. 如果请求不包含 `renderid` cookie，Dispatcher 比较渲染统计数据：
@@ -1455,7 +1455,7 @@ Dispatcher 支持最多 8 个统计类别。如果您定义的类别超过了 8 
 
 类别 `name` 必须对场唯一。`pattern` 在[为 glob 属性设计模式](#designing-patterns-for-glob-properties)部分中有介绍。
 
-为了确定URI的类别，AEM Dispatcher将URI与每个类别模式进行比较，直到找到匹配项为止。 Dispatcher 从列表中的第一个类别开始，然后按顺序继续。因此，将具有更具体模式的类别放在最前。
+为了确定URI的类别，Dispatcher将URI与每个类别模式进行比较，直到找到匹配项为止。 Dispatcher 从列表中的第一个类别开始，然后按顺序继续。因此，将具有更具体模式的类别放在最前。
 
 例如，Dispatcher 的默认`dispatcher.any` 文件定义 HTML 类别和一个其他类别。HTML 类别更具体，因此显示在最前：
 
@@ -1548,7 +1548,7 @@ Dispatcher 支持最多 8 个统计类别。如果您定义的类别超过了 8 
 
 ### 指定页面重试延迟 {#specifying-the-page-retry-delay}
 
-`/retryDelay` 属性设置 Dispatcher 在场渲染的连接尝试轮次之间等待的时间（以秒为单位）。对于每一轮，AEM Dispatcher尝试连接到渲染的最大次数是场中的渲染数量。
+`/retryDelay` 属性设置 Dispatcher 在场渲染的连接尝试轮次之间等待的时间（以秒为单位）。对于每一轮，Dispatcher尝试连接到渲染的最大次数是场中的渲染数量。
 
 如果没有明确定义 `/retryDelay`，Dispatcher 使用值 `"1"`。默认值通常是合适的。
 
@@ -1560,7 +1560,7 @@ Dispatcher 支持最多 8 个统计类别。如果您定义的类别超过了 8 
 
 `/numberOfRetries` 属性设置 Dispatcher 对渲染执行的连接尝试的最大轮数。如果 Dispatcher 在尝试了这个次数之后无法成功连接到渲染，Dispatcher 返回失败的响应。
 
-对于每一轮，AEM Dispatcher尝试连接到渲染的最大次数是场中的渲染数量。 因此，AEM Dispatcher的最大连接尝试次数为( `/numberOfRetries`) x（渲染数）。
+对于每一轮，Dispatcher尝试连接到渲染的最大次数是场中的渲染数量。 因此，Dispatcher的最大连接尝试次数是( `/numberOfRetries`) x（渲染数）。
 
 如果没有明确定义该值，默认值为 `5`。
 
@@ -1575,7 +1575,7 @@ Dispatcher 支持最多 8 个统计类别。如果您定义的类别超过了 8 
 * 对渲染的请求返回HTTP状态503 (UNAVAILABLE)时，Dispatcher将请求发送到不同的渲染。
 * 对渲染的请求返回HTTP状态50x（503除外）时，Dispatcher为针对配置的页面发送请求 `health_check` 属性。
    * 如果运行状况检查返回 500 (INTERNAL_SERVER_ERROR)，Dispatcher 将原始请求发送给不同的渲染。
-   * 如果运行状况检查返回HTTP状态200，AEM Dispatcher会向客户端返回初始HTTP 500错误。
+   * 如果运行状况检查返回HTTP状态200，则Dispatcher向客户端返回初始HTTP 500错误。
 
 要启用故障转移，请向场（或网站）添加以下行：
 

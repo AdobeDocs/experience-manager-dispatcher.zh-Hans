@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '3083'
-ht-degree: 81%
+source-wordcount: '3079'
+ht-degree: 82%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 81%
 
 Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用的缓存和负载平衡工具。
 
-部署AEM Dispatcher的过程与所选的Web服务器和操作系统平台无关：
+Dispatcher的部署过程与所选的Web服务器和操作系统平台无关：
 
 1. 了解 Dispatcher（此页面）。另请参阅[有关 Dispatcher 的常见问题解答](/help/using/dispatcher-faq.md)。
 1. 按照 Web 服务器文档安装[支持的 Web 服务器](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements)。
@@ -30,7 +30,7 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 
 >[!NOTE]
 >
->要更好地了解AEM Dispatcher如何与AEM配合使用，请执行以下操作：
+>要更好地了解Dispatcher如何与AEM配合使用，请执行以下操作：
 >
 >* 参阅 [2017 年 7 月版 AEM 社区专家疑难解答](https://communities.adobeconnect.com/pf0gem7igw1f/)。
 >* 访问[此存储库](https://github.com/adobe/aem-dispatcher-experiments)。它包含一系列“家用版”实验室格式的实验。
@@ -41,7 +41,7 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 * [Dispatcher 安全核对清单](security-checklist.md)
 * [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)
 * [优化网站缓存性能](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [在多个域中使用AEM调度程序](dispatcher-domains.md)
+* [在多个域中使用Dispatcher](dispatcher-domains.md)
 * [将 SSL 与 Dispatcher 结合使用](dispatcher-ssl.md)
 * [实施权限敏感型缓存](permissions-cache.md)
 * [Dispatcher 问题疑难解答](dispatcher-troubleshooting.md)
@@ -129,7 +129,7 @@ Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内
 应注意以下几点：
 
 * 内容更新通常与创作系统一起使用，后者“知道”必须替换哪些内容。
-* 影响文件的内容更新将被删除，但不会立即替换。 下次请求此类文件时，AEM Dispatcher将从AEM实例获取新文件，并将其放在缓存中，从而覆盖旧内容。
+* 影响文件的内容更新将被删除，但不会立即替换。 下次请求此类文件时，Dispatcher将从AEM实例获取新文件，并将其放在缓存中，从而覆盖旧内容。
 * 通常情况下，自动生成的图片（包含来自页面的文本）将存储在以相同句柄开头的图片文件中 - 从而确保存在关联以便于删除。例如，您可以将 mypage.html 页面的标题文本作为 mypage.titlePicture.gif 图片存储在相同的文件夹中。这样每次更新页面后就会自动从缓存中删除图片，您就可以确保图片始终反映页面的最新版本。
 * 您可能有多个 statfile，例如每个语言文件夹一个。如果页面已更新，AEM 将查找包含 statfile 的下一个父文件夹，然后处理&#x200B;**&#x200B;该文件。
 

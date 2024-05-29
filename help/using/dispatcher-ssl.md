@@ -1,6 +1,6 @@
 ---
 title: 将 SSL 与 Dispatcher 结合使用
-description: 了解如何将 Dispatcher 配置为使用 SSL 连接与 AEM 进行通信。
+description: 了解如何将Dispatcher配置为使用SSL连接与AEM通信。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -9,16 +9,16 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1302'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1310'
+ht-degree: 89%
 
 ---
 
 # 将 SSL 与 Dispatcher 结合使用 {#using-ssl-with-dispatcher}
 
-在 Dispatcher 和渲染计算机之间使用 SSL 连接：
+在Dispatcher和渲染计算机之间使用SSL连接：
 
 * [单向 SSL](#use-ssl-when-dispatcher-connects-to-aem)
 * [双向 SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -29,7 +29,7 @@ ht-degree: 100%
 
 ## 在 Dispatcher 连接到 AEM 时使用 SSL {#use-ssl-when-dispatcher-connects-to-aem}
 
-将 Dispatcher 配置为使用 SSL 连接与 AEM 或 CQ 渲染实例进行通信。
+将Dispatcher配置为使用SSL连接与AEM或CQ渲染实例通信。
 
 在配置 Dispatcher 之前，将 AEM 或 CQ 配置为使用 SSL：
 
@@ -117,11 +117,11 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 要使用双向 SSL，请配置 Dispatcher 与渲染计算机（一般为 AEM 或 CQ 发布实例）之间的连接：
 
 * Dispatcher 通过 SSL 连接到渲染实例。
-* 渲染实例验证 Dispatcher 证书的有效性。
+* 渲染实例验证Dispatcher证书的有效性。
 * Dispatcher 验证渲染实例的证书 CA 是否可信。
 * （可选）Dispatcher 验证渲染实例的证书是否与渲染实例的服务器地址匹配。
 
-要配置双向 SSL，您需要由受信任的证书颁发机构 (CA) 签名的证书。自签名证书无法满足需求。您可以充当 CA 或使用第三方 CA 的服务来签署证书。要配置双向 SSL，您需要以下项：
+要配置双向SSL，您需要使用受信任的证书颁发机构(CA)签名的证书。 自签名证书无法满足需求。您可以充当 CA 或使用第三方 CA 的服务来签署证书。要配置双向 SSL，您需要以下项：
 
 * 渲染实例和 Dispatcher 的签名证书
 * CA 证书（如果您充当 CA）
@@ -130,8 +130,8 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 要配置双向 SSL，请执行以下步骤：
 
 1. [安装](dispatcher-install.md)适用于您的平台的最新版本的 Dispatcher。使用支持 SSL 的 Dispatcher 二进制文件（SSL 在文件名中，例如 `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`）。
-1. 为 Dispatcher 和渲染实例[创建或获取 CA 签名证书](dispatcher-ssl.md#main-pars-title-3)
-1. [创建包含渲染证书的密钥库](dispatcher-ssl.md#main-pars-title-6)并配置渲染器的 HTTP 服务。
+1. [创建或获取CA签名证书](dispatcher-ssl.md#main-pars-title-3) 对于Dispatcher和渲染实例。
+1. [创建包含渲染证书的密钥库](dispatcher-ssl.md#main-pars-title-6) 和配置渲染器的HTTP服务。
 1. 为双向 SSL [配置 Dispatcher Web Server 模块](dispatcher-ssl.md#main-pars-title-4)。
 
 ### 创建或获取 CA 签名证书 {#creating-or-obtaining-ca-signed-certificates}
@@ -157,7 +157,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 使用 OpenSSL 可创建要发送给第三方 CA 或通过您的 CA 签名的证书请求。
 
-创建证书时，OpenSSL 使用公用名属性来标识证书所有者。对于渲染实例的证书，如果您配置 Dispatcher 以接受证书，则请使用实例计算机的主机名作为通用名称。仅当该名称与发布实例的主机名匹配时才执行此操作。参阅 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 属性。
+创建证书时，OpenSSL 使用公用名属性来标识证书所有者。对于渲染实例的证书，如果您配置 Dispatcher 以接受证书，则请使用实例计算机的主机名作为通用名称。只有在与Publishing实例的主机名匹配时，才执行此过程。 参阅 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 属性。
 
 1. 打开终端并将当前目录更改为包含 OpenSSL 库的 CH.sh 文件的目录。
 1. 输入以下命令，并在系统提示时提供值。如有必要，可使用发布实例的主机名作为公用名。主机名是渲染器的 IP 地址的 DNS 可解析名称：
@@ -285,8 +285,8 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 将以下属性添加到 [Dispatcher 模块配置](dispatcher-install.md#main-pars-55-35-1022)（在 `httpd.conf` 中）：
 
-* `DispatcherCertificateFile`：Dispatcher 统一证书文件的路径，包含公共证书和未加密的私钥。在 SSL 服务器请求 Dispatcher 客户端证书时使用此文件。
-* `DispatcherCACertificateFile`：CA 证书文件的路径，在 SSL 服务器提供不受根证书颁发机构信任的 CA 时使用。
+* `DispatcherCertificateFile`：Dispatcher 统一证书文件的路径，包含公共证书和未加密的私钥。此文件在SSL服务器请求Dispatcher客户端证书时使用。
+* `DispatcherCACertificateFile`：CA证书文件的路径。 在SSL服务器提供根证书颁发机构不信任的CA时使用。
 * `DispatcherCheckPeerCN`：为远程服务器证书启用 (`On`) 还是禁用 (`Off`) 主机名检查。
 
 以下代码是示例配置：

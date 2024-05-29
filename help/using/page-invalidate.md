@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1411'
-ht-degree: 73%
+source-wordcount: '1407'
+ht-degree: 74%
 
 ---
 
@@ -124,11 +124,11 @@ Comment Type: draft
 
 要在不激活页面的情况下使 Dispatcher 缓存失效（或进行刷新），您可以向 Dispatcher 发出 HTTP 请求。例如，您可以创建一个 AEM 应用程序，以便管理员或其他应用程序能够刷新缓存。
 
-HTTP请求会促使AEM Dispatcher从缓存中删除特定文件。 （可选）Dispatcher 随后使用新副本刷新缓存。
+HTTP请求促使Dispatcher从缓存中删除特定文件。 （可选）Dispatcher 随后使用新副本刷新缓存。
 
 ### 删除缓存的文件 {#delete-cached-files}
 
-发出HTTP请求以促使AEM Dispatcher从缓存中删除文件。 Dispatcher 仅在收到对页面的客户端请求时才重新缓存文件。对于不太可能同时收到对同一页面的请求的网站，可通过此方式删除缓存的文件。
+发出HTTP请求以促使Dispatcher从缓存中删除文件。 Dispatcher 仅在收到对页面的客户端请求时才重新缓存文件。对于不太可能同时收到对同一页面的请求的网站，可通过此方式删除缓存的文件。
 
 HTTP 请求具有以下形式：
 
@@ -151,7 +151,7 @@ Dispatcher 刷新（删除）名称与 `CQ-Handler` 标头值匹配的缓存的�
 
 ### 删除和重新缓存文件 {#delete-and-recache-files}
 
-发出HTTP请求以促使AEM Dispatcher删除缓存的文件，并立即检索和重新缓存文件。 在网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
+发出HTTP请求以促使Dispatcher删除缓存的文件，并立即检索和重新缓存文件。 在网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
 
 **注意：**&#x200B;应仅在发布实例上执行文件删除和重新缓存操作。在从创作实例执行时，在资源发布之前尝试重新缓存资源时会发生争用情况。
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 以下代码实施一个向 Dispatcher 发送失效请求的 servlet。此 servlet 接收包含 `handle` 和 `page` 参数的请求消息。这些参数分别提供要重新缓存的页面的 `CQ-Handle` 标头和路径的值。此 servlet 使用这些值为 Dispatcher 构造 HTTP 请求。
 
-在将servlet部署到发布实例时，以下URL会导致AEM Dispatcher删除/content/geometrixx-outdoors/en.html页面，然后缓存一个新副本。
+在将servlet部署到发布实例时，以下URL会促使Dispatcher删除/content/geometrixx-outdoors/en.html页面，然后缓存一个新副本。
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

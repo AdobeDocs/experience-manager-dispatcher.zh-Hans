@@ -2,10 +2,10 @@
 title: Dispatcher 热门问题
 description: Adobe Experience Manager Dispatcher 的热门问题。
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1542'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1547'
+ht-degree: 89%
 
 ---
 
@@ -17,13 +17,13 @@ ht-degree: 100%
 
 ### 什么是 Dispatcher？
 
-Dispatcher 是 Adobe Experience Manager 的缓存和/或负载平衡工具，有助于实现快速且动态的 Web 创作环境。对于缓存，Dispatcher 充当 HTTP 服务器（如 Apache）的一部分。它旨在存储（即“缓存”）尽可能多的静态网站内容，并尽可能不频繁地访问网站的版面引擎。用于负载平衡时，Dispatcher 将用户请求（负载）分散在不同的 AEM 实例（渲染器）间。
+Dispatcher也是Adobe Experience Manager的缓存和/或负载平衡工具，可帮助实现快速且动态的Web创作环境。 对于缓存，Dispatcher 充当 HTTP 服务器（如 Apache）的一部分。其目的是存储（或“缓存”）尽可能多的静态网站内容。 此外，尽可能少地访问网站引擎的布局。 用于负载平衡时，Dispatcher 将用户请求（负载）分散在不同的 AEM 实例（渲染器）间。
 
-对于执行缓存，Dispatcher 模块利用 Web 服务器的功能来提供静态内容。Dispatcher 将缓存文档放在 Web 服务器的文档根目录下。
+对于执行缓存，Dispatcher 模块利用 Web 服务器的功能来提供静态内容。Dispatcher将缓存文档放在Web服务器的文档根目录下。
 
 ### Dispatcher 如何执行缓存？
 
-Dispatcher 利用 Web 服务器的功能来提供静态内容。Dispatcher 将缓存的文档存储在 Web 服务器的文档根目录中。Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内容。
+Dispatcher 利用 Web 服务器的功能来提供静态内容。Dispatcher将缓存文档存储在Web服务器的文档根目录下。 Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内容。
 
 * **内容更新**&#x200B;删除已更改的页面以及与其直接关联的文件。
 * **自动失效**&#x200B;在更新后自动使缓存可能已过期的那些部分失效。例如，它可以有效地将相关页面标记为已过期，而不会删除任何内容。
@@ -70,7 +70,7 @@ Dispatcher 利用 Web 服务器的功能来提供静态内容。Dispatcher 将�
 
 您可以使用[粘性连接](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor)功能，从而确保在同一 AEM 实例上处理某个用户的所有文档。如果您使用个性化的页面和会话数据，则此功能很重要。数据存储在实例上。因此，来自同一用户的后续请求必须返回到该实例，否则数据将丢失。
 
-由于粘性连接会限制 Dispatcher 优化请求的能力，因此应仅在需要时使用此方法。您可以指定包含“粘性”文档的文件夹，从而确保在同一个实例上处理该文件夹中某个用户的所有文档。
+由于粘性连接会限制 Dispatcher 优化请求的能力，因此应仅在需要时使用此方法。您可以指定包含“粘性”文档的文件夹，从而确保在同一个实例中为用户处理该文件夹中的所有文档。
 
 ### 是否能将粘性连接和缓存结合使用？
 
@@ -119,7 +119,7 @@ en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含
 
 ### Dispatcher 问题 `jcr:content` 已更改为 `jcr%3acontent`
 
-**问题**：业务最近在 Dispatcher 级别面临一个问题。从 CQ 存储库获取一些数据的 AJAX 调用之一包含 `jcr:content`。它被编码为 `jcr%3acontent`，导致那个错误的结果集。
+**问题**：业务最近在 Dispatcher 级别面临一个问题。从CQ存储库获取一些数据的AJAX调用之一具有 `jcr:content` 在里面。 它被编码为 `jcr%3acontent`，导致那个错误的结果集。
 
 **回答**：通过 `ResourceResolver.map()` 方法，使用/发出从中获取请求的“友好”URL 并解决与 Dispatcher 相关的缓存问题。Map() 方法将 `:` 冒号编码为下划线，而 resolve() 方法将其解码回 SLING JCR 可读格式。使用 map() 方法生成在 Ajax 调用中使用的 URL。
 
@@ -139,12 +139,13 @@ en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含
 
 ### 如何从 Dispatcher 缓存刷新 DAM 资产？
 
-您可以使用“链复制”功能。启用此功能后，当收到来自作者的复制时，Dispatcher的刷新代理会发送一个刷新请求。
+您可以使用“链复制”功能。启用此功能后，Dispatcher的刷新代理会在收到来自创作实例的复制时发送刷新请求。
 
 要启用该功能：
 
 1. [执行此处的步骤](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance)以在发布实例上创建刷新代理
-1. 转到每个代理的配置，并在&#x200B;**触发器**&#x200B;选项卡上选中&#x200B;**接收时**&#x200B;框。
+1. 转至每个代理的配置。
+1. 在 **触发器** 选项卡，检查 **接收时** 盒子。
 
 ## 其他
 

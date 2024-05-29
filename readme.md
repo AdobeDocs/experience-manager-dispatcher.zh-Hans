@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '72'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 88%
 
 ---
-# Adobe Experience Manager Dispatcher 文档
+# Adobe Experience Manager 模式检测
 
-这是 Adobe Experience Manager Dispatcher 文档的存储库。
+此存储库用于Adobe Experience Manager模式检测。
 
 欢迎您贡献文档内容。请参阅以下资源：
 

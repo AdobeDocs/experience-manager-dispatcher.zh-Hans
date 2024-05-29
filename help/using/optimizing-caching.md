@@ -9,9 +9,9 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1129'
+source-wordcount: '1128'
 ht-degree: 81%
 
 ---
@@ -57,7 +57,7 @@ HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，
 
 ## 消除 URL 参数 {#avoid-url-parameters}
 
-如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下URL(除非AEM Dispatcher [进行了相应配置](dispatcher-configuration.md#main-pars_title_24))：
+如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下URL(除非Dispatcher [进行了相应配置](dispatcher-configuration.md#main-pars_title_24))：
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1

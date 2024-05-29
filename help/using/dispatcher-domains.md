@@ -1,16 +1,16 @@
 ---
-title: 在多个域中使用 Dispatcher
-description: 了解如何使用 Dispatcher 处理多个 Web 域中的页面请求。
+title: 在多个域中使用Dispatcher
+description: 了解如何使用Dispatcher处理多个Web域中的页面请求。
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '2918'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '2929'
+ht-degree: 87%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 100%
 >
 >Dispatcher 版本独立于 AEM。您可能是在单击 AEM 或 CQ 文档中嵌入的 Dispatcher 文档链接后重定向到此页面。
 
-使用 Dispatcher 可处理多个 Web 域中的页面请求，并支持以下条件：
+使用Dispatcher可在多个Web域中处理页面请求，并支持以下条件：
 
 * 两个域的 Web 内容都存储在一个 AEM 存储库中。
 * 可单独为每个域使 Dispatcher 缓存中的文件失效。
@@ -38,7 +38,7 @@ ht-degree: 100%
 
 `BrandA.com` 的页面存储在 `/content/sitea` 下方。针对 URL `https://BrandA.com/en.html` 的客户端请求将返回到 `/content/sitea/en` 节点的渲染页面。同样，`BrandB.com` 的页面存储在 `/content/siteb` 下方。
 
-在使用 Dispatcher 缓存内容时，必须在客户端 HTTP 请求中的页面 URL 与缓存中对应文件的路径/存储库中对应文件的路径之间建立关联。
+使用Dispatcher缓存内容时，请在客户端HTTP请求中的页面URL、相应缓存文件的路径以及存储库中相应文件的路径之间建立关联。
 
 ## 客户端请求
 
@@ -46,9 +46,9 @@ ht-degree: 100%
 
 ![](assets/chlimage_1-8.png)
 
-1. 域名系统会发现为 HTTP 请求中的域名注册的 Web 服务器的 IP 地址。
+1. 域名系统会发现为HTTP请求中的域名注册的Web服务器的IP地址。
 1. HTTP 请求将发送到 Web 服务器。
-1. HTTP 请求将传递到 Dispatcher。
+1. HTTP请求将传递到Dispatcher。
 1. Dispatcher 确定缓存的文件是否有效。如果有效，则将缓存的文件提供给客户端。
 1. 如果缓存的文件无效，Dispatcher 会从 AEM 发布实例请求新渲染的页面。
 
@@ -66,10 +66,10 @@ ht-degree: 100%
 
 ## URL 映射 {#url-mapping}
 
-要使域 URL 和内容路径能够解析为缓存的文件，必须在此过程中的某个时间点转换文件路径或页面 URL。提供了以下常见策略的说明，其中将在此流程的不同时间点转换路径或 URL：
+要使域URL和内容路径能够解析为缓存的文件，必须在此过程中转换文件路径或页面URL。 提供了以下常见策略的说明，其中将在此流程的不同时间点转换路径或 URL：
 
 * （推荐）AEM 发布实例使用 Sling 映射进行资源解析，以实施内部 URL 重写规则。域 URL 将转换为内容存储库路径。请参阅 [AEM 重写传入 URL](#aem-rewrites-incoming-urls)。
-* Web 服务器使用内部 URL 重写规则将域 URL 转换为缓存路径。请参阅 [Web 服务器重写传入 URL](#the-web-server-rewrites-incoming-urls)。
+* Web服务器使用内部URL重写规则将域URL转换为缓存路径。 请参阅 [Web 服务器重写传入 URL](#the-web-server-rewrites-incoming-urls)。
 
 最好是使用网页的短 URL。通常，页面 URL 反映了包含 Web 内容的存储库文件夹的结构。但是，URL 不会显示最顶层的存储库节点，例如 `/content`。客户端不一定了解 AEM 存储库的结构。
 
@@ -201,16 +201,16 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 要支持包含域名及其相应的虚拟主机的 URL，请定义以下 Dispatcher 场：
 
 * 为每个虚拟主机配置 Dispatcher 场。这些场处理来自每个域的 Web 服务器的请求，检查缓存的文件，并从渲染器请求页面。
-* 配置用于使缓存的内容失效的 Dispatcher 场，而不管内容属于哪个域。该场处理来自 Flush Dispatcher 复制代理的文件失效请求。
+* 配置用于使缓存中的内容失效的Dispatcher场，而不管该内容属于哪个域。 该场处理来自 Flush Dispatcher 复制代理的文件失效请求。
 
 ### 为虚拟主机创建 Dispatcher 场
 
 虚拟主机的场必须具有以下配置，以使客户端 HTTP 请求中的 URL 解析为 Dispatcher 缓存中的正确文件：
 
-* `/virtualhosts` 属性设置为域名。利用此属性，Dispatcher 能够将场与域相关联。
+* `/virtualhosts` 属性设置为域名。利用此属性，Dispatcher能够将场与域相关联。
 * 利用 `/filter` 属性可访问域名部分后截断的请求 URL 的路径。例如，对于 `https://branda.com/en.html` URL，路径将解释为 `/en.html`，因此过滤器必须允许对此路径的访问。
 
-* `/docroot` 属性设置为 Dispatcher 缓存中的域站点内容的根目录路径。此路径用作原始请求中的连接的 URL 的前缀。例如，docroot 为 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` 会导致针对 `https://branda.com/en.html` 的请求解析为 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` 文件。
+* 此 `/docroot` 属性设置为根目录的路径。 即Dispatcher缓存中的域站点内容的根目录。 此路径用作原始请求中的连接的 URL 的前缀。例如，docroot 为 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` 会导致针对 `https://branda.com/en.html` 的请求解析为 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` 文件。
 
 此外，必须将 AEM 发布实例指定为虚拟主机的渲染器。根据需要配置其他场属性。以下代码是 branda.com 域的缩写场配置：
 
@@ -236,11 +236,11 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### 创建用于缓存失效的 Dispatcher 场
 
-需要 Dispatcher 场来处理使缓存文件失效的请求。该场必须能够访问每个虚拟主机的 docroot 目录中的 .stat 文件。
+需要 Dispatcher 场来处理使缓存文件失效的请求。此场必须能够访问 `docroot` 每个虚拟主机的目录。
 
-利用以下属性配置，Dispatcher 能够从缓存中的文件解析 AEM 内容存储库中的文件：
+通过下列属性配置，Dispatcher能够从缓存中的文件解析AEM内容存储库中的文件：
 
-* `/docroot` 属性设置为 Web 服务器的默认 docroot。通常，这是在其中创建 `/content` 文件夹的目录。Linux® 上的 Apache 示例值为 `/usr/lib/apache/httpd-2.4.3/htdocs`。
+* 此 `/docroot` 属性设置为默认值 `docroot` 的URL值。 通常情况下，/`docroot` 是目录，其中 `/content` 文件夹已创建。 Linux® 上的 Apache 示例值为 `/usr/lib/apache/httpd-2.4.3/htdocs`。
 * `/filter` 属性允许对 `/content` 目录下的文件的访问。
 
 `/statfileslevel` 属性必须足够高，才会在每个虚拟主机的根目录中创建 .stat 文件。利用此属性，可单独使每个域的缓存失效。对于示例设置，`/statfileslevel` 值为 `2` 将在 `*docroot*/content/sitea` 目录和 `*docroot*/content/siteb` 目录中创建 .stat 文件。
@@ -302,7 +302,7 @@ Dispatcher initializing (build 4.1.2)
 
 ### 示例资源映射节点
 
-下表列出了实施 branda.com 域的资源映射的节点。为 `brandb.com` 域创建类似的节点，例如 `/etc/map/http/brandb.com`。在所有情况下，只要无法在 Sling 的上下文中正确解析页面 HTML 中的引用，就需要映射。
+下表列出了实施 branda.com 域的资源映射的节点。为 `brandb.com` 域创建类似的节点，例如 `/etc/map/http/brandb.com`。在所有情况下，当HTML页面中的引用无法在Sling的上下文中正确解析时，都需要映射。
 
 | 节点路径 | 类型 | 属性 |
 |--- |--- |--- |
@@ -344,11 +344,11 @@ Dispatcher 缓存反映了存储库节点结构。因此，在页面激活时，
 
 以下示例 httpd.conf 文件为 Apache Web Server 配置两个虚拟主机：
 
-* 服务器名称（与域名一致）是 `brandA.com`（第 16 行）和 `brandB.com`（第 32 行）。
+* 服务器名称（与域名一致）为 `brandA.com` （第16行）和 `brandB.com` （第32行）。
 
-* 每个虚拟域的文档根目录是 Dispatcher 缓存中包含站点页面的目录。（第 20 行和第 33 行）
-* 每个虚拟域的 URL 重写规则是一个正则表达式，它会在请求页面的路径前面加上缓存中的页面路径。（第 19 行和第 35 行）
-* `DispatherUseProcessedURL` 属性设置为 `1`。（第 10 行）
+* 每个虚拟域的文档根目录是 Dispatcher 缓存中包含站点页面的目录。（第20行和第33行）
+* 每个虚拟域的URL重写规则都是正则表达式。 正则表达式为所请求页面的路径添加前缀。 该路径带有前缀，表示缓存中页面的路径。 （第19行和第35行）
+* `DispatherUseProcessedURL` 属性设置为 `1`。（第10行）
 
 例如，Web 服务器会在收到带 `https://brandA.com/en/products.html` URL 的请求时执行以下操作：
 
@@ -417,7 +417,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 以下示例配置文件基于随 Dispatcher 一起安装的示例 `dispatcher.any` 文件。需要进行以下更改才能支持上一个 `httpd.conf` 文件的 Web 服务器配置：
 
-* `/virtualhosts` 属性促使 Dispatcher 处理 `brandA.com` 和 `brandB.com` 域的请求。（第 12 行）
+* `/virtualhosts` 属性促使 Dispatcher 处理 `brandA.com` 和 `brandB.com` 域的请求。（第12行）
 * `/statfileslevel` 属性设置为 2，以便在每个包含域的 Web 内容的目录中创建 stat 文件（第 41 行）：`/statfileslevel "2"`
 
 像往常一样，缓存的文档根目录与 Web 服务器的文档根目录相同（第 40 行）：`/usr/lib/apache/httpd-2.4.3/htdocs`
@@ -512,7 +512,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### AEM 默认重写器管道 {#the-aem-default-rewriter-pipeline}
 
-AEM 使用默认管道重写器来处理 text/html 类型的文档：
+AEM使用默认管道重写器来处理text/html类型的文档：
 
 * 生成器解析 HTML 文档并在遇到 a、img、area、form、base、link、script 和 body 元素时生成 SAX 事件。生成器的别名为 `htmlparser`。
 * 管道包含以下转换器：`linkchecker`、`mobile`、`mobiledebug`、`contentsync`。`linkchecker` 转换器将引用的 HTML 或 HTM 文件的路径外部化，以防止链接失效。
@@ -530,7 +530,7 @@ AEM 使用默认管道重写器来处理 text/html 类型的文档：
 1. 将配置节点添加到 AEM 应用程序可将转换器添加到管道。
 
 >[!TIP]
->您可以改为将 TransformerFactory 配置为将转换器插入定义的每个重写器中。因此，无需配置管道：
+>您可以改为配置TransformerFactory，以便将转换器插入到定义的每个重写器中。 因此，无需配置管道：
 >
 >* 将 `pipeline.mode` 属性设置为 `global`。
 >* 将 `service.ranking` 属性设置为正整数。
