@@ -2,9 +2,9 @@
 title: 配置AEM调度程序
 description: 了解如何配置AEM调度程序。 了解对IPv4和IPv6、配置文件、环境变量和命名实例的支持。 阅读有关定义场、识别虚拟主机等的信息。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
 workflow-type: tm+mt
-source-wordcount: '8897'
+source-wordcount: '8898'
 ht-degree: 82%
 
 ---
@@ -1229,7 +1229,7 @@ AEM 与 Adobe Analytics 集成，在网站的 `analytics.sitecatalyst.js` 文件
 
 此方法可用于涵盖多个不同的用例。例如，使其他应用程序特有的缓存失效，或处理页面的外部化 URL 及其在 docroot 中的位置与内容路径不匹配的情况。
 
-以下示例脚本将每个失效请求记录到一个文件。
+以下示例脚本将每个失效的请求记录到文件中。
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"

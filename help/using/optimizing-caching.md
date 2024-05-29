@@ -9,10 +9,10 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1125'
-ht-degree: 100%
+source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+workflow-type: tm+mt
+source-wordcount: '1129'
+ht-degree: 81%
 
 ---
 
@@ -31,7 +31,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Dispatcher 版本独立于 AEM。您可能是在单击以前版本的 AEM 文档中嵌入的 Dispatcher 文档链接后重定向到此页面。
+>Dispatcher 版本独立于 AEM。您可能是在单击Dispatcher文档的链接后重定向到此页面。 该链接已嵌入到以前版本的AEM的文档中。
 
 Dispatcher 提供了多个可用于优化性能的内置机制。此部分介绍了如何设计您的网站以最大限度地提高缓存优势。
 
@@ -46,7 +46,7 @@ Dispatcher 提供了多个可用于优化性能的内置机制。此部分介绍
 
 ## 使用一致的页面编码 {#using-consistent-page-encoding}
 
-HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，则可能会出现问题。在此情况下，当 Dispatcher 从缓存中提供一个页面时，Web 服务器的默认编码将用于该页面。可通过两种方式避免此问题：
+HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，则可能会出现问题。在此情况下，当Dispatcher从缓存中提供一个页面时，Web服务器的默认编码将用于该页面。 可通过两种方式避免此问题：
 
 * 如果您只使用一种编码，请确保 Web 服务器上使用的编码与 AEM 网站的默认编码相同。
 * 要设置编码，使用 HTML `head` 部分中的 `<META>` 标记，如以下示例所示：
@@ -57,7 +57,7 @@ HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，
 
 ## 消除 URL 参数 {#avoid-url-parameters}
 
-如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下 URL（除非对 Dispatcher 进行[相应配置](dispatcher-configuration.md#main-pars_title_24)）：
+如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下URL(除非AEM Dispatcher [进行了相应配置](dispatcher-configuration.md#main-pars_title_24))：
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -87,9 +87,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->对于大多数版面，还可以使用样式表和/或客户端脚本。它们通常可与缓存有效配合使用。
+>对于大多数版面，也可以使用样式表或客户端脚本，或同时使用两者。 其中之一或两者都可以很好地与缓存配合使用。
 >
->这对于打印版本也很有用，您可以在其中使用 URL，例如：
+>此方法对于打印版本也很有用，您可以在其中使用URL，例如：
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -108,15 +108,15 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->图像文件不一定会实际存在于 AEM 实例上。您可以使用动态创建图像文件的脚本。随后，Dispatcher 会将文件存储在 Web 服务器上。
+>图像文件不一定存在于AEM实例上。 您可以使用动态创建图像文件的脚本。随后，Dispatcher 会将文件存储在 Web 服务器上。
 
 ## 使用于导航的图像文件失效 {#invalidating-image-files-used-for-navigation}
 
 如果将图片用于导航条目，则采用的方法与标题的大致相同，只是稍微复杂一些。将所有导航图像与目标页面一起存储。如果将两张图片用于一般或活动场景，则可以使用以下脚本：
 
 * 一个正常显示页面的脚本。
-* 一个处理“.normal”请求并返回正常图片的脚本。
-* 一个处理“.active”请求并返回活动图片的脚本。
+* 处理以下内容的脚本： `.normal` 请求并返回正常图片。
+* 处理以下内容的脚本： `.active` 请求并返回活动图片。
 
 请务必使用与页面相同的命名句柄创建这些图片，确保内容更新会删除这些图片和页面。
 
@@ -133,7 +133,7 @@ Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进
 >
 >如果您对每个页面进行个性化设置（例如，将用户名放入标题栏中），则无法对它们进行缓存，从而会对性能造成重大影响。
 >
->不过，如果您必须执行此操作，则可以：
+>但是，如果必须这样做，则可以执行以下操作：
 >
 >* 使用 iFrame 将页面分成两个部分，一个部分是所有用户共用的，另一个部分是用户的所有页面共用的。随后，您可以缓存这两个部分。
 >* 使用客户端 JavaScript 显示个性化的信息。但您必须确保页面在用户禁用 JavaScript 后仍正常显示。
@@ -141,7 +141,7 @@ Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进
 
 ## 粘性连接 {#sticky-connections}
 
-[粘性连接](dispatcher.md#TheBenefitsofLoadBalancing)可确保同一个用户的文档全部在同一服务器上撰写。如果用户在退出此文件夹不久后返回，则此连接仍保持粘性。定义一个文件夹，以便其可以保存网站需要粘性连接的所有文档。尽量不要在该文件夹中放入其他文件。如果您使用个性化的页面和会话数据，这将影响负载平衡。
+[粘性连接](dispatcher.md#TheBenefitsofLoadBalancing)可确保同一个用户的文档全部在同一服务器上撰写。如果用户在退出此文件夹不久后返回，则此连接仍保持粘性。定义一个文件夹，以便其可以保存网站需要粘性连接的所有文档。尽量不要在该文件夹中放入其他文件。如果您使用个性化的页面和会话数据，这样做会影响负载平衡。
 
 ## MIME 类型 {#mime-types}
 
@@ -150,17 +150,17 @@ Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进
 1. 通过扩展名（例如：.html，.gif，和 .jpg）
 1. 按服务器随文件一起发送的 MIME 类型。
 
-对于大多数文件，MIME 类型隐含在文件扩展名中。即：
+对于大多数文件，MIME类型隐含在文件扩展名中：
 
 1. 通过扩展名（例如：.html，.gif，和 .jpg）
 1. 按服务器随文件一起发送的 MIME 类型。
 
 如果文件名没有扩展名，则以纯文本形式显示。
 
-MIME 类型是 HTTP 标头的一部分，因此 Dispatcher 不会缓存它。如果 AEM 应用程序返回的文件没有可识别的文件结尾，而是依赖 MIME 类型，则这些文件可能会错误显示。
+MIME 类型是 HTTP 标头的一部分，因此 Dispatcher 不会缓存它。AEM应用程序可能会返回文件扩展名无法识别的文件。 如果文件依赖于MIME类型，则这些文件可能无法正确显示。
 
 要确保正确缓存文件，请遵循以下准则：
 
 * 确保文件始终具有正确的扩展名。
-* 避免使用通用的文件服务脚本，这些脚本具有 download.jsp?file=2214 等 URL。重写脚本，使其使用包含文件规范的 URL。对于以上示例，该 URL 为 `download.2214.pdf`。
+* 避免使用通用的文件服务脚本，这些脚本具有 download.jsp?file=2214 等 URL。重写脚本，使其使用包含文件规范的 URL。对于上一个示例，它是 `download.2214.pdf`.
 
