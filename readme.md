@@ -1,13 +1,13 @@
 ---
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '70'
-ht-degree: 88%
+ht-degree: 100%
 
 ---
 # Adobe Experience Manager 模式检测
 
-此存储库用于Adobe Experience Manager模式检测。
+此存储库适用于 Adobe Experience Manager。
 
 欢迎您贡献文档内容。请参阅以下资源：
 

@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3079'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -20,17 +20,17 @@ ht-degree: 97%
 
 Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用的缓存和负载平衡工具。
 
-Dispatcher的部署过程与所选的Web服务器和操作系统平台无关：
+部署 Dispatcher 的过程与所选的 Web 服务器和操作系统平台无关：
 
 1. 了解 Dispatcher（此页面）。另请参阅[有关 Dispatcher 的常见问题解答](/help/using/dispatcher-faq.md)。
-1. 按照 Web 服务器文档安装[支持的 Web 服务器](https://experienceleague.adobe.com/cn/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements)。
+1. 按照 Web 服务器文档安装[支持的 Web 服务器](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements)。
 1. 在 Web 服务器上[安装 Dispatcher 模块](dispatcher-install.md)，并相应地配置 Web 服务器。
 1. [配置 Dispatcher](dispatcher-configuration.md)（dispatcher.any 文件）。
 1. [配置 AEM](page-invalidate.md)，以便内容更新后，使缓存失效。
 
 >[!NOTE]
 >
->要更好地了解Dispatcher如何与AEM配合使用，请执行以下操作：
+>要更好地了解如何将 Dispatcher 与 AEM 配合使用，请执行以下操作：
 >
 >* 参阅 [2017 年 7 月版 AEM 社区专家疑难解答](https://communities.adobeconnect.com/pf0gem7igw1f/)。
 >* 访问[此存储库](https://github.com/adobe/aem-dispatcher-experiments)。它包含一系列“家用版”实验室格式的实验。
@@ -40,8 +40,8 @@ Dispatcher的部署过程与所选的Web服务器和操作系统平台无关：
 
 * [Dispatcher 安全核对清单](security-checklist.md)
 * [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)
-* [优化网站缓存性能](https://experienceleague.adobe.com/cn/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [在多个域中使用Dispatcher](dispatcher-domains.md)
+* [优化网站缓存性能](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+* [在多个域中使用 Dispatcher](dispatcher-domains.md)
 * [将 SSL 与 Dispatcher 结合使用](dispatcher-ssl.md)
 * [实施权限敏感型缓存](permissions-cache.md)
 * [Dispatcher 问题疑难解答](dispatcher-troubleshooting.md)
@@ -99,7 +99,7 @@ Dispatcher 包含根据动态站点内容生成和更新静态 HTML 的机制。
 
 >[!NOTE]
 >
->如果没有配置 HTTP 标头缓存，则 Dispatcher 仅存储页面的 HTML 代码 - 它不会存储 HTTP 标头。如果在网站内使用不同的编码，由于可能会丢失这些页面，所以此场景可能会成为一个问题。要启用 HTTP 标头缓存，请参阅[配置 Dispatcher 缓存](https://experienceleague.adobe.com/cn/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。
+>如果没有配置 HTTP 标头缓存，则 Dispatcher 仅存储页面的 HTML 代码 - 它不会存储 HTTP 标头。如果在网站内使用不同的编码，由于可能会丢失这些页面，所以此场景可能会成为一个问题。要启用 HTTP 标头缓存，请参阅[配置 Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。
 
 >[!NOTE]
 >
@@ -129,7 +129,7 @@ Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内
 应注意以下几点：
 
 * 内容更新一般与“知道”必须替换哪些内容的创作系统配合使用。
-* 影响文件的内容更新会被移除，但不会立即替换。下次请求此类文件时，Dispatcher将从AEM实例获取新文件，并将其放在缓存中，从而覆盖旧内容。
+* 影响文件的内容更新会被移除，但不会立即替换。下次再请求此类文件时，Dispatcher 将从 AEM 实例获取新文件，并将其放入缓存，覆盖旧内容。
 * 通常情况下，自动生成的图片（包含来自页面的文本）将存储在以相同句柄开头的图片文件中 - 从而确保存在关联以便于删除。例如，您可以将 mypage.html 页面的标题文本作为 mypage.titlePicture.gif 图片存储在相同的文件夹中。这样每次更新页面后就会自动从缓存中删除图片，您就可以确保图片始终反映页面的最新版本。
 * 您可能有多个 statfile，例如每个语言文件夹一个。如果页面已更新，AEM 将查找包含 statfile 的下一个父文件夹，然后处理&#x200B;**&#x200B;该文件。
 
@@ -153,7 +153,7 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 
 ### 确定文档是否实施了缓存
 
-您可以[在配置文件中定义 Dispatcher 缓存的文档](https://experienceleague.adobe.com/cn/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。Dispatcher 根据可缓存文档列表检查请求。如果文档不在此列表中，则 Dispatcher 从 AEM 实例中请求该文档。
+您可以[在配置文件中定义 Dispatcher 缓存的文档](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。Dispatcher 根据可缓存文档列表检查请求。如果文档不在此列表中，则 Dispatcher 从 AEM 实例中请求该文档。
 
 在以下情况下，Dispatcher 始终直接从 AEM 实例请求文档：
 
@@ -163,7 +163,7 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 
 >[!NOTE]
 >
->GET 或 HEAD（针对 HTTP 标头）方法可由 Dispatcher 缓存。有关响应标头缓存的其他信息，请参阅[缓存 HTTP 响应标头](https://experienceleague.adobe.com/cn/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)部分。
+>GET 或 HEAD（针对 HTTP 标头）方法可由 Dispatcher 缓存。有关响应标头缓存的其他信息，请参阅[缓存 HTTP 响应标头](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)部分。
 
 ### 确定文档是否已缓存
 
@@ -281,13 +281,13 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 
 >[!NOTE]
 >
->另请参阅 [AEM (CQ) Dispatcher 安全性和 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)和有关 [Dispatcher 缓存](https://experienceleague.adobe.com/cn/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)的录制演讲。
+>另请参阅 [AEM (CQ) Dispatcher 安全性和 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)和有关 [Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)的录制演讲。
 
 ## 将 Dispatcher 与创作服务器一起使用 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/cn/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
+>如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
 
 ```xml
 /rules
@@ -306,7 +306,7 @@ Dispatcher 可在创作实例之前使用以提高创作性能。要配置创作
 1. 在文本编辑器中打开 `author_dispatcher.any`，并进行以下更改：
 
    1. 更改 `/renders` 部分的 `/hostname` 和 `/port`，以使其指向您的创作实例。
-   1. 更改 `/cache` 部分的 `/docroot`，以使其指向缓存目录。如果您将 [AEM 与 Touch UI](https://experienceleague.adobe.com/cn/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts) 一起使用，请查看上面的警告。
+   1. 更改 `/cache` 部分的 `/docroot`，以使其指向缓存目录。如果您将 [AEM 与 Touch UI](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts) 一起使用，请查看上面的警告。
    1. 保存更改。
 
 1. 删除您在前面配置的“`/cache`”>“`/docroot`”目录中的所有现有文件。

@@ -1,15 +1,15 @@
 ---
 title: 安装 Dispatcher
-description: 了解如何在Microsoft&reg； Internet Information Server、Apache Web Server和Sun Java &trade； Web Server-iPlanet上安装Dispatcher模块。
+description: 了解如何在 Microsoft&reg; Internet Information Server、Apache Web Server 和 Sun Java&trade; Web Server-iPlanet 上安装 Dispatcher 模块。
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3748'
-ht-degree: 83%
+ht-degree: 100%
 
 ---
 
@@ -88,7 +88,7 @@ Comment Type: draft
 
 ## Microsoft® Internet Information Server {#microsoft-internet-information-server}
 
-有关如何安装此Web服务器的信息，请参阅以下资源：
+有关如何安装此 Web 服务器的信息，请参阅以下资源：
 
 * Microsoft® 自带的有关 Internet Information Server 的文档
 * [&quot;The Official Microsoft® IIS site&quot;](https://www.iis.net/)
@@ -99,11 +99,11 @@ IIS 版本 8.5 和 10 要求安装以下 IIS 组件：
 
 * ISAPI 扩展
 
-此外，还必须添加Web服务器(IIS)角色。 使用 Server Manager 添加角色和组件。
+您还必须安装 Web Server (IIS) 角色。使用 Server Manager 添加角色和组件。
 
 ## Microsoft® IIS - 安装 Dispatcher 模块 {#microsoft-iis-installing-the-dispatcher-module}
 
-Microsoft® Internet Information System所需的存档为：
+Microsoft® Internet Information System 的必需存档为：
 
 * `dispatcher-iis-<operating-system>-<dispatcher-release-number>.zip`
 
@@ -116,7 +116,7 @@ ZIP 文件包含以下文件：
 | `dispatcher.any` | Dispatcher 的示例配置文件。 |
 | `author_dispatcher.any` | 使用创作实例的 Dispatcher 的示例配置文件。 |
 | 自述文件 | 包含安装说明和最新信息的自述文件。**注意**：先查看此文件，然后再开始安装。 |
-| 变更文件 | 更改列出当前版本或过去版本中修复的问题的文件。 |
+| 变更文件 | 列出当前版本或过去版本中修复的问题的变更文件。 |
 
 使用以下过程可将 Dispatcher 文件复制到正确位置。
 
@@ -126,7 +126,7 @@ ZIP 文件包含以下文件：
 
    * `disp_iis.dll`
    * `disp_iis.ini`
-   * 以下文件之一，取决于Dispatcher是使用AEM创作实例还是发布实例：
+   * 下列文件之一，取决于 Dispatcher 是使用 AEM 创作实例还是发布实例：
       * 创作实例：`author_dispatcher.any`
       * 发布实例：`dispatcher.any`
 
@@ -147,10 +147,10 @@ replaceauthorization=0|1
 | 参数 | 描述 |
 |--- |--- |
 | `configpath` | `dispatcher.any` 在本地文件系统中的位置（绝对路径）。 |
-| `logfile` | `dispatcher.log` 文件的位置。如果未设置此位置，则日志消息将转至Windows事件日志。 |
-| `loglevel` | 定义用于将消息输出到事件日志的日志级别。 可以在日志级别为日志文件指定以下值：<br/>0 - 仅错误消息。<br/>1 - 错误和警告。<br/>2 - 错误、警告、以及信息性消息 <br/>3 - 错误、警告和信息性消息和调试消息。<br/>**注意**：在安装和测试期间将日志级别设置为 3，在生产环境中运行时将日志级别设置为 0。 |
+| `logfile` | `dispatcher.log` 文件的位置。如果未设置此位置，则日志消息将转到 Windows 事件日志。 |
+| `loglevel` | 定义用于将消息输出到事件日志的日志级别。可以在日志级别为日志文件指定以下值：<br/>0 - 仅错误消息。<br/>1 - 错误和警告。<br/>2 - 错误、警告、以及信息性消息 <br/>3 - 错误、警告和信息性消息和调试消息。<br/>**注意**：在安装和测试期间将日志级别设置为 3，在生产环境中运行时将日志级别设置为 0。 |
 | `replaceauthorization` | 指定如何处理 HTTP 请求中的授权标头。以下值有效：<br/>0 - 未修改授权标头。<br/>1 - 将除“Basic”以外的任何名为“Authorization”的标头替换为其 `Basic <IIS:LOGON\_USER>` 等效标头。<br/> |
-| `servervariables` | 定义如何处理服务器变量。<br/>0 - IIS服务器变量未发送到Dispatcher或AEM。 <br/>1 - 所有 IIS 服务器变量（例如 `LOGON\_USER, QUERY\_STRING, ...`）都与请求标头一起发送到 Dispatcher（如果未缓存，还将发送到 AEM 实例）。<br/>服务器变量包括 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 及其他。请参阅 IIS 文档以查看完整的变量列表以及详细信息。 |
+| `servervariables` | 定义如何处理服务器变量。<br/>0 - IIS 服务器变量不会发送到 Dispatcher 或 AEM。<br/>1 - 所有 IIS 服务器变量（例如 `LOGON\_USER, QUERY\_STRING, ...`）都与请求标头一起发送到 Dispatcher（如果未缓存，还将发送到 AEM 实例）。<br/>服务器变量包括 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 及其他。请参阅 IIS 文档以查看完整的变量列表以及详细信息。 |
 | `enable_chunked_transfer` | 定义是为客户端响应启用 (1) 还是禁用 (0) 块传输。默认值为 0。 |
 
 示例配置：
@@ -179,7 +179,7 @@ replaceauthorization=0
 
 ### 集成 Dispatcher ISAPI 模块 - IIS 8.5 和 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
-使用以下过程可将Dispatcher ISAPI模块添加到IIS。
+使用以下过程可将 Dispatcher ISAPI 模块添加到 IIS。
 
 1. 打开 IIS Manager。
 1. 选择您将用作 Dispatcher 缓存的网站。
@@ -190,13 +190,13 @@ replaceauthorization=0
    * 可执行文件：disp_iis.dll 文件的绝对路径，例如 `C:\inetpub\Scripts\disp_iis.dll`。
    * 名称：处理程序映射的描述性名称，例如 `Dispatcher`。
 
-1. 在出现的对话框中，要将disp_iis.dll库添加到ISAPI和CGI限制列表中，请单击 **是**.
+1. 在出现的对话框中，要将 disp_iis.dll 库添加到 ISAPI 和 CGI 限制列表，请单击&#x200B;**是**。
 
    对于 IIS 7.0 和 7.5，配置是完整的。如果您配置的是 IIS 8.0，请使用剩余步骤进行配置。
 
-1. (IIS 8.0)在处理程序映射列表中，选择您创建的映射，然后在“操作”区域中单击“编辑”。
+1. (IIS 8.0) 在处理程序映射列表中，选择您创建的映射，然后在“操作”区域中单击“编辑”。
 1. (IIS 8.0) 在“编辑脚本映射”对话框中，单击“请求限制”按钮。
-1. (IIS 8.0)要确保处理程序用于尚未缓存的文件和文件夹，请取消选择 **仅当请求映射到时才调用处理程序**. 单击&#x200B;**确定**。
+1. (IIS 8.0) 要确保处理程序用于尚未缓存的文件和文件夹，请取消选择&#x200B;**仅在映射到请求时调用处理程序**。单击&#x200B;**确定**。
 1. (IIS 8.0) 在“编辑脚本映射”对话框中，单击“确定”。
 
 ### 配置对缓存的匿名访问 - IIS 8.5 和 10 {#configuring-access-to-the-cache-iis-and}
@@ -204,7 +204,7 @@ replaceauthorization=0
 向默认 App Pool 用户提供对将用作 Dispatcher 缓存的文件夹的写访问权限。
 
 1. 右键单击将用作 Dispatcher 缓存的网站的根文件夹，然后单击“属性”，例如 `C:\inetpub\wwwroot`。
-1. 在“安全性”选项卡上，单击“编辑”，然后在“权限”对话框中，单击“添加”。 这将打开一个对话框，可在其中选择用户帐户。单击“位置”按钮，选择您的计算机名称，然后单击“确定”。
+1. 在“安全性”选项卡上，单击“编辑”，然后在“权限”对话框中，单击“添加”。这将打开一个对话框，可在其中选择用户帐户。单击“位置”按钮，选择您的计算机名称，然后单击“确定”。
 
    将此对话框保持打开状态，同时完成下一个步骤。
 
@@ -215,13 +215,13 @@ replaceauthorization=0
    `IIS AppPool\DefaultAppPool`
 
 1. 单击“检查名称”按钮。在 Windows 解析用户帐户时，单击“确定”。
-1. 在Dispatcher文件夹的“权限”对话框中，选择您刚刚添加的帐户，启用该帐户的所有权限 **完全控制除外** 并单击“确定”。 单击“确定”可关闭“文件夹属性”对话框。
+1. 在 Dispatcher 文件夹的“权限”对话框中，选择您刚刚添加的帐户，启用该帐户的所有权限（**完全控制权限除外**），然后单击“确定”。单击“确定”可关闭“文件夹属性”对话框。
 
 ### 注册 JSON Mime 类型 - IIS 8.5 和 10 {#registering-the-json-mime-type-iis-and}
 
-如果您希望Dispatcher允许JSON调用，请使用以下过程注册JSON MIME类型。
+如果您希望 Dispatcher 允许 JSON 调用，可使用以下过程注册 JSON MIME 类型。
 
-1. 在IIS管理器中，选择您的网站，然后使用“功能视图”，双击“Mime类型”。
+1. 在 IIS Manager 中，选择您的网站并使用“功能视图”，双击“Mime 类型”。
 1. 如果 JSON 扩展未在列表中，请在“操作”面板中单击“添加”，输入以下属性值，然后单击“确定”：
 
    * 文件扩展名：`.json`
@@ -231,18 +231,18 @@ replaceauthorization=0
 
 使用以下过程可删除 `bin` 隐藏部分。非新网站可能包含此隐藏部分。
 
-1. 在IIS Manager中，选择您的网站并使用“功能视图”，双击“请求筛选”。
+1. 在 IIS Manager 中，选择您的网站并使用“功能视图”，双击“请求过滤”。
 1. 选择 `bin` 部分，单击“移除”，然后在确认对话框中，单击“是”。
 
 ### 将 IIS 消息记录到文件 - IIS 8.5 和 10 {#logging-iis-messages-to-a-file-iis-and}
 
-使用以下过程可将 Dispatcher 日志消息写入日志文件而非 Windows 事件日志。将Dispatcher配置为使用日志文件，并向IIS提供对文件的写访问权限。
+使用以下过程可将 Dispatcher 日志消息写入日志文件而非 Windows 事件日志。配置 Dispatcher 以使用日志文件，并向 IIS 提供对该文件的写访问权限。
 
 1. 使用 Windows 资源管理器在 IIS 安装的日志文件夹下创建名为 `dispatcher` 的文件夹。典型安装的此文件夹的路径为 `C:\inetpub\logs\dispatcher`。
 
-1. 右键单击Dispatcher文件夹，然后单击 **属性**.
-1. 在“安全性”选项卡上，单击 **编辑**.
-1. 在“权限”对话框中，单击 **添加**. 这将打开一个对话框，可在其中选择用户帐户。单击“位置”按钮，选择您的计算机名称，然后单击“确定”。
+1. 右键单击 Dispatcher 文件夹，然后单击&#x200B;**属性**。
+1. 在“安全”选项卡上，单击&#x200B;**编辑**。
+1. 在“权限”对话框中，单击&#x200B;**添加**。这将打开一个对话框，可在其中选择用户帐户。单击“位置”按钮，选择您的计算机名称，然后单击“确定”。
 
    将此对话框保持打开状态，同时完成下一个步骤。
 
@@ -280,7 +280,7 @@ replaceauthorization=0
 
 >[!CAUTION]
 >
->如果通过编译源文件来创建 Apache 二进制文件，请确保打开 **`dynamic modules support`**。可使用任意 **— 启用 — 共享** 选项。 最低要求是包含 `mod_so` 模块。
+>如果通过编译源文件来创建 Apache 二进制文件，请确保打开 **`dynamic modules support`**。启用此选项可使用任意 **--enable-shared** 选项来执行此操作。最低要求是包含 `mod_so` 模块。
 >
 >有关更多信息，请参阅 Apache Web Server 安装手册。
 
@@ -303,9 +303,9 @@ Dispatcher 的提供形式为：
 | http.conf.disp&lt;x> | Apache Server 的示例配置文件。 |
 | dispatcher.any | Dispatcher 的示例配置文件。 |
 | 自述文件 | 包含安装说明和最新信息的自述文件。**注意**：先查看此文件，然后再开始安装。 |
-| 变更文件 | 更改列出当前版本或过去版本中修复的问题的文件。 |
+| 变更文件 | 列出当前版本或过去版本中修复的问题的变更文件。 |
 
-使用以下步骤可将Dispatcher添加到Apache Web Server：
+使用以下步骤可将 Dispatcher 添加到 Apache Web Server：
 
 1. 将 Dispatcher 文件放置到适当的 Apache 模块目录中：
 
@@ -325,7 +325,7 @@ Dispatcher 的提供形式为：
 
 `Mon Jun 30 00:03:59 2013] [E] [16561(139642697451488)] Unable to connect to backend rend01 (10.122.213.248:4502): Permission denied`
 
-此错误可能是由于启用的SELinux安全性导致的。 如果是这样，请执行以下任务：
+此错误可能是由于启用的 SELinux 安全性导致的。如果是这样，请执行以下操作：
 
 * 配置 Dispatcher 模块文件的 SELinux 上下文。
 * 启用 HTTPD 脚本和模块以建立网络连接。
@@ -353,7 +353,7 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
    * **LoadModule**，用于启动时加载模块。
    * 特定于 Dispatcher 的配置条目，包括 **DispatcherConfig、DispatcherLog** 和 **DispatcherLogLevel**。
    * **SetHandler**，用于激活 Dispatcher。**LoadModule**。
-   * **ModMimeUsePathInfo** 配置的行为 **mod_mime**.
+   * **ModMimeUsePathInfo**，用于配置 **mod_mime** 的行为。
 
 1. （可选）建议您更改 htdocs 目录的所有者：
 
@@ -409,9 +409,9 @@ DispatcherKeepAliveTimeout 60
 | DispatcherConfig | Dispatcher 配置文件的位置和名称。<br/>当此属性位于主服务器配置中时，所有虚拟主机都将会继承属性值。不过，虚拟主机可以包括 DispatcherConfig 属性来覆盖主服务器配置。 |
 | DispatcherLog | 日志文件的位置和名称。 |
 | DispatcherLogLevel | 日志文件的日志级别：<br/>0 - 错误 <br/>1 - 警告 <br/>2 - 信息 <br/>3 - 调试 <br/>**注意**：在安装和测试期间将日志级别设置为 3，在生产环境中运行时将日志级别设置为 0。 |
-| DispatcherNoServerHeader | *此参数已弃用且无效。*<br/><br/> 定义要使用的服务器标头：<br/><ul><li>未定义或0 - HTTP服务器标头包含AEM版本。 </li><li>1 — 使用Apache服务器标头。</li></ul> |
-| DispatcherDeclineRoot | 定义是否拒绝对根“/”的请求： <br/>**0**  — 接受对/的请求 <br/>**1** - Dispatcher不处理对/的请求。 请改用mod_alias获取正确的映射。 |
-| DispatcherUseProcessedURL | 定义是否将预处理的 URL 用于 Dispatcher 执行的所有进一步处理：<br/>**0** - 使用传递给 Web 服务器的原始 URL。<br/>**1** - Dispatcher 使用已由其前面的处理程序处理的 URL（即 `mod_rewrite`），而不是使用传递给 网络服务器的原始 URL。例如，原始 URL 或处理后的 URL 与 Dispatcher 过滤器匹配。此 URL 也用作缓存文件结构的基础。有关mod_rewrite的信息（例如，Apache 2.4），请参阅Apache网站文档。使用mod_rewrite时，请使用标记“passthrough”（传递到下一个处理程序）以强制重写引擎将内部request_rec结构的URI字段设置为filename字段的值。 |
+| DispatcherNoServerHeader | *此参数已弃用且无效。*<br/><br/> 定义要使用的服务器标头：<br/><ul><li>未定义或 0 - HTTP 服务器标头包含 AEM 版本。 </li><li>1 - 使用 Apache 服务器标头。</li></ul> |
+| DispatcherDeclineRoot | 定义是否拒绝对根“/”的请求：<br/>**0** - 接受对 / 的请求 <br/>**1** - Dispatcher 不处理对 / 的请求。相反，使用 mod_alias 进行正确的映射。 |
+| DispatcherUseProcessedURL | 定义是否将预处理的 URL 用于 Dispatcher 执行的所有进一步处理：<br/>**0** - 使用传递给 Web 服务器的原始 URL。<br/>**1** - Dispatcher 使用已由其前面的处理程序处理的 URL（即 `mod_rewrite`），而不是使用传递给 网络服务器的原始 URL。例如，原始 URL 或处理后的 URL 与 Dispatcher 过滤器匹配。此 URL 也用作缓存文件结构的基础。有关 mod_rewrite 的信息，请参阅 Apache 网站文档；例如，Apache 2.4。使用 mod_rewrite 时，使用标志“passthrough”（通过下一个处理程序）强制重写引擎将内部 request_rec 结构的 URI 字段设置为 filename 字段的值。 |
 | DispatcherPassError | 定义如何支持 ErrorDocument 处理的错误代码：<br/>**0** - Dispatcher 将所有错误响应假脱机到客户端。<br/>**1** - Dispatcher 没有将错误响应发送给客户端（状态代码大于或等于 400）。相反，它将状态代码传递给 Apache，Apache 允许 ErrorDocument 指令处理此类状态代码。<br/>**代码范围** - 指定将其响应传递到 Apache 的错误代码的范围。其他错误代码将传递到客户端。例如，以下配置将错误 412 的响应传递到客户端，并将所有其他错误（DispatcherPassError 400-411、413-417）的响应传递到 Apache。 |
 | DispatcherKeepAliveTimeout | 指定保持活动状态超时时间（以秒为单位）。从 Dispatcher 版本 4.2.0 开始，默认的保持活动状态值为 60。如果值为 0，则禁用保持活动状态。 |
 | DispatcherNoCanonURL | 将此参数设置为“启用”会将原始 URL 而不是规范化的 URL 传递到后端，并且将覆盖 DispatcherUseProcessedURL 的设置。默认值为“禁用”。<br/>**注意**：Dispatcher 配置中的过滤器规则总是根据经过处理的 URL 而不是原始 URL 进行评估。 |
@@ -491,7 +491,7 @@ AllowOverride None
 
 >[!NOTE]
 >
->的参数 **SetHandler** 必须编写语句 *与上述示例完全相同* 因为它是模块中定义的处理程序的名称。
+>必须&#x200B;*完全按照上述示例*&#x200B;编写 **SetHandler** 语句的参数，因为这是模块中所定义处理程序的名称。
 >
 >有关此命令的完整详细信息，请参阅提供的示例配置文件和 Apache Web Server 文档。
 
@@ -503,13 +503,13 @@ AllowOverride None
 >
 >应仅在使用 Dispatcher 4.0.9 或更高版本时使用和配置 `ModMimeUsePathInfo` 参数。
 >
->Dispatcher版本4.0.9已于2011年发布。 如果您使用的是旧版本，则升级到最近的Dispatcher版本是合适的。
+>请注意，Dispatcher 4.0.9 版本已于 2011 年发布。如果您使用的是旧版本，则应升级到最新的 Dispatcher 版本。
 
 应为所有 Apache 配置将 **ModMimeUsePathInfo** 参数设置为 `On`：
 
 `ModMimeUsePathInfo On`
 
-mod_mime 模块（例如 [Apache 模块 mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)）用于将内容元数据分配给为 HTTP 响应选择的内容。默认设置意味着 `mod_mime` 确定内容类型。 因此，只会考虑映射到文件或目录的URL部分。
+mod_mime 模块（例如 [Apache 模块 mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)）用于将内容元数据分配给为 HTTP 响应选择的内容。默认设置表示 `mod_mime` 确定内容类型。因此，只考虑映射到文件或目录的 URL 部分。
 
 在设置为 `On` 时，`ModMimeUsePathInfo` 参数会指定 `mod_mime` 根据&#x200B;*完整* URL 确定内容类型；这意味着虚拟资源会根据其扩展应用元信息。
 
@@ -533,7 +533,7 @@ AllowOverride None
 
 ### 启用对 HTTPS 的支持（UNIX® and Linux®）{#enable-support-for-https-unix-and-linux}
 
-Dispatcher 使用 OpenSSL 实现 HTTP 上的安全通信。从 Dispatcher 版本 **4.2.0** 开始，支持 OpenSSL 1.0.0 和 OpenSSL 1.0.1。默认情况下，Dispatcher 使用 OpenSSL 1.0.0。要使用OpenSSL 1.0.1，请使用以下过程创建符号链接，以便Dispatcher使用已安装的OpenSSL库。
+Dispatcher 使用 OpenSSL 实现 HTTP 上的安全通信。从 Dispatcher 版本 **4.2.0** 开始，支持 OpenSSL 1.0.0 和 OpenSSL 1.0.1。默认情况下，Dispatcher 使用 OpenSSL 1.0.0。要使用 OpenSSL 1.0.1，请使用以下过程创建符号链接，以便 Dispatcher 使用已安装的 OpenSSL 库。
 
 1. 打开终端，并将当前目录更改为安装了 OpenSSL 库的目录，例如：
 
@@ -591,7 +591,7 @@ Dispatcher 的提供形式为：
 | `obj.conf.disp` | iPlanet/Sun Java™ System Web Server 的示例配置文件。 |
 | `dispatcher.any` | Dispatcher 的示例配置文件。 |
 | 自述文件 | 包含安装说明和最新信息的自述文件。**注意：** 先查看此文件，然后再开始安装。 |
-| 变更文件 | 更改列出当前版本或过去版本中修复的问题的文件。 |
+| 变更文件 | 列出当前版本或过去版本中修复的问题的变更文件。 |
 
 使用以下步骤可将 Dispatcher 添加到您的 Web 服务器：
 
@@ -619,7 +619,7 @@ Dispatcher 的提供形式为：
 
 >[!NOTE]
 >
->以下配置都应位于一行中。 此外， `$(SERVER_ROOT)` 和 `$(PRODUCT_SUBDIR)` 必须替换为各自的值。
+>以下配置都应该在一行上。此外，`$(SERVER_ROOT)` 和 `$(PRODUCT_SUBDIR)` 必须替换为各自的值。
 
 **Init**
 

@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -24,7 +24,7 @@ ht-degree: 94%
 
 默认 `admin` 用户帐户用于对默认安装的复制代理进行身份验证。创建一个用于复制代理的专用用户帐户。
 
-有关更多信息，请参阅 AEM 安全检查清单的[配置复制和传输用户](https://experienceleague.adobe.com/cn/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
+有关更多信息，请参阅 AEM 安全检查清单的[配置复制和传输用户](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
@@ -66,7 +66,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 根据需要配置其他参数。
 1. 单击“确定”即可激活代理。
 
-或者，您也可以从 [AEM Touch UI](https://experienceleague.adobe.com/cn/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent) 访问和配置 Dispatcher Flush 代理。
+或者，您也可以从 [AEM Touch UI](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent) 访问和配置 Dispatcher Flush 代理。
 
 有关如何启用对虚名 URL 的访问的详细信息，请参阅[启用对虚名 URL 的访问](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)。
 
@@ -124,11 +124,11 @@ Comment Type: draft
 
 要在不激活页面的情况下使 Dispatcher 缓存失效（或进行刷新），您可以向 Dispatcher 发出 HTTP 请求。例如，您可以创建一个 AEM 应用程序，以便管理员或其他应用程序能够刷新缓存。
 
-HTTP请求促使Dispatcher从缓存中删除特定文件。 （可选）Dispatcher 随后使用新副本刷新缓存。
+HTTP 请求促使 Dispatcher 从缓存中删除特定文件。（可选）Dispatcher 随后使用新副本刷新缓存。
 
 ### 删除缓存的文件 {#delete-cached-files}
 
-发出HTTP请求以促使Dispatcher从缓存中删除文件。 Dispatcher 仅在收到对页面的客户端请求时才重新缓存文件。对于不太可能同时收到对同一页面的请求的网站，可通过此方式删除缓存的文件。
+发出 HTTP 请求以促使 Dispatcher 从缓存中删除文件。Dispatcher 仅在收到对页面的客户端请求时才重新缓存文件。对于不太可能同时收到对同一页面的请求的网站，可通过此方式删除缓存的文件。
 
 HTTP 请求具有以下形式：
 
@@ -151,7 +151,7 @@ Dispatcher 刷新（删除）名称与 `CQ-Handler` 标头值匹配的缓存的�
 
 ### 删除和重新缓存文件 {#delete-and-recache-files}
 
-发出HTTP请求以促使Dispatcher删除缓存的文件，并立即检索和重新缓存文件。 在网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
+发出 HTTP 请求，促使 Dispatcher 删除缓存的文件，并立即检索和重新缓存文件。在网站可能同时收到对同一页面的客户端请求时，删除并立即重新缓存文件。立即重新缓存可确保 Dispatcher 仅检索和缓存页面一次，而不是为每个并发客户端请求检索和缓存页面一次。
 
 **注意：**&#x200B;应仅在发布实例上执行文件删除和重新缓存操作。在从创作实例执行时，在资源发布之前尝试重新缓存资源时会发生争用情况。
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 以下代码实施一个向 Dispatcher 发送失效请求的 servlet。此 servlet 接收包含 `handle` 和 `page` 参数的请求消息。这些参数分别提供要重新缓存的页面的 `CQ-Handle` 标头和路径的值。此 servlet 使用这些值为 Dispatcher 构造 HTTP 请求。
 
-在将servlet部署到发布实例时，以下URL会促使Dispatcher删除/content/geometrixx-outdoors/en.html页面，然后缓存一个新副本。
+在将 servlet 部署到发布实例时，以下 URL 会促使 Dispatcher 删除 /content/geometrixx-outdoors/en.html 页面，然后缓存一个新副本。
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 
