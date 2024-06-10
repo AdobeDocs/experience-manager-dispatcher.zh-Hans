@@ -7,8 +7,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
+source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+workflow-type: tm+mt
 source-wordcount: '2929'
 ht-degree: 100%
 
@@ -348,7 +348,7 @@ Dispatcher 缓存反映了存储库节点结构。因此，在页面激活时，
 
 * 每个虚拟域的文档根目录是 Dispatcher 缓存中包含站点页面的目录。（第 20 行和第 33 行）
 * 每个虚拟域的 URL 重写规则都是正则表达式。正则表达式为请求的页面的路径添加前缀。其前缀是缓存中页面的路径。（第 19 行和第 35 行）
-* `DispatherUseProcessedURL` 属性设置为 `1`。（第 10 行）
+* `DispatcherUseProcessedURL` 属性设置为 `1`。（第 10 行）
 
 例如，Web 服务器会在收到带 `https://brandA.com/en/products.html` URL 的请求时执行以下操作：
 
