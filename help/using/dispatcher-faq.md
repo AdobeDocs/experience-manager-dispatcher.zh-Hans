@@ -3,7 +3,7 @@ title: Dispatcher 热门问题
 description: Adobe Experience Manager Dispatcher 的热门问题。
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '1547'
 ht-degree: 100%
 
