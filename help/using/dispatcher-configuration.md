@@ -3,7 +3,7 @@ title: 配置 AEM Dispatcher
 description: 了解如何配置 Dispatcher。了解 IPv4 和 IPv6 支持、配置文件、环境变量以及命名实例。阅读有关定义农场、识别虚拟主机等内容。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '8876'
 ht-degree: 100%
 
