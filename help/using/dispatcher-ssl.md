@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 971cffd4f7ba8b1fa88a8af620a723ce59957007
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -31,10 +31,10 @@ ht-degree: 98%
 
 将 Dispatcher 配置为使用 SSL 连接与 AEM 或 CQ 渲染实例进行通信。
 
-在配置Dispatcher之前，请将AEM或CQ配置为使用SSL。 有关更多信息，请参阅：
+在配置 Dispatcher 之前，请先配置 AEM 或 CQ 以使用 SSL。有关更多信息，请参阅：
 
-* 默认为[SSL/TLS](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/ssl-by-default)
-* [在AEM中使用SSL向导](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [默认启用 SSL/TLS](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/security/ssl-by-default)
+* [在 AEM 中使用 SSL 向导](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### 与 SSL 相关的请求标头 {#ssl-related-request-headers}
 
