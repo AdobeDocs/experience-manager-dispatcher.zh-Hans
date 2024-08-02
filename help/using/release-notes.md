@@ -6,9 +6,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1062'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -27,7 +27,7 @@ ht-degree: 99%
 
 ## 系统要求和先决条件 {#system-requirements-and-prerequisites}
 
-有关要求和先决条件的更多信息，请参阅[支持的平台](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers)。
+有关要求和先决条件的更多信息，请参阅[支持的平台](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers)。
 
 Adobe 推荐使用最新版本的 AEM Dispatcher，以便从最新功能、最新错误修复和最佳性能中受益。
 
