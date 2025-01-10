@@ -2,10 +2,10 @@
 title: 配置 AEM Dispatcher
 description: 了解如何配置 Dispatcher。了解 IPv4 和 IPv6 支持、配置文件、环境变量以及命名实例。阅读有关定义农场、识别虚拟主机等内容。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
 workflow-type: tm+mt
-source-wordcount: '8876'
-ht-degree: 100%
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -946,6 +946,21 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 1. 在 `/farms` 下添加 `/vanity_urls` 部分。
 1. 重新启动 Apache Web Server。
 
+使用Dispatcher **版本4.3.6**&#x200B;添加了新的`/loadOnStartup`参数。 通过使用此参数，您可以配置启动时虚名URL的加载，如下所示：
+
+通过添加`/loadOnStartup 0`（请参阅下面的示例），您可以在启动时禁用虚名URL的加载。
+
+```
+/vanity_urls {
+        /url "/libs/granite/dispatcher/content/vanityUrls.html"
+        /file "/tmp/vanity_urls"
+        /loadOnStartup 0
+        /delay 60
+      } 
+```
+
+同时`/loadOnStartup 1`在启动时加载虚名URL。 请记住，`/loadOnStartup 1`是此参数的当前默认值。
+
 ## 转发联合请求 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
 联合请求仅用于 Dispatcher，因此默认不将此类请求发送到渲染器（例如，AEM 实例）。
@@ -1388,12 +1403,12 @@ GET /mypage.html?nocache=true&willbecached=true
 
 在 Dispatcher 4.3.5 之前，TTL 失效逻辑仅基于所配置的 TTL 值。在 Dispatcher 4.3.5 中，将所设置的 TTL **和** Dispatcher 缓存失效规则都考虑在内。因此，对于缓存的文件：
 
-1. 如果将 `/enableTTL` 设置为 1，则检查该文件是否到期。如果根据所设置的 TTL，该文件已到期，则不执行其他检查，并从后端重新请求缓存的文件。
+1. 如果将 `/enableTTL` 设置为 1，则检查该文件是否过期。如果根据所设置的 TTL，该文件已到期，则不执行其他检查，并从后端重新请求缓存的文件。
 2. 如果该文件未到期或未配置 `/enableTTL`，则应用标准的缓存失效规则，如 [`/statfileslevel`](#invalidating-files-by-folder-level) 和 [`/invalidate`](#automatically-invalidating-cached-files) 设置的规则。此流程意味着 Dispatcher 可使其 TTL 尚未到期的文件失效。
 
 此新实施支持文件具有较长 TTL 的用例（例如，在 CDN 上）。但是，即使 TTL 没有过期，这些文件仍然可以失效。它更注重内容新鲜度而不是 Dispatcher 上的缓存命中率。
 
-相反，如果&#x200B;**只**&#x200B;需将到期逻辑应用于某个文件，请将 `/enableTTL` 设置为 1，并从标准缓存失效机制中排除该文件。例如，您可以：
+相反，如果&#x200B;**只**&#x200B;需将过期逻辑应用于某个文件，请将 `/enableTTL` 设置为 1，并从标准缓存失效机制中排除该文件。例如，您可以：
 
 * 配置缓存部分中的[失效规则](#automatically-invalidating-cached-files)以忽略该文件。在下面的代码片段中，所有以 `.example.html` 结尾的文件均被忽略，并且只有所设置的 TTL 已过，这些文件才到期。
 
@@ -1408,7 +1423,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 * 将内容结构设计得让您可设置较大的 [`/statfilelevel`](#invalidating-files-by-folder-level)，以便不自动使该文件失效。
 
-这样做确保不使用 `.stat` 文件失效，而只有 TTL 到期作用于指定的文件。
+这样做确保不使用 `.stat` 文件失效，而只有 TTL 过期作用于指定的文件。
 
 >[!NOTE]
 >
