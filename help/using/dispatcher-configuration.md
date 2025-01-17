@@ -3,9 +3,9 @@ title: 配置 AEM Dispatcher
 description: 了解如何配置 Dispatcher。了解 IPv4 和 IPv6 支持、配置文件、环境变量以及命名实例。阅读有关定义农场、识别虚拟主机等内容。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -946,9 +946,9 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 1. 在 `/farms` 下添加 `/vanity_urls` 部分。
 1. 重新启动 Apache Web Server。
 
-使用Dispatcher **版本4.3.6**&#x200B;添加了新的`/loadOnStartup`参数。 通过使用此参数，您可以配置启动时虚名URL的加载，如下所示：
+Dispatcher **版本 4.3.6** 中增加了一个新 `/loadOnStartup` 参数。通过使用此参数，您可以配置启动时虚名 URL 的加载，如下所示：
 
-通过添加`/loadOnStartup 0`（请参阅下面的示例），您可以在启动时禁用虚名URL的加载。
+通过添加 `/loadOnStartup 0`（参见下面的示例），您可以禁用启动时虚名 URL 的加载。
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
       } 
 ```
 
-同时`/loadOnStartup 1`在启动时加载虚名URL。 请记住，`/loadOnStartup 1`是此参数的当前默认值。
+`/loadOnStartup 1` 在启动时加载虚名 URL。请记住 `/loadOnStartup 1` 是此参数的当前默认值。
 
 ## 转发联合请求 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
