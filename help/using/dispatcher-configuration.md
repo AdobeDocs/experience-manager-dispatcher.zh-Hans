@@ -2,10 +2,10 @@
 title: 配置 AEM Dispatcher
 description: 了解如何配置 Dispatcher。了解 IPv4 和 IPv6 支持、配置文件、环境变量以及命名实例。阅读有关定义农场、识别虚拟主机等内容。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: ht
+source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
+workflow-type: tm+mt
 source-wordcount: '8938'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -355,7 +355,7 @@ Dispatcher 按照以下方法查找很好地匹配的虚拟主机值：
 * 如果任何 `virtualhosts` 值的 `scheme` 和 `uri` 部分均与请求的 `scheme` 和 `uri` 不匹配，则将使用遇到的第一个与请求的 `host` 匹配的虚拟主机。
 * 如果任何 `virtualhosts` 值的主机部分均与请求主机不匹配，则使用最顶部场的最顶部虚拟主机。
 
-因此，应将默认虚拟主机放在 `virtualhosts` 属性的顶部。将其放置在 `dispatcher.any` 文件的最顶部场中。
+因此，应将默认虚拟主机放在 `virtualhosts` 属性的顶部。将其放在`dispatcher.any`文件的最顶部场中。
 
 ### 示例虚拟主机解析 {#example-virtual-host-resolution}
 
