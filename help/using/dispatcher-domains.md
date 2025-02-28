@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
 workflow-type: tm+mt
-source-wordcount: '2929'
-ht-degree: 100%
+source-wordcount: '3008'
+ht-degree: 97%
 
 ---
 
@@ -195,6 +195,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
 虚拟主机将继承主服务器部分中配置的 [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) 属性值。虚拟主机可以包括自己的 DispatcherConfig 属性来覆盖主服务器配置。
+
+>[!NOTE]
+>
+>在AEM as a Cloud Service上，必须将单独的vhost配置与DocumentRoot一起使用，并且其级别必须高于每个子页面。 这默认在原型中处理，但在使用多个DocumentRoot时，必须使用较高优先级的vhost配置，以便可以为整个缓存处理缓存失效，因为无法为每个站点单独配置缓存。 此新配置的ServerAlias必须接受主机标头“localhost”。
 
 ### 配置 Dispatcher 以处理多个域 {#configure-dispatcher-to-handle-multiple-domains}
 
