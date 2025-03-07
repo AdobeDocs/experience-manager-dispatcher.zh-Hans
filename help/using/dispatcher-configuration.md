@@ -3,9 +3,9 @@ title: 配置 AEM Dispatcher
 description: 了解如何配置 Dispatcher。了解 IPv4 和 IPv6 支持、配置文件、环境变量以及命名实例。阅读有关定义农场、识别虚拟主机等内容。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1037,7 +1037,7 @@ statfile 不包括内容。内容有更新时，Dispatcher 会更新时间戳。
 
 `/serveStaleOnError` 属性控制 Dispatcher 在渲染服务器返回错误时，是否返回失效的文档。默认情况下，当触及 statfile 并使缓存内容失效时，Dispatcher 会删除缓存的内容。此操作将在下次请求时执行。
 
-如果将 `/serveStaleOnError` 设置为 `"1"`，则 Dispatcher 不会从缓存中删除已失效的内容。也就是说，除非渲染服务器返回成功响应。来自AEM的502、503或504响应或连接超时导致Dispatcher提供过时的内容并使用HTTP状态111（重新验证失败）响应。
+如果将 `/serveStaleOnError` 设置为 `"1"`，则 Dispatcher 不会从缓存中删除已失效的内容。也就是说，除非渲染服务器返回成功响应。来自 AEM 的 502、503 或 504 响应或者连接超时导致 Dispatcher 提供过期的内容，并使用 HTTP 状态 111（重新验证失败）响应。
 
 ### 使用身份验证时缓存 {#caching-when-authentication-is-used}
 
