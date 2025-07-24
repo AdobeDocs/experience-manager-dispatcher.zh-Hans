@@ -26,7 +26,7 @@ ht-degree: 95%
 
 有关详细信息，请参阅AEM安全检查清单的[配置复制和转移用户](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
 
-<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/cn/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## 使创作环境中的Dispatcher缓存失效 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
