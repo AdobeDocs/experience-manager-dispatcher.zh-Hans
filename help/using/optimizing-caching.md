@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/cn/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1128'
-ht-degree: 100%
+ht-degree: 96%
 
 ---
 
@@ -55,7 +55,7 @@ HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## 消除 URL 参数 {#avoid-url-parameters}
+## 避免URL参数 {#avoid-url-parameters}
 
 如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下 URL（除非对 Dispatcher 进行[相应配置](dispatcher-configuration.md#main-pars_title_24)）：
 
@@ -143,7 +143,7 @@ Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进
 
 [粘性连接](dispatcher.md#TheBenefitsofLoadBalancing)可确保同一个用户的文档全部在同一服务器上撰写。如果用户在退出此文件夹不久后返回，则此连接仍保持粘性。定义一个文件夹，以便其可以保存网站需要粘性连接的所有文档。尽量不要在该文件夹中放入其他文件。如果您使用个性化的页面和会话数据，这样会影响负载平衡。
 
-## MIME 类型 {#mime-types}
+## MIME类型 {#mime-types}
 
 浏览器可通过两种方式确定文件的类型：
 

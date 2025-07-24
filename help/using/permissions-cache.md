@@ -6,10 +6,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '924'
-ht-degree: 100%
+source-wordcount: '923'
+ht-degree: 97%
 
 ---
 
@@ -70,7 +70,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 >[!NOTE]
 >
 >当 Dispatcher 前面有 CDN（或任何其他缓存）时，您应设置相应的缓存标头，以使 CDN 不缓存专用内容。例如：`Header always set Cache-Control private`。
->对于 AEM as a Cloud Service，请参阅[缓存](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching)页面，了解有关如何设置专用缓存标头的更多详细信息。
+>>对于 AEM as a Cloud Service，请参阅[缓存](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching)页面，了解有关如何设置专用缓存标头的更多详细信息。
 
 ## 创建授权检查程序 servlet {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ servlet 响应消息必须包含以下 HTTP 状态代码：
 
 >[!NOTE]
 >
->必须在 Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver) 服务中启用 sling.servlet.paths 属性的值。
+>必须在`Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver)服务中启用sling.servlet.paths属性的值。
 
 ### 示例 servlet {#example-servlet}
 

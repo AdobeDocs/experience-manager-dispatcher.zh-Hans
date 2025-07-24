@@ -1,19 +1,19 @@
 ---
-title: 安装 Dispatcher
+title: 安装Dispatcher
 description: 了解如何在 Microsoft&reg; Internet Information Server、Apache Web Server 和 Sun Java&trade; Web Server-iPlanet 上安装 Dispatcher 模块。
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '3748'
-ht-degree: 100%
+source-wordcount: '3720'
+ht-degree: 94%
 
 ---
 
-# 安装 Dispatcher {#installing-dispatcher}
+# 安装Dispatcher {#installing-dispatcher}
 
 <!-- 
 
@@ -39,9 +39,9 @@ Comment Type: draft
 
 | Web 服务器 | 安装套件 |
 |--- |--- |
-| Apache 2.4 | dispatcher-apache **2.4**-&lt;其他参数> |
-| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | dispatcher-**iis**-&lt;其他参数> |
-| Sun Java™ Web Server iPlanet | dispatcher-**ns**-&lt;其他参数> |
+| Apache 2.4 | `dispatcher-apache**2.4**-<other parameters>` |
+| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | `dispatcher-**iis**-<other parameters>` |
+| Sun Java™ Web Server iPlanet | `dispatcher-**ns**-<other parameters>` |
 
 >[!CAUTION]
 >
@@ -93,7 +93,7 @@ Comment Type: draft
 * Microsoft® 自带的有关 Internet Information Server 的文档
 * [&quot;The Official Microsoft® IIS site&quot;](https://www.iis.net/)
 
-### 必需的 IIS 组件 {#required-iis-components}
+### 必需的IIS组件 {#required-iis-components}
 
 IIS 版本 8.5 和 10 要求安装以下 IIS 组件：
 
@@ -130,7 +130,7 @@ ZIP 文件包含以下文件：
       * 创作实例：`author_dispatcher.any`
       * 发布实例：`dispatcher.any`
 
-## Microsoft® IIS - 配置 Dispatcher INI 文件 {#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft® IIS — 配置Dispatcher INI文件 {#microsoft-iis-configure-the-dispatcher-ini-file}
 
 要配置Dispatcher安装，请编辑该 `disp_iis.ini` 文件。`.ini` 文件的基本格式如下所示：
 
@@ -150,7 +150,7 @@ replaceauthorization=0|1
 | `logfile` | `dispatcher.log` 文件的位置。如果未设置此位置，则日志消息将转到 Windows 事件日志。 |
 | `loglevel` | 定义用于将消息输出到事件日志的日志级别。可以在日志级别为日志文件指定以下值：<br/>0 - 仅错误消息。<br/>1 - 错误和警告。<br/>2 - 错误、警告、以及信息性消息 <br/>3 - 错误、警告和信息性消息和调试消息。<br/>**注意**：在安装和测试期间将日志级别设置为 3，在生产环境中运行时将日志级别设置为 0。 |
 | `replaceauthorization` | 指定如何处理 HTTP 请求中的授权标头。以下值有效：<br/>0 - 未修改授权标头。<br/>1 - 将除“Basic”以外的任何名为“Authorization”的标头替换为其 `Basic <IIS:LOGON\_USER>` 等效标头。<br/> |
-| `servervariables` | 定义如何处理服务器变量。<br/>0 - IIS 服务器变量不会发送到 Dispatcher 或 AEM。<br/>1 - 所有 IIS 服务器变量（例如 `LOGON\_USER, QUERY\_STRING, ...`）都与请求标头一起发送到 Dispatcher（如果未缓存，还将发送到 AEM 实例）。<br/>服务器变量包括 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 及其他。请参阅 IIS 文档以查看完整的变量列表以及详细信息。 |
+| `servervariables` | 定义如何处理服务器变量。<br/>0 - IIS 服务器变量不会发送到 Dispatcher 或 AEM。<br/>1 — 所有IIS服务器变量（如`LOGON\_USER, QUERY\_STRING, ...`）都与请求的标头一起发送到Dispatcher(如果未缓存，还将发送到AEM实例)。  <br/>服务器变量包括 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 及其他。请参阅 IIS 文档以查看完整的变量列表以及详细信息。 |
 | `enable_chunked_transfer` | 定义是为客户端响应启用 (1) 还是禁用 (0) 块传输。默认值为 0。 |
 
 示例配置：
@@ -163,21 +163,21 @@ servervariables=1
 replaceauthorization=0
 ```
 
-### 配置 Microsoft® IIS {#configuring-microsoft-iis}
+### 配置Microsoft® IIS {#configuring-microsoft-iis}
 
 配置 IIS 以集成 Dispatcher ISAPI 模块。在 IIS 中，使用通配符应用程序映射。
 
-### 配置匿名访问 - IIS 8.5 和 10 {#configuring-anonymous-access-iis-and}
+### 配置匿名访问 — IIS 8.5和10 {#configuring-anonymous-access-iis-and}
 
-创作实例上的默认 Flush 复制代理已配置为不随刷新请求发送安全凭据。因此，您使用 Dispatcher 缓存的网站必须允许匿名访问。
+创作实例上的默认`Flush`复制代理已配置为不随刷新请求发送安全凭据。 因此，您在其上使用Dispatcher缓存的网站必须允许匿名访问。
 
-如果您的网站使用身份验证方法，则必须相应地配置 Flush 复制代理。
+如果您的网站使用身份验证方法，则必须相应地配置`Flush`复制代理。
 
 1. 打开 IIS Manager 并选择要用作 Dispatcher 缓存的网站。
 1. 使用“功能视图”模式，在 IIS 部分中双击“身份验证”。
 1. 如果未启用“匿名身份验证”，请选择“匿名身份验证”，并在“操作”区域中，单击“启用”。
 
-### 集成 Dispatcher ISAPI 模块 - IIS 8.5 和 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### 集成Dispatcher ISAPI模块 — IIS 8.5和10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 使用以下过程可将 Dispatcher ISAPI 模块添加到 IIS。
 
@@ -199,7 +199,7 @@ replaceauthorization=0
 1. (IIS 8.0) 要确保处理程序用于尚未缓存的文件和文件夹，请取消选择&#x200B;**仅在映射到请求时调用处理程序**。单击&#x200B;**确定**。
 1. (IIS 8.0) 在“编辑脚本映射”对话框中，单击“确定”。
 
-### 配置对缓存的匿名访问 - IIS 8.5 和 10 {#configuring-access-to-the-cache-iis-and}
+### 配置对缓存的访问 — IIS 8.5和10 {#configuring-access-to-the-cache-iis-and}
 
 向默认 App Pool 用户提供对将用作 Dispatcher 缓存的文件夹的写访问权限。
 
@@ -217,7 +217,7 @@ replaceauthorization=0
 1. 单击“检查名称”按钮。在 Windows 解析用户帐户时，单击“确定”。
 1. 在 Dispatcher 文件夹的“权限”对话框中，选择您刚刚添加的帐户，启用该帐户的所有权限（**完全控制权限除外**），然后单击“确定”。单击“确定”可关闭“文件夹属性”对话框。
 
-### 注册 JSON Mime 类型 - IIS 8.5 和 10 {#registering-the-json-mime-type-iis-and}
+### 注册JSON mime类型 — IIS 8.5和10 {#registering-the-json-mime-type-iis-and}
 
 如果您希望 Dispatcher 允许 JSON 调用，可使用以下过程注册 JSON MIME 类型。
 
@@ -227,14 +227,14 @@ replaceauthorization=0
    * 文件扩展名：`.json`
    * MIME 类型：`application/json`
 
-### 删除 bin 隐藏部分 - IIS 8.5 和 10 {#removing-the-bin-hidden-segment-iis-and}
+### 删除bin隐藏部分 — IIS 8.5和10 {#removing-the-bin-hidden-segment-iis-and}
 
 使用以下过程可删除 `bin` 隐藏部分。非新网站可能包含此隐藏部分。
 
 1. 在 IIS Manager 中，选择您的网站并使用“功能视图”，双击“请求过滤”。
 1. 选择 `bin` 部分，单击“移除”，然后在确认对话框中，单击“是”。
 
-### 将 IIS 消息记录到文件 - IIS 8.5 和 10 {#logging-iis-messages-to-a-file-iis-and}
+### 将IIS消息记录到文件 — IIS 8.5和10 {#logging-iis-messages-to-a-file-iis-and}
 
 使用以下过程可将 Dispatcher 日志消息写入日志文件而非 Windows 事件日志。配置 Dispatcher 以使用日志文件，并向 IIS 提供对该文件的写访问权限。
 
@@ -274,7 +274,7 @@ replaceauthorization=0
 >
 >此处介绍了 **Windows** 和 **UNIX®** 下的安装说明。务必小心执行这些步骤。
 
-### 安装 Apache Web Server {#installing-apache-web-server}
+### 安装Apache Web Server {#installing-apache-web-server}
 
 有关如何安装 Apache Web Server 的信息，请参阅安装手册 - [在线版本](https://httpd.apache.org/)或分发版。
 
@@ -286,7 +286,7 @@ replaceauthorization=0
 
 另请参阅 Apache HTTP Server [安全提示](https://httpd.apache.org/docs/2.4/misc/security_tips.html) 和[安全报告](https://httpd.apache.org/security_report.html)。
 
-### Apache Web Server - 添加 Dispatcher 模块 {#apache-web-server-add-the-dispatcher-module}
+### Apache Web Server — 添加Dispatcher模块 {#apache-web-server-add-the-dispatcher-module}
 
 Dispatcher 的提供形式为：
 
@@ -297,13 +297,13 @@ Dispatcher 的提供形式为：
 
 | 文件 | 描述 |
 |--- |--- |
-| disp_apache&lt;x.y>.dll | Windows：Dispatcher 动态链接库文件。 |
-| dispatcher-apache&lt;x.y>-&lt;rel-nr>.so | UNIX®：Dispatcher 共享对象库文件。 |
-| mod_dispatcher.so | UNIX®：示例链接。 |
-| http.conf.disp&lt;x> | Apache Server 的示例配置文件。 |
-| dispatcher.any | Dispatcher 的示例配置文件。 |
-| 自述文件 | 包含安装说明和最新信息的自述文件。**注意**：先查看此文件，然后再开始安装。 |
-| 变更文件 | 列出当前版本或过去版本中修复的问题的变更文件。 |
+| d`isp_apache<x.y>.dll` | Windows：Dispatcher 动态链接库文件。 |
+| `dispatcher-apacheM<x.y>-<rel-nr>.so` | UNIX®：Dispatcher 共享对象库文件。 |
+| `mod_dispatcher.so` | UNIX®：示例链接。 |
+| `http.conf.disp<x>` | Apache Server 的示例配置文件。 |
+| `dispatcher.any` | Dispatcher 的示例配置文件。 |
+| `README` | 包含安装说明和最新信息的自述文件。**注意**：先查看此文件，然后再开始安装。 |
+| C`HANGES` | 列出当前版本或过去版本中修复的问题的变更文件。 |
 
 使用以下步骤可将 Dispatcher 添加到 Apache Web Server：
 
@@ -319,7 +319,7 @@ Dispatcher 的提供形式为：
 
    **注意：**&#x200B;您可以将此文件放置到不同的位置，前提是相应地配置 Dispatcher 模块的 DispatcherLog 属性。（请参阅以下特定于 Dispatcher 的配置条目。）
 
-### Apache Web Server - 配置 SELinux 属性 {#apache-web-server-configure-selinux-properties}
+### Apache Web Server — 配置SELinux属性 {#apache-web-server-configure-selinux-properties}
 
 如果您在支持 SELinux 的 Red Hat® Linux® Kernel 2.6 上运行 Dispatcher，您可能会在 Dispatcher 日志文件中看到类似的错误消息。
 
@@ -531,7 +531,7 @@ AllowOverride None
 ...
 ```
 
-### 启用对 HTTPS 的支持（UNIX® and Linux®）{#enable-support-for-https-unix-and-linux}
+### 启用对HTTPS (UNIX®和Linux®)的支持 {#enable-support-for-https-unix-and-linux}
 
 Dispatcher 使用 OpenSSL 实现 HTTP 上的安全通信。从 Dispatcher 版本 **4.2.0** 开始，支持 OpenSSL 1.0.0 和 OpenSSL 1.0.1。默认情况下，Dispatcher 使用 OpenSSL 1.0.0。要使用 OpenSSL 1.0.1，请使用以下过程创建符号链接，以便 Dispatcher 使用已安装的 OpenSSL 库。
 
@@ -550,7 +550,7 @@ Dispatcher 使用 OpenSSL 实现 HTTP 上的安全通信。从 Dispatcher 版本
 
 >[!NOTE]
 >
->如果您使用的是自定义版本的 Apache，请确保使用相同版本的 [OpenSSL](https://www.openssl.org/source/) 编译 Apache 和 Dispatcher。
+>如果您使用的是自定义版本的Apache，请确保使用相同版本的OpenSSL编译Apache和Dispatcher。<!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### 后续步骤 {#next-steps-1}
 
@@ -574,7 +574,7 @@ Dispatcher 使用 OpenSSL 实现 HTTP 上的安全通信。从 Dispatcher 版本
 * Sun Java™ System Web Server
 * iPlanet Web Server
 
-### Sun Java™ System Web Server/iPlanet - 添加 Dispatcher 模块 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java™ System Web Server/iPlanet — 添加Dispatcher模块 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher 的提供形式为：
 

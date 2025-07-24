@@ -5,14 +5,14 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '3079'
-ht-degree: 100%
+source-wordcount: '3073'
+ht-degree: 95%
 
 ---
 
-# Dispatcher 概述 {#dispatcher-overview}
+# Dispatcher概述 {#dispatcher-overview}
 
 >[!NOTE]
 >
@@ -39,7 +39,7 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 根据需要使用以下信息：
 
 * [Dispatcher 安全核对清单](security-checklist.md)
-* [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)
+<!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
 * [优化网站缓存性能](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [在多个域中使用 Dispatcher](dispatcher-domains.md)
 * [将 SSL 与 Dispatcher 结合使用](dispatcher-ssl.md)
@@ -53,7 +53,7 @@ Dispatcher 是 Adobe Experience Manager 与企业级 Web 服务器结合使用�
 >
 >但是，Dispatcher 还可用于提高&#x200B;**作者实例**&#x200B;的响应速度。事实确实如此，尤其是在有大量用户编辑和更新网站的情况下。有关这种情况的详细信息，请参阅下面的[将 Dispatcher 与作者服务器一起使用](#using-a-dispatcher-with-an-author-server)。
 
-## 为何使用 Dispatcher 来实施缓存？ {#why-use-dispatcher-to-implement-caching}
+## 为何使用Dispatcher来实施缓存？ {#why-use-dispatcher-to-implement-caching}
 
 有两种基本方法可进行 Web 发布：
 
@@ -75,7 +75,7 @@ Dispatcher 包含根据动态站点内容生成和更新静态 HTML 的机制。
 
 此部分阐明此过程背后的原理。
 
-### 静态 Web 服务器 {#static-web-server}
+### 静态Web服务器 {#static-web-server}
 
 ![](assets/chlimage_1-3.png)
 
@@ -91,7 +91,7 @@ Dispatcher 包含根据动态站点内容生成和更新静态 HTML 的机制。
 
 通过此工作流，可创建更丰富的动态内容，从而提高网站的灵活性和功能性。但是，布局引擎需要比静态服务器更大的处理能力，因此，如果许多访客同时使用系统，则此设置的速度可能会减慢。
 
-## Dispatcher 如何执行缓存 {#how-dispatcher-performs-caching}
+## Dispatcher如何执行缓存 {#how-dispatcher-performs-caching}
 
 ![](assets/chlimage_1-5.png)
 
@@ -147,11 +147,11 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 * 一般在互相之间的关系比较复杂（如 HTML 页面）时使用自动失效。这些页面包含链接和导航条目，因此在内容更新后一般必须更新这些页面。如果您有自动生成的 PDF 或图片文件，也可选择使这些文件自动失效。
 * 除了接触 statfile 之外，自动失效并不涉及在更新时 Dispatcher 执行的任何操作。但是，接触 statfile 将自动使缓存内容过时，但并不真正地从缓存中删除内容。
 
-## Dispatcher 如何返回文档 {#how-dispatcher-returns-documents}
+## Dispatcher如何返回文档 {#how-dispatcher-returns-documents}
 
 ![](assets/chlimage_1-6.png)
 
-### 确定文档是否实施了缓存
+### 确定文档是否受限于缓存
 
 您可以[在配置文件中定义 Dispatcher 缓存的文档](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)。Dispatcher 根据可缓存文档列表检查请求。如果文档不在此列表中，则 Dispatcher 从 AEM 实例中请求该文档。
 
@@ -165,14 +165,14 @@ Dispatcher 有一个遵循自动失效机制的文件列表。当请求该列表
 >
 >GET 或 HEAD（针对 HTTP 标头）方法可由 Dispatcher 缓存。有关响应标头缓存的其他信息，请参阅[缓存 HTTP 响应标头](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)部分。
 
-### 确定文档是否已缓存
+### 确定是否缓存了文档
 
 Dispatcher 将缓存文件存储在 Web 服务器上，当做静态网站的一部分。如果用户请求一个可缓存的文档，则 Dispatcher 检查该文档是否存在于 Web 服务器的文件系统中：
 
 * 如果文档已缓存，则 Dispatcher 返回该文件。
 * 如果未缓存，则 Dispatcher 从 AEM 实例请求该文档。
 
-### 确定文档是否为最新
+### 确定文档是否为最新版本
 
 为确定文档是否为最新状态，Dispatcher 将执行两个步骤：
 
@@ -207,9 +207,9 @@ Dispatcher 将缓存文件存储在 Web 服务器上，当做静态网站的一�
 >
 >虽然单个 Dispatcher 即可耗尽可用的发布实例的容量，但对于某些罕见的应用程序而言，在两个 Dispatcher 实例之间平衡负载也可能有意义。必须仔细考虑具有多个 Dispatcher 的配置。原因是，额外的 Dispatcher 会增加可用发布实例的负载，并很容易降低大多数应用程序的性能。
 
-## Dispatcher 如何执行负载平衡 {#how-the-dispatcher-performs-load-balancing}
+## Dispatcher如何执行负载平衡 {#how-the-dispatcher-performs-load-balancing}
 
-### 性能统计数据
+### 性能统计信息
 
 Dispatcher 保留有关 AEM 每个实例处理文档的速度的内部统计信息。Dispatcher 根据这些数据估算哪个实例在应答请求时的响应速度最快，然后它在该实例上预留必要的计算时间。
 
@@ -229,7 +229,7 @@ Dispatcher 保留有关 AEM 每个实例处理文档的速度的内部统计信�
 >
 >对于&#x200B;*少数*&#x200B;应用程序，可以同时使用粘性连接和缓存；例如，显示将数据写入会话的表单。
 
-## 使用多个 Dispatcher {#using-multiple-dispatchers}
+## 使用多个Dispatch {#using-multiple-dispatchers}
 
 在复杂设置中，您可以使用多个 Dispatcher。例如，您可以使用：
 
@@ -238,7 +238,7 @@ Dispatcher 保留有关 AEM 每个实例处理文档的速度的内部统计信�
 
 在这种情况下，请确保每个请求只通过一个 Dispatcher。一个 Dispatcher 不能处理来自另一个 Dispatcher 的请求。因此，请确保两个 Dispatcher 都能直接访问 AEM 网站。
 
-## 将 Dispatcher 与 CDN 结合使用 {#using-dispatcher-with-a-cdn}
+## 将Dispatcher与CDN结合使用 {#using-dispatcher-with-a-cdn}
 
 内容交付网络 (CDN)（如 Akamai Edge Delivery 或 Amazon Cloud Front）从距离最终用户较近的站点交付内容。这样，它可以
 
@@ -258,19 +258,19 @@ Dispatcher 保留有关 AEM 每个实例处理文档的速度的内部统计信�
 
 Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CDN 服务器的响应标头的服务器。
 
-## 控制 CDN 缓存 {#controlling-a-cdn-cache}
+## 控制CDN缓存 {#controlling-a-cdn-cache}
 
 有若干方法可控制 CDN 缓存某个资源多久后再从 Dispatcher 重新获取该资源。
 
-1. 显式配置\
-   根据 mime 类型、扩展名、请求类型等，配置特定资源在 CDN 缓存中保留多久。
+1. 显式配置。
+根据mime类型、扩展、请求类型等，配置特定资源在CDN缓存中的保留时间。
 
-1. 到期和缓存控制标头\
-   如果上游服务器发送 `Expires:` 和 `Cache-Control:` HTTP 标头，则大多数 CDN 都将采用这些标头。例如，可使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模块实现此方法。
+1. 到期和缓存控制标头。
+如果上游服务器发送 `Expires:` 和 `Cache-Control:` HTTP 标头，则大多数 CDN 都将采用这些标头。例如，可使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模块实现此方法。
 
-1. 手动失效\
-   CDN 允许通过 Web 界面从缓存中删除资源。
-1. 基于 API 的失效\
+1. 手动失效。
+CDN 允许通过 Web 界面从缓存中删除资源。
+1. 基于API的失效。\
    大多数 CDN 还提供使得可从缓存中删除资源的 REST 和/或 SOAP API。
 
 在典型的 AEM 设置中，通过扩展、路径或两者进行配置（可以通过上面的第 1 点和第 2 点实现）可以设置合理的缓存期限。这些缓存期适用于不经常更改的常用资源，例如设计图像和客户端库。在部署新版本时，通常需要手动进行失效操作。
@@ -283,11 +283,11 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 >
 >另请参阅 [AEM (CQ) Dispatcher 安全性和 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)和有关 [Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)的录制演讲。
 
-## 将 Dispatcher 与创作服务器一起使用 {#using-a-dispatcher-with-an-author-server}
+## 将Dispatcher与Author服务器一起使用 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
+>如果使用[具有触屏 UI 的 AEM](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts)，请&#x200B;**不要**&#x200B;缓存创作实例内容。如果为创作实例启用了缓存，则必须禁用缓存并删除缓存目录的内容。 要禁用缓存，请编辑 `author_dispatcher.any` 文件并修改 `/cache` 部分的 `/rule` 属性，如下所示：
 
 ```xml
 /rules

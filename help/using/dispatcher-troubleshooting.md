@@ -1,5 +1,5 @@
 ---
-title: Dispatcher 问题疑难解答
+title: Dispatcher问题疑难解答
 description: 了解如何解决 Dispatcher 问题。
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -9,14 +9,14 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '539'
-ht-degree: 100%
+source-wordcount: '472'
+ht-degree: 93%
 
 ---
 
-# Dispatcher 问题疑难解答 {#troubleshooting-dispatcher-problems}
+# Dispatcher问题疑难解答 {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->请查看 [Dispatcher 知识库](https://helpx.adobe.com/cn/experience-manager/kb/index/dispatcher.html)、[解决 Dispatcher 刷新问题](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])和 [Dispatcher 常见问题解答](dispatcher-faq.md)，了解更多信息。
+>有关详细信息，请查看<!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Dispatcher刷新问题疑难解答](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager])和[Dispatcher常见问题解答](dispatcher-faq.md)。
 
 ## 检查基本配置 {#check-the-basic-configuration}
 
@@ -45,7 +45,7 @@ ht-degree: 100%
 
       * 这些筛选条件是否影响您调查的事情？
 
-## IIS 诊断工具 {#iis-diagnostic-tools}
+## IIS诊断工具 {#iis-diagnostic-tools}
 
 IIS 提供了各种跟踪工具，具体取决于实际版本：
 
@@ -54,14 +54,15 @@ IIS 提供了各种跟踪工具，具体取决于实际版本：
 
 这些工具可以帮助您监控活动。
 
-## IIS 和 404 Not Found {#iis-and-not-found}
+<!-- Both URLs in this topic 404! >
+## IIS and 404 Not Found {#iis-and-not-found}
 
-在使用 IIS 时，您可能在多种场景下遇到返回 `404 Not Found` 的情况。如果是这样，请参阅以下知识库文章。
+When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
 
-* [IIS 6/7：POST 方法返回 404](https://helpx.adobe.com/cn/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6：对包含基本路径 `/bin` 的 URL 的请求返回 `404 Not Found`](https://helpx.adobe.com/cn/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-还应检查 Dispatcher 缓存根目录和 IIS 文档根目录是否已设为同一目录。
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
 ## 删除工作流模型时出现问题 {#problems-deleting-workflow-models}
 

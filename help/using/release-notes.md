@@ -5,16 +5,16 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '1062'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
-# AEM Dispatcher 发行说明{#aem-dispatcher-release-notes}
+# AEM Dispatcher发行说明{#aem-dispatcher-release-notes}
 
-## 版本信息 {#release-information}
+## 发行版信息 {#release-information}
 
 |  |  |
 |--- |--- |
