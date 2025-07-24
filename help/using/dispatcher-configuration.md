@@ -1304,7 +1304,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 >[!NOTE]
 >
 >在配置该 glob 属性时，它应与查询参数名称一致。例如，如果要从 URL `http://example.com/path/test.html?p1=test&p2=v2` 中忽略“p1”参数，则 glob 属性应为：
->> `/0002 { /glob "p1" /type "allow" }`
+>&#x200B;> `/0002 { /glob "p1" /type "allow" }`
 
 以下示例导致 Dispatcher 忽略除 `nocache` 参数之外的所有参数。因此，Dispatcher 从不缓存包括 `nocache` 参数的请求 URL：
 
@@ -1644,7 +1644,7 @@ Dispatcher 配置文件中的多个部分使用 `glob` 属性作为客户端请�
 | `?` | 匹配任意单个字符。使用外部字符类。在字符类中，此字符按字面解释。 | `*outdoors/??/*`<br/> 匹配 geometrixx-outdoors 网站中任意语言的页面。例如，以下 HTTP 请求与 glob 模式匹配：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>以下请求不与 glob 模式匹配：<br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
 | `[ and ]` | 取消字符类的开始和结尾的标记。字符类可以包括一个或多个字符范围以及单个字符。<br/>如果目标字符与字符类中的任意字符匹配或者在定义的范围内，则出现匹配。<br/>如果不包含右括号，则模式不会生成匹配。 | `*[o]men.html*`<br/> 匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/> 不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 它表示一系列字符。用于字符类中。在字符类之外，此字符按字面解释。 | `*[m-p]men.html*` 匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>它不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 使后续的字符或字符类无效。仅用于否定字符类中的字符和字符范围。等同于 `^ wildcard`。<br/>在字符类之外，此字符按字面解释。 | `*[!o]men.html*`<br/> 匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> 不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | 使后续的字符或字符类无效。仅用于否定字符类中的字符和字符范围。等同于 `^ wildcard`。<br/>在字符类之外，此字符按字面解释。 | `*[ !o]men.html*`<br/> 匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> 不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> 不匹配以下 HTTP 请求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 使后续的字符或字符范围无效。仅用于否定字符类中的字符和字符范围。等同于 `!` 通配符。<br/>在字符类之外，此字符按字面解释。 | 应用 `!` 通配符的示例，将示例模式中的 `!` 字符替换为 `^` 字符。 |
 
 
