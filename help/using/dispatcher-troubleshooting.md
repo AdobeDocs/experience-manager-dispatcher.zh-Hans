@@ -1,5 +1,5 @@
 ---
-title: Dispatcher问题疑难解答
+title: Dispatcher 问题疑难解答
 description: 了解如何解决 Dispatcher 问题。
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,13 +10,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
-# Dispatcher问题疑难解答 {#troubleshooting-dispatcher-problems}
+# Dispatcher 问题疑难解答 {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,7 +26,7 @@ ht-degree: 93%
 
 >[!NOTE]
 >
->有关详细信息，请查看<!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Dispatcher刷新问题疑难解答](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager])和[Dispatcher常见问题解答](dispatcher-faq.md)。
+>请查看<!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[解决 Dispatcher 刷新问题](https://experienceleague.adobe.com/search.html?lang=zh-Hans#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager])和 [Dispatcher 常见问题解答](dispatcher-faq.md)，了解更多信息。
 
 ## 检查基本配置 {#check-the-basic-configuration}
 
@@ -43,9 +43,9 @@ ht-degree: 93%
 
    * 您是否已实施过滤器？
 
-      * 这些筛选条件是否影响您调查的事情？
+      * 这些过滤器是否影响您调查的事情？
 
-## IIS诊断工具 {#iis-diagnostic-tools}
+## IIS 诊断工具 {#iis-diagnostic-tools}
 
 IIS 提供了各种跟踪工具，具体取决于实际版本：
 

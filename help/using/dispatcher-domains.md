@@ -1,5 +1,5 @@
 ---
-title: 在多个域中使用Dispatcher
+title: 在多个域中使用 Dispatcher
 description: 了解如何使用 Dispatcher 处理多个 Web 域中的页面请求。
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -8,13 +8,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2986'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
-# 在多个域中使用Dispatcher {#using-dispatcher-with-multiple-domains}
+# 在多个域中使用 Dispatcher {#using-dispatcher-with-multiple-domains}
 
 <!-- This article is missing required metadata image ALT tags throughout -->
 
@@ -54,19 +54,19 @@ ht-degree: 89%
 1. Dispatcher 确定缓存的文件是否有效。如果有效，则将缓存的文件提供给客户端。
 1. 如果缓存的文件无效，Dispatcher 会从 AEM 发布实例请求新渲染的页面。
 
-## 缓存失效
+## 使缓存失效
 
-当`Dispatcher Flush`复制代理请求Dispatcher使缓存的文件失效时，存储库中内容的路径必须解析为缓存中的内容。
+当 `Dispatcher Flush` 复制代理请求 Dispatcher 使缓存文件失效时，存储库中内容的路径必须能够解析到缓存中的对应内容。
 
 ![](assets/chlimage_1-9.png)
 
-* a - 在 AEM 作者实例上激活一个页面，并将内容复制到发布实例。
-* b - `Dispatcher Flush`代理调用Dispatcher以使复制内容的缓存失效。
-* c - Dispatcher 触碰一个或多个 .stat 文件，使缓存的文件无效。
+* a - 在 AEM 作者实例上激活一个页面后，内容会被复制到发布实例。
+* b - `Dispatcher Flush` 代理调用 Dispatcher，使被复制内容的缓存失效。
+* c - Dispatcher 会更新一个或多个 .stat 文件，使缓存文件失效。
 
 要在多个域中使用 Dispatcher，必须配置 AEM、Dispatcher 和 Web 服务器。此页面上描述的解决方案是通用的，适用于大多数环境。由于一些 AEM 拓扑的复杂性，您的解决方案可能需要进一步的自定义配置才能解决特定问题。您可能必须调整示例以符合现有的 IT 基础架构和管理策略。
 
-## URL映射 {#url-mapping}
+## URL 映射 {#url-mapping}
 
 要使域 URL 和内容路径能够解析为缓存的文件，必须在此过程中转换文件路径或页面 URL。提供了以下常见策略的说明，其中将在此流程的不同时间点转换路径或 URL：
 
@@ -84,7 +84,7 @@ ht-degree: 89%
 * 域名系统将域名解析为 Web 服务器的 IP 地址。
 * Dispatcher 缓存反映了 AEM 内容存储库的目录结构。Web 服务器的文档根目录下的文件路径与存储库中文件的路径相同。
 
-## 提供的示例的环境 {#environment-for-the-provided-examples}
+## 所提供示例的环境 {#environment-for-the-provided-examples}
 
 提供的示例解决方案适用于具有以下特征的环境：
 
@@ -117,7 +117,7 @@ ht-degree: 89%
                  | - content nodes
 ```
 
-## AEM重写传入URL {#aem-rewrites-incoming-urls}
+## AEM 重写传入 URL {#aem-rewrites-incoming-urls}
 
 用于资源解析的 Sling 映射可让您将传入 URL 与 AEM 内容路径相关联。在 AEM 发布实例上创建映射，以使来自 Dispatcher 的渲染请求解析为存储库中的正确内容。
 
@@ -200,9 +200,9 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 >[!NOTE]
 >
->在AEM as a Cloud Service上，必须将单独的vhost配置与DocumentRoot一起使用，并且其级别必须高于每个子页面。 此过程默认在原型中处理。 但是，当使用多个DocumentRoot时，需要更高优先级的vhost配置来处理整个缓存的缓存失效，因为无法为每个站点单独配置它。 此新配置的ServerAlias必须接受主机标头“localhost”。
+>在 AEM as a Cloud Service 中，必须使用单独的虚拟主机配置，并且 DocumentRoot 必须比每一个子页面都高一级。在原型中已默认实施了该过程。但如果使用多个 DocumentRoot，就需要采用优先级更高的虚拟主机配置用于完成使整个缓存失效的操作，因为无法为每个站点单独配置缓存失效机制。此新配置中的 ServerAlias 必须接受主机标头“localhost”。
 
-### 配置Dispatcher以处理多个域 {#configure-dispatcher-to-handle-multiple-domains}
+### 配置 Dispatcher 以处理多个域 {#configure-dispatcher-to-handle-multiple-domains}
 
 要支持包含域名及其相应的虚拟主机的 URL，请定义以下 Dispatcher 场：
 
@@ -284,11 +284,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### 为资源解析配置Sling映射 {#configure-sling-mapping-for-resource-resolution}
+### 配置 Sling 映射以实现资源解析 {#configure-sling-mapping-for-resource-resolution}
 
-使用`Sling`映射进行资源解析，使基于域的URL解析为AEM发布实例上的内容。 资源映射将来自 Dispatcher（最初来自客户端 HTTP 请求）的传入 URL 转换为内容节点。
+使用 `Sling` 映射进行资源解析，使基于域的 URL 能够解析至 AEM 发布实例上的内容。资源映射会将来自 Dispatcher（最初源自客户端 HTTP 请求）的传入 URL 转换为对应的内容节点。
 
-要了解`Sling`资源映射，请参阅[文档中的](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html)用于资源解析的映射`Sling`。
+要了解 `Sling` 资源映射，请参阅 `Sling` 文档中的[用于资源解析的映射](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html)。
 
 通常，以下资源需要映射，但也可能需要其他的映射：
 
@@ -304,7 +304,7 @@ Dispatcher initializing (build 4.1.2)
 
 >[!NOTE]
 >
->默认Apache `Sling`重写器的Linkchecker转换器会自动修改页面中的超链接以防止链接失效。 但是，仅当链接目标是 HTML 或 HTM 文件时才执行链接重写。要更新指向其他文件类型的链接，请创建转换器组件并将它添加到 HTML 重写器管道中。
+>默认的 Apache `Sling` 重写器中的 Linkchecker 转换器会自动更改页面中的超链接，以防止链接失效。但是，仅当链接目标是 HTML 或 HTM 文件时才执行链接重写。要更新指向其他文件类型的链接，请创建转换器组件并将它添加到 HTML 重写器管道中。
 
 ### 示例资源映射节点
 
@@ -318,9 +318,9 @@ Dispatcher initializing (build 4.1.2)
 | `/etc/map/http/branda.com/etc/designs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs` |
 | `/etc/map/http/branda.com/etc/clientlibs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
-## 配置Dispatcher Flush复制代理 {#configuring-the-dispatcher-flush-replication-agent}
+## 配置 Dispatcher Flush 复制代理 {#configuring-the-dispatcher-flush-replication-agent}
 
-AEM发布实例上的`Dispatcher Flush`复制代理必须将失效请求发送到正确的Dispatcher场。 要定位场，请使用`Dispatcher Flush`复制代理的URI属性（在“传输”选项卡上）。 包含为使缓存失效而配置的 Dispatcher 场的 `/virtualhost` 属性值：
+AEM 发布实例上的 `Dispatcher Flush` 复制代理必须将失效请求发送到正确的 Dispatcher 场。要将场作为目标，请使用 `Dispatcher Flush` 复制代理的 URI 属性（在“传输”选项卡上）。包含为使缓存失效而配置的 Dispatcher 场的 `/virtualhost` 属性值：
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -328,7 +328,7 @@ AEM发布实例上的`Dispatcher Flush`复制代理必须将失效请求发送�
 
 ![](assets/chlimage_1-12.png)
 
-## Web服务器重写传入URL {#the-web-server-rewrites-incoming-urls}
+## Web 服务器重写传入 URL {#the-web-server-rewrites-incoming-urls}
 
 使用 Web 服务器的内部 URL 重写功能将基于域的 URL 转换为 Dispatcher 缓存中的文件路径。例如，`https://brandA.com/en.html` 页面的客户端请求将转换为 Web 服务器的文档根目录中的 `content/sitea/en.html` 文件。
 
@@ -414,7 +414,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-### 配置Dispatcher场 {#configure-a-dispatcher-farm}
+### 配置 Dispatcher 场 {#configure-a-dispatcher-farm}
 
 在 Web 服务器重写 URL 时，Dispatcher 需要根据[配置 Dispatcher](dispatcher-configuration.md) 定义的单个场。需要以下配置才能支持 Web 服务器虚拟主机和 URL 重命名规则：
 
@@ -500,23 +500,23 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 >[!NOTE]
 >
->由于定义了单个Dispatcher场，因此AEM发布实例上的`Dispatcher Flush`复制代理不需要特殊配置。
+>由于定义了单个 Dispatcher 场，因此 AEM 发布实例上的 `Dispatcher Flush` 复制代理不需要专门配置。
 
-## 重写指向非HTML文件的链接 {#rewriting-links-to-non-html-files}
+## 重写指向非 HTML 文件的链接 {#rewriting-links-to-non-html-files}
 
 要重写对具有 .html 或 .htm 以外的扩展名的文件的引用，请创建 Sling 重写器转换器组件并将它添加到默认重写器管道中。
 
 当资源路径无法在 Web 服务器上下文中正确解析时重写引用。例如，当图像生成组件创建链接（例如 /content/sitea/en/products.navimage.png）时，需要使用转换器。[如何创建功能完善的 Internet 网站](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/developing/introduction/the-basics)的 `topnav` 组件将创建此类链接。
 
-[`Sling`重写器](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)是一个后处理`Sling`输出的模块。 重写器的 SAX 管道实现由一个生成器、一个或多个转换器和一个序列化器组成：
+[`Sling`重写器](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)模块用于对 `Sling` 输出进行后处理。重写器的 SAX 管道实施由一个生成器、一个或多个转换器以及一个序列化器组成：
 
-* **生成器：**&#x200B;解析`Sling`输出流(HTML文档)并在遇到特定元素类型时生成SAX事件。
+* **生成器**：解析 `Sling` 输出流（HTML 文档）并在遇到特定元素类型时生成 SAX 事件。
 * **转换器：**&#x200B;侦听 SAX 事件，从而修改事件目标（一个 HTML 元素）。重写器管道包含零个或多个转换器。转换器按顺序执行，并将 SAX 事件传递到序列中的下一个转换器。
 * **序列化器：**&#x200B;序列化输出，并包含每个转换器中的修改。
 
 ![](assets/chlimage_1-15.png)
 
-### AEM默认重写器管道 {#the-aem-default-rewriter-pipeline}
+### AEM 默认重写器管道 {#the-aem-default-rewriter-pipeline}
 
 AEM 使用默认管道重写器来处理 text/html 类型的文档：
 
@@ -553,7 +553,7 @@ AEM 使用默认管道重写器来处理 text/html 类型的文档：
 
 这些例子不够有力。请勿在生产环境中使用它们。
 
-### 示例 TransformerFactory 实施 {#example-transformerfactory-implementation}
+### TransformerFactory 实施示例 {#example-transformerfactory-implementation}
 
 ```java
 package com.adobe.example;
@@ -579,7 +579,7 @@ public class MyRewriterTransformerFactory implements TransformerFactory {
 }
 ```
 
-### 示例转换器实施 {#example-transformer-implementation}
+### 转换器实施示例 {#example-transformer-implementation}
 
 ```java
 package com.adobe.example;

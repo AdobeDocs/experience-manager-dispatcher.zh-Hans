@@ -1,6 +1,6 @@
 ---
-title: 使从AEM中缓存的页面失效
-description: 了解如何配置 Dispatcher 和 AEM 之间的交互以确保高效的缓存管理。
+title: 从 AEM 使缓存页面失效
+description: 了解如何配置 Dispatcher 与 AEM 之间的交互，以确保实现高效的缓存管理。
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -10,27 +10,27 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
-# 使从AEM中缓存的页面失效 {#invalidating-cached-pages-from-aem}
+# 从 AEM 使缓存页面失效 {#invalidating-cached-pages-from-aem}
 
 在将 Dispatcher 与 AEM 结合使用时，必须配置两者之间的交互以确保高效的缓存管理。根据您的环境，配置还可以提高性能。
 
-## 设置AEM用户帐户 {#setting-up-aem-user-accounts}
+## 设置 AEM 用户帐户 {#setting-up-aem-user-accounts}
 
-默认 `admin` 用户帐户用于对默认安装的复制代理进行身份验证。创建一个用于复制代理的专用用户帐户。
+默认的 `admin` 用户帐户用于对默认安装的复制代理进行身份验证。创建一个用于复制代理的专用用户帐户。
 
-有关详细信息，请参阅AEM安全检查清单的[配置复制和转移用户](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
+如需了解更多信息，请参阅 AEM 安全检查清单中的[配置复制和传输用户](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)部分。
 
-<!-- OLD URL from above https://helpx.adobe.com/cn/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## 使创作环境中的Dispatcher缓存失效 {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## 从作者环境使 Dispatcher 缓存失效 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-发布页面时，AEM 创作实例上的复制代理会向 Dispatcher 发送缓存失效请求。Dispatcher 在发布新内容时最终刷新缓存中的文件。
+页面发布时，AEM 作者实例上的复制代理会向 Dispatcher 发送缓存失效请求。Dispatcher 在发布新内容时最终刷新缓存中的文件。
 
 <!-- 
 
@@ -80,7 +80,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 * 发布和缓存失效同时发生。根据时机的不同，用户可能会在刚从缓存中删除一个页面之后、在发布新页面之前请求该页面。AEM 此时会返回旧页面，并且 Dispatcher 会再次缓存它。对于大型网站来说，这种情况更常见。
 
-## 使发布实例中的Dispatcher缓存失效 {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## 从发布实例使 Dispatcher 缓存失效 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 在某些情况下，可以通过将缓存管理从创作环境转移到发布实例来提高性能。随后，发布环境（而不是 AEM 创作环境）会在收到发布的页面时向 Dispatcher 发送缓存失效请求。
 
@@ -120,7 +120,7 @@ Comment Type: draft
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## 手动使Dispatcher缓存失效 {#manually-invalidating-the-dispatcher-cache}
+## 手动使 Dispatcher 缓存失效 {#manually-invalidating-the-dispatcher-cache}
 
 要在不激活页面的情况下使 Dispatcher 缓存失效（或进行刷新），您可以向 Dispatcher 发出 HTTP 请求。例如，您可以创建一个 AEM 应用程序，以便管理员或其他应用程序能够刷新缓存。
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-要立即重新缓存的页面路径将在消息正文的单独行中列出。`CQ-Handle` 的值是使要重新缓存的页面失效的页面路径。（请参阅`/statfileslevel`Cache[配置项的](dispatcher-configuration.md#main-pars_146_44_0010)参数。） 以下示例HTTP请求消息指示删除并重新缓存`/content/geometrixx-outdoors/en.html page`：
+要立即重新缓存的页面路径将在消息正文的单独行中列出。`CQ-Handle` 的值是一个页面的路径，用于使页面失效后重新进行缓存。（请参阅[缓存](dispatcher-configuration.md#main-pars_146_44_0010)配置项中的 `/statfileslevel` 参数。）以下 HTTP 请求消息示例将删除 `/content/geometrixx-outdoors/en.html page` 并重新进行缓存：
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
@@ -181,7 +181,7 @@ Content-Length: 36
 /content/geometrixx-outdoors/en.html
 ```
 
-### 示例刷新 servlet {#example-flush-servlet}
+### 刷新 Servlet 示例 {#example-flush-servlet}
 
 以下代码实施一个向 Dispatcher 发送失效请求的 servlet。此 servlet 接收包含 `handle` 和 `page` 参数的请求消息。这些参数分别提供要重新缓存的页面的 `CQ-Handle` 标头和路径的值。此 servlet 使用这些值为 Dispatcher 构造 HTTP 请求。
 

@@ -1,23 +1,23 @@
 ---
-title: 优化网站缓存性能
-description: 了解如何设计您的网站以最大限度地提高缓存优势。
+title: 优化网站以提升缓存性能
+description: 了解如何设计网站，以最大限度提升缓存性能优势。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/cn/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
 
-# 优化网站缓存性能 {#optimizing-a-website-for-cache-performance}
+# 优化网站以提升缓存性能 {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -31,7 +31,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Dispatcher 版本独立于 AEM。如果您点击了 Dispatcher 文档的链接，则可能重定向到此页面。该链接嵌入在 AEM 先前版本的文档中。
+>Dispatcher 的版本与 AEM 不相关。如果您点击了 Dispatcher 文档的链接，则可能重定向到此页面。该链接嵌入在 AEM 先前版本的文档中。
 
 Dispatcher 提供了多个可用于优化性能的内置机制。此部分介绍了如何设计您的网站以最大限度地提高缓存优势。
 
@@ -44,9 +44,9 @@ Dispatcher 提供了多个可用于优化性能的内置机制。此部分介绍
 >
 >通常，许多缓存策略涉及选择完好的 URL，而且不依赖此类额外数据。
 
-## 使用一致的页面编码 {#using-consistent-page-encoding}
+## 使用一致的页面编码方式 {#using-consistent-page-encoding}
 
-HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，则可能会出现问题。在此情况下，当 Dispatcher 从缓存中提供一个页面时，Web 服务器的默认编码将用于该页面。可通过两种方式避免此问题：
+HTTP 请求标头不会被缓存，因此如果将页面编码信息存储在标头中，可能会导致出现问题。在此情况下，当 Dispatcher 从缓存中提供一个页面时，Web 服务器的默认编码将用于该页面。可通过两种方式避免此问题：
 
 * 如果您只使用一种编码，请确保 Web 服务器上使用的编码与 AEM 网站的默认编码相同。
 * 要设置编码，使用 HTML `head` 部分中的 `<META>` 标记，如以下示例所示：
@@ -55,9 +55,9 @@ HTTP 请求标头未缓存，因此如果在标头中存储页面编码信息，
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## 避免URL参数 {#avoid-url-parameters}
+## 避免使用 URL 参数 {#avoid-url-parameters}
 
-如果可能，请消除要缓存的页面的 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下 URL（除非对 Dispatcher 进行[相应配置](dispatcher-configuration.md#main-pars_title_24)）：
+如有可能，请避免为需要缓存的页面使用 URL 参数。例如，如果您有一个图片库，则绝不会缓存以下 URL（除非对 Dispatcher 进行[相应配置](dispatcher-configuration.md#main-pars_title_24)）：
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -93,7 +93,7 @@ www.myCompany.com/news/main.large.html
 >
 >`www.myCompany.com/news/main.print.html`
 >
->通过使用模板定义的脚本通配，您可以指定单独的脚本来渲染打印页面。
+>通过模板定义中的脚本通配功能，您可以指定一个用于渲染打印页面的独立脚本。
 
 ## 使用作标题的图像文件失效 {#invalidating-image-files-used-as-titles}
 
@@ -143,7 +143,7 @@ Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进
 
 [粘性连接](dispatcher.md#TheBenefitsofLoadBalancing)可确保同一个用户的文档全部在同一服务器上撰写。如果用户在退出此文件夹不久后返回，则此连接仍保持粘性。定义一个文件夹，以便其可以保存网站需要粘性连接的所有文档。尽量不要在该文件夹中放入其他文件。如果您使用个性化的页面和会话数据，这样会影响负载平衡。
 
-## MIME类型 {#mime-types}
+## MIME 类型 {#mime-types}
 
 浏览器可通过两种方式确定文件的类型：
 

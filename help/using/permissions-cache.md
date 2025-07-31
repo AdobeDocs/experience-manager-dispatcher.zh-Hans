@@ -1,21 +1,21 @@
 ---
 title: 缓存受保护内容
-description: 了解权限敏感缓存在 Dispatcher 中的工作方式。
+description: 了解 Dispatcher 中的权限敏感型缓存机制的工作原理。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '923'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
 # 缓存受保护内容 {#caching-secured-content}
 
-利用权限敏感型缓存，您可以缓存受保护页面。Dispatcher 会先检查用户对页面的访问权限，然后再传递缓存页面。
+权限敏感型缓存可用于缓存受保护的页面。Dispatcher 会先检查用户对页面的访问权限，然后再传递缓存页面。
 
 Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活此模块后，Dispatcher 会调用 AEM servlet 以对请求的内容执行用户身份验证和授权。servlet 响应将确定是否将内容从缓存传送到 Web 浏览器。
 
@@ -70,7 +70,7 @@ Dispatcher 包含实现权限敏感型缓存的 AuthChecker 模块。在激活�
 >[!NOTE]
 >
 >当 Dispatcher 前面有 CDN（或任何其他缓存）时，您应设置相应的缓存标头，以使 CDN 不缓存专用内容。例如：`Header always set Cache-Control private`。
->&#x200B;>对于 AEM as a Cloud Service，请参阅[缓存](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching)页面，了解有关如何设置专用缓存标头的更多详细信息。
+>>对于 AEM as a Cloud Service，请参阅[缓存](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching)页面，了解有关如何设置专用缓存标头的更多详细信息。
 
 ## 创建授权检查程序 servlet {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ servlet 响应消息必须包含以下 HTTP 状态代码：
 
 >[!NOTE]
 >
->必须在`Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver)服务中启用sling.servlet.paths属性的值。
+>必须在 `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver) 服务中启用 sling.servlet.paths 属性的值。
 
 ### 示例 servlet {#example-servlet}
 

@@ -1,6 +1,6 @@
 ---
-title: Dispatcher安全核对清单
-description: 了解生产前应完成的 Dispatcher 安全核对清单。
+title: Dispatcher 安全检查清单
+description: 了解在投入生产环境之前应完成的 Dispatcher 安全检查清单。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -11,13 +11,13 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '582'
-ht-degree: 85%
+ht-degree: 100%
 
 ---
 
-# Dispatcher安全核对清单{#the-dispatcher-security-checklist}
+# Dispatcher 安全检查清单{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -36,7 +36,7 @@ Adobe 建议您在开始生产前完成以下核对清单。
 >
 >在上线之前完成 AEM 版本的安全核对清单。请参阅相应的 [Adobe Experience Manager 文档](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/security/security-checklist)。
 
-## 使用最新版本的Dispatcher {#use-the-latest-version-of-dispatcher}
+## 使用最新版本的 Dispatcher {#use-the-latest-version-of-dispatcher}
 
 安装适用于您平台的最新可用版本。升级您的 Dispatcher 实例以使用最新版本以利用产品和安全增强功能。 请参阅[安装 Dispatcher](dispatcher-install.md)。
 
@@ -73,32 +73,32 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## 限制访问 {#restrict-access}
+## 限制访问权限 {#restrict-access}
 
-在配置 Dispatcher 时应尽可能多地限制外部访问。请参阅 Dispatcher 文档中的[示例 /filter 部分](dispatcher-configuration.md#main-pars_184_1_title)。
+在配置 Dispatcher 时应尽可能多地限制外部访问。请参阅 Dispatcher 文档中的[示例/过滤器部分](dispatcher-configuration.md#main-pars_184_1_title)。
 
-## 确保对管理URL的访问被拒绝 {#make-sure-access-to-administrative-urls-is-denied}
+## 确保拒绝对管理类 URL 的访问权限 {#make-sure-access-to-administrative-urls-is-denied}
 
-请务必使用过滤器阻止对任何管理 URL 的外部访问，例如 Web 控制台。
+请务必使用过滤器阻止外部访问所有管理类 URL，例如网页控制台。
 
 有关必须阻止的 URL 的列表，请参阅[测试 Dispatcher 安全性](dispatcher-configuration.md#testing-dispatcher-security)。
 
-## 使用允许列表列入阻止列表而非 {#use-allowlists-instead-of-blocklists}
+## 使用允许列表而非阻止列表 {#use-allowlists-instead-of-blocklists}
 
-允许列表是提供访问控制的更好方式，因为它们本身会假定所有访问请求都应被拒绝（明确属于允许列表的访问请求除外）。此模型可以对在特定配置阶段可能尚未审查或考虑的新请求进行更严格的控制。
+允许列表是一种更好的访问控制方式，因为它默认拒绝所有访问请求，除非该请求已被明确列入允许列表。此模型可以对在特定配置阶段可能尚未审查或考虑的新请求进行更严格的控制。
 
-## 使用专用系统用户运行Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
+## 以专用系统用户身份运行 Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
-配置Dispatcher，以便权限最低的专用用户帐户运行Web服务器。 Adobe建议您只授予对Dispatcher缓存文件夹的写入权限。
+配置 Dispatcher，确保通过一个专用的、权限最小化的用户帐户运行 Web 服务器。Adobe 建议仅授予对 Dispatcher 缓存文件夹的写入权限。
 
 此外，IIS 用户必须按如下方式配置其网站：
 
 1. 在网站的物理路径设置中，选择&#x200B;**以特定用户身份连接**。
 1. 设置用户。
 
-## 防御拒绝服务(DoS)攻击 {#prevent-denial-of-service-dos-attacks}
+## 防御拒绝服务 (DoS) 攻击 {#prevent-denial-of-service-dos-attacks}
 
-拒绝服务 (DoS) 攻击是一种试图让计算机资源对其目标用户不可用的攻击。
+拒绝服务（DoS）攻击是一种试图使计算机资源无法供其预期用户使用的攻击行为。
 
 在 Dispatcher 级别，可通过两种配置方法来防御 DoS 攻击：[过滤器](https://experienceleague.adobe.com/zh-hans/docs#/filter)
 
@@ -146,9 +146,9 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## 配置Dispatcher以防御CSRF攻击 {#configure-dispatcher-to-prevent-csrf-attacks}
+## 配置 Dispatcher 以防御 CSRF 攻击 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM 提供了一个用于防御跨站点请求伪造攻击的[框架](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)。要正确使用该框架，请执行以下操作，在 Dispatcher 中允许支持 CSRF 令牌：
+AEM 提供了一个[框架](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)，用于防止跨站点请求伪造攻击。要正确使用该框架，请执行以下操作，在 Dispatcher 中允许支持 CSRF 令牌：
 
 1. 创建过滤器以允许 `/libs/granite/csrf/token.json` 路径；
 1. 将 `CSRF-Token` 标头添加到 Dispatcher 配置的 `clientheaders` 部分。
@@ -161,5 +161,5 @@ AEM 提供了一个用于防御跨站点请求伪造攻击的[框架](https://ex
 
 ## 执行渗透测试 {#perform-a-penetration-test}
 
-Adobe 建议您在开始生产之前对 AEM 基础架构执行渗透测试。
+Adobe 建议在部署到生产环境之前，对您的 AEM 基础架构执行一次渗透测试。
 

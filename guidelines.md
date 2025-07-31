@@ -1,8 +1,8 @@
 ---
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '714'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 # Adobe Experience Manager 文档内容贡献准则
@@ -31,13 +31,13 @@ AEM 文档涵盖标准用例。超出产品标准安装和使用范围的用例�
 
 AEM 文档涵盖标准用例。因此，不会记录错误、错误产生的影响以及相应的解决方法。
 
-此规则的例外情况适用于发行说明，发行说明中可能会列出已知问题和产品管理部门批准的可能解决方案。
+此发行说明适用此规则的例外情况，可将已知问题与产品管理团队已批准的可能解决方法共同列出。
 
 ### 贡献的文档内容不用于回答技术问题。
 
 如果您有关于改进 AEM 文档的任何想法，欢迎贡献内容。但是，任何评论、问题和拉取请求仅适用于&#x200B;*贡献内容*。它们不用于回答有关如何使用 AEM、实施 AEM 项目，或解决技术难题的问题。
 
-您可以报告有关 AEM 使用的问题或技术错误。通过 [Experience Cloud 企业支持门户](https://experienceleague.adobe.com/zh-hans?support-solution=General#support)或在 [Experience Manager 社区中讨论](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community)，使用正常支持流程。
+您可以报告有关 AEM 使用的问题或技术错误。通过 [Experience Cloud 企业支持门户](https://experienceleague.adobe.com/?support-solution=General#support)或在 [Experience Manager 社区中讨论](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community)，使用正常支持流程。
 
 ***AEM 文档贡献内容不是 Adobe 客户服务的替代品***，任何试图获取支持相关问题答案的此类贡献内容都将遭到拒绝。
 
