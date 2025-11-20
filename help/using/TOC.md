@@ -11,7 +11,7 @@ feature: Dispatcher
 topic: Administration
 role: Admin
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '81'
 ht-degree: 100%
 
