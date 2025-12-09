@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
 workflow-type: tm+mt
-source-wordcount: '3075'
-ht-degree: 100%
+source-wordcount: '3065'
+ht-degree: 98%
 
 ---
 
@@ -129,7 +129,7 @@ Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内
 应注意以下几点：
 
 * 内容更新一般与“知道”必须替换哪些内容的创作系统配合使用。
-* 会删除受内容更新影响的文件，但不会立即替换。下次再请求此类文件时，Dispatcher 将从 AEM 实例获取新文件，并将其放置在缓存中，从而覆盖旧内容。
+* 受内容更新影响的文件会被删除，但不会立即替换。 下次请求该文件时，Dispatcher将从AEM实例中检索更新版本，并替换缓存的副本。
 * 通常情况下，自动生成的图片（包含来自页面的文本）将存储在以相同句柄开头的图片文件中 - 从而确保存在关联以便于删除。例如，您可以将 mypage.html 页面的标题文本作为 mypage.titlePicture.gif 图片存储在相同的文件夹中。这样每次更新页面后就会自动从缓存中删除图片，您就可以确保图片始终反映页面的最新版本。
 * 您可能有多个 statfile，例如每个语言文件夹一个。如果页面已更新，AEM 将查找包含 statfile 的下一个父文件夹，然后处理&#x200B;**&#x200B;该文件。
 
@@ -281,7 +281,7 @@ CDN 支持通过 Web 界面从缓存中移除资源。
 
 >[!NOTE]
 >
->另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)的录制演示。
+>另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#)的录制演示。
 
 ## 将 Dispatcher 与 Author 服务器结合使用 {#using-a-dispatcher-with-an-author-server}
 
