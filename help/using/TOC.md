@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+source-git-commit: fc4c45e045ee1a67f3d2ae6c005a88afde09f206
 workflow-type: tm+mt
-source-wordcount: '81'
-ht-degree: 100%
+source-wordcount: '99'
+ht-degree: 93%
 
 ---
 
@@ -25,10 +25,11 @@ ht-degree: 100%
    + [安装 Dispatcher](dispatcher-install.md)
    + [Dispatcher 安全检查清单](security-checklist.md)
    + [AEM Dispatcher 发行说明](release-notes.md)
-+ 配置  {#configuring}
++ 配置 {#configuring}
    + [配置 Dispatcher](dispatcher-configuration.md)
    + [从 AEM 使缓存页面失效](page-invalidate.md)
-   + [优化网站缓存性能](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+   + [用于CDN重新验证的Dispatcher ETag增强功能](dispatcher-etag-enhancement.md)
+   + [优化网站以提升缓存性能](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [缓存受保护内容](permissions-cache.md)
    + [在多个域中使用 AEM Dispatcher](dispatcher-domains.md)
    + [将 SSL 与 AEM Dispatcher 结合使用](dispatcher-ssl.md)
