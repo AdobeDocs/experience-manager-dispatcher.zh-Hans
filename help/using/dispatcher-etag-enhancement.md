@@ -67,6 +67,6 @@ FileETag none
 
 有关Dispatcher中标头缓存和`ETag`处理的面向客户的基准指南，请参阅：
 
-- [配置Dispatcher — 缓存HTTP响应标头](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [配置Dispatcher — 缓存HTTP响应标头](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 “此功能在Dispatcher `2.0.264` (AEM SDK `2026.2.24464`)中可用。 启用后，Dispatcher可以根据缓存的`ETag`值验证`If-None-Match`，并在缓存命中时返回`304 Not Modified`。 在AEM as a Cloud Service中，这是受支持的，可以通过Cloud Manager环境配置启用它。”
