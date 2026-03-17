@@ -6,13 +6,13 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 jcr-lastmodifiedby: remove-legacypath-6-1
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '582'
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '625'
 ht-degree: 100%
 
 ---
@@ -34,11 +34,11 @@ Adobe 建议您在开始生产前完成以下核对清单。
 
 >[!CAUTION]
 >
->在上线之前完成 AEM 版本的安全核对清单。请参阅相应的 [Adobe Experience Manager 文档](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/security/security-checklist)。
+>在上线之前完成 AEM 版本的安全核对清单。 请参阅相应的 [Adobe Experience Manager 文档](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-65/content/security/security-checklist)。
 
 ## 使用最新版本的 Dispatcher {#use-the-latest-version-of-dispatcher}
 
-安装适用于您平台的最新可用版本。升级您的 Dispatcher 实例以使用最新版本以利用产品和安全增强功能。 请参阅[安装 Dispatcher](dispatcher-install.md)。
+安装适用于您平台的最新可用版本。 升级您的 Dispatcher 实例以使用最新版本以利用产品和安全增强功能。 请参阅[安装 Dispatcher](dispatcher-install.md)。
 
 >[!NOTE]
 >
@@ -75,7 +75,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## 限制访问权限 {#restrict-access}
 
-在配置 Dispatcher 时应尽可能多地限制外部访问。请参阅 Dispatcher 文档中的[示例/过滤器部分](dispatcher-configuration.md#main-pars_184_1_title)。
+在配置 Dispatcher 时应尽可能多地限制外部访问。 请参阅 Dispatcher 文档中的[示例/过滤器部分](dispatcher-configuration.md#main-pars_184_1_title)。
 
 ## 确保拒绝对管理类 URL 的访问权限 {#make-sure-access-to-administrative-urls-is-denied}
 
@@ -85,11 +85,11 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## 使用允许列表而非阻止列表 {#use-allowlists-instead-of-blocklists}
 
-允许列表是一种更好的访问控制方式，因为它默认拒绝所有访问请求，除非该请求已被明确列入允许列表。此模型可以对在特定配置阶段可能尚未审查或考虑的新请求进行更严格的控制。
+允许列表是一种更好的访问控制方式，因为它默认拒绝所有访问请求，除非该请求已被明确列入允许列表。 此模型可以对在特定配置阶段可能尚未审查或考虑的新请求进行更严格的控制。
 
 ## 以专用系统用户身份运行 Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
-配置 Dispatcher，确保通过一个专用的、权限最小化的用户帐户运行 Web 服务器。Adobe 建议仅授予对 Dispatcher 缓存文件夹的写入权限。
+配置 Dispatcher，确保通过一个专用的、权限最小化的用户帐户运行 Web 服务器。 Adobe 建议仅授予对 Dispatcher 缓存文件夹的写入权限。
 
 此外，IIS 用户必须按如下方式配置其网站：
 
@@ -116,7 +116,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
    * `.pdf`
    * `.ppt`
 
-  [限制外部访问](#restrict-access)的配置文件示例。它包括对 MIME 类型的限制。
+  [限制外部访问](#restrict-access)的配置文件示例。 它包括对 MIME 类型的限制。
 
 要在发布实例上启用全部功能，请配置过滤器以阻止对以下节点的访问：
 
@@ -148,7 +148,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## 配置 Dispatcher 以防御 CSRF 攻击 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM 提供了一个[框架](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)，用于防止跨站点请求伪造攻击。要正确使用该框架，请执行以下操作，在 Dispatcher 中允许支持 CSRF 令牌：
+AEM 提供了一个[框架](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)，用于防止跨站点请求伪造攻击。 要正确使用该框架，请执行以下操作，在 Dispatcher 中允许支持 CSRF 令牌：
 
 1. 创建过滤器以允许 `/libs/granite/csrf/token.json` 路径；
 1. 将 `CSRF-Token` 标头添加到 Dispatcher 配置的 `clientheaders` 部分。

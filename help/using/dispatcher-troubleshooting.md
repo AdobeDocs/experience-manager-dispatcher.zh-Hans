@@ -9,9 +9,9 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '472'
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '488'
 ht-degree: 100%
 
 ---
@@ -20,9 +20,9 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 版本独立于 AEM。不过，Dispatcher 文档已嵌入到 AEM 文档中。始终使用嵌入到最新版本的 AEM 文档中的 Dispatcher 文档。
+>Dispatcher 版本独立于 AEM。 不过，Dispatcher 文档已嵌入到 AEM 文档中。 始终使用嵌入到最新版本的 AEM 文档中的 Dispatcher 文档。
 >
->如果您点击了 Dispatcher 文档的链接，则可能重定向到此页面。该链接嵌入在 AEM 先前版本的文档中。
+>如果您点击了 Dispatcher 文档的链接，则可能重定向到此页面。 该链接嵌入在 AEM 先前版本的文档中。
 
 >[!NOTE]
 >
@@ -33,7 +33,7 @@ ht-degree: 100%
 与往常一样，首要步骤是检查基本情况：
 
 * [确认基本操作](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* 查看 Web 服务器和 Dispatcher 的所有日志文件。如有必要，可提高用于 Dispatcher [日志记录](/help/using/dispatcher-configuration.md#logging)的 `loglevel`。
+* 查看 Web 服务器和 Dispatcher 的所有日志文件。 如有必要，可提高用于 Dispatcher [日志记录](/help/using/dispatcher-configuration.md#logging)的 `loglevel`。
 
 * [检查您的配置](/help/using/dispatcher-configuration.md)：
 
@@ -54,7 +54,8 @@ IIS 提供了各种跟踪工具，具体取决于实际版本：
 
 这些工具可以帮助您监控活动。
 
-<!-- Both URLs in this topic 404! >
+<!-- 
+Both URLs in this topic 404! >
 ## IIS and 404 Not Found {#iis-and-not-found}
 
 When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
@@ -62,7 +63,8 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. 
+-->
 
 ## 删除工作流模型时出现问题 {#problems-deleting-workflow-models}
 
@@ -116,9 +118,9 @@ Also check that the Dispatcher cache root and the IIS document root are set to t
 
 ### Apache 2.x {#apache-x}
 
-在 Apache 2.x 中，情况则有所不同。模块可以处理请求的不同阶段，例如 URL 修复。`mod_dir` 通过将请求（当 URL 映射到目录时）重定向到追加了 `/` 的 URL 而处理此阶段。
+在 Apache 2.x 中，情况则有所不同。 模块可以处理请求的不同阶段，例如 URL 修复。 `mod_dir` 通过将请求（当 URL 映射到目录时）重定向到追加了 `/` 的 URL 而处理此阶段。
 
-Dispatcher 不拦截 `mod_dir` 修复，而是完整地处理对重定向的 URL（即追加了 `/`）的请求。如果远程服务器（例如 AEM）处理对 `/a_path` 的请求的方式与处理对 `/a_path/` 的请求（当 `/a_path` 映射到现有目录时）的方式不同，则此过程可能会引发问题。
+Dispatcher 不拦截 `mod_dir` 修复，而是完整地处理对重定向的 URL（即追加了 `/`）的请求。 如果远程服务器（例如 AEM）处理对 `/a_path` 的请求的方式与处理对 `/a_path/` 的请求（当 `/a_path` 映射到现有目录时）的方式不同，则此过程可能会引发问题。
 
 如果出现这种情况，您必须：
 
