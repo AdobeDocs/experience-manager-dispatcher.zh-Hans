@@ -2,7 +2,7 @@
 cloud: Experience Cloud
 solution: Experience Manager
 type: Documentation
-git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.en
+git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hans
 index: true
 recommendations: noDisplay
 source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
