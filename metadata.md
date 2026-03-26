@@ -1,11 +1,13 @@
 ---
 cloud: Experience Cloud
 solution: Experience Manager
+landing-page-name: experience-manager
+landing-page-breadcrumb-title: AEM
 type: Documentation
-git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hans
+git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.en
 index: true
 recommendations: noDisplay
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+source-git-commit: 8bb3de67622990b527e798325d9f164ce11bea61
 workflow-type: tm+mt
 source-wordcount: '129'
 ht-degree: 0%
