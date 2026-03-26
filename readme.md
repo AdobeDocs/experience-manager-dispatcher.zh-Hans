@@ -7,4 +7,4 @@ ht-degree: 0%
 ---
 # 已存档
 
-此存储库已迁移到<https://github.com/Adobe-Enterprise-Docs/experience-manager-dispatcher.en>
+此存储库已迁移到<https://github.com/Adobe-Enterprise-Docs/experience-manager-dispatcher.zh-Hans>
