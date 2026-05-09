@@ -6,7 +6,7 @@ product_v2:
 landing-page-name: experience-manager
 landing-page-breadcrumb-title: AEM
 type: Documentation
-git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.en
+git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hans
 index: true
 recommendations: noDisplay
 source-git-commit: bc7f9761e92d11304521fe498c48b3a5accbf247
