@@ -6,10 +6,16 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
-product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2:
+  - id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: c1579802-ddd4-4214-8a91-97b2066abe11
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
 source-wordcount: 3169
@@ -129,7 +135,7 @@ Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内
 
 1. 它从缓存中删除修改过的文件。
 1. 它从缓存中删除以相同句柄开头的所有文件。 例如，如果更新了文件 `/en/index.html`，则会删除所有以 `/en/index.` 开头的文件。 通过此机制，您可设计出缓存效率高的网站，尤其是涉及图片导航的网站。
-1. 它“接触”**&#x200B;所谓的 **statfile**，这样将更新 statfile 的时间戳以指示上次更改的日期。
+1. 它“接触”**&#x200B;所谓的 &#x200B;** statfile**，这样将更新 statfile 的时间戳以指示上次更改的日期。
 
 应注意以下几点：
 
