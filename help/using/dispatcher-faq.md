@@ -3,18 +3,13 @@ title: Dispatcher 热门问题
 description: Adobe Experience Manager Dispatcher 的热门问题。
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 TQID: https://experienceleague.adobe.com/NQdA2gQ1pBYAiVrjO1arci4qp6cGIKpZZHWimEfB9T0
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -112,9 +107,9 @@ Content-Length: 0
 
 Dispatcher 删除名称与 CQ-Handle 标头值匹配的缓存的文件和文件夹。 例如，`/content/geomtrixx-outdoors/en` 的 CQ-Handle 与以下项匹配：
 
-geometrixx-outdoors 目录中名称（任何文件扩展名）为 en 的所有文件。
-en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含页面子节点的缓存渲染）。
-只有 `CQ-Action` 为 `Delete` 或 `Deactivate`，才能删除 `en` 目录。
+geometrixx-outdoors目录中名称（任何文件扩展名）为en的所有文件。
+en目录下任何名为`_jcr_content`的目录（如果存在，则包含页面的子节点的缓存渲染）。
+仅当`CQ-Action`是`Delete`或`Deactivate`时才删除目录`en`。
 
 有关此主题的其他详细信息，请参阅[手动使 Dispatcher 缓存失效](page-invalidate.md)。
 
@@ -158,11 +153,11 @@ en 目录下任何名为“`_jcr_content`”的目录（如果存在，则包含
 
 ## 其他
 
-Dispatcher 如何确定文档是否为最新版本？
-为了确定文档是否为最新版本，Dispatcher 会执行以下操作：
+Dispatcher如何确定文档是否为最新版本？
+要确定文档是否为最新版本，Dispatcher会执行以下操作：
 
-它检查文档是否遵循自动失效机制。 如果不是，则认为该文档是最新的。
-如果该文档配置为自动失效，则 Dispatcher 检查它比最后一次可用更改旧还是新。 如果较旧，则 Dispatcher 从 AEM 实例请求当前版本，并替换缓存中的版本。
+它检查文档是否遵循自动失效机制。如果不会，则将该文档视为最新版本。
+如果文档配置为自动失效，Dispatcher会检查它比最后一次可用更改旧还是新。如果版本较旧，Dispatcher会从AEM实例请求当前版本，并替换缓存中的版本。
 
 ### Dispatcher 如何返回文档？
 

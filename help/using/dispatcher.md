@@ -6,19 +6,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-feature_v2:
-  - id: b1210526-416b-4ef6-bcc0-1692e99f30e9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -135,7 +129,7 @@ Dispatcher 有两种主要的方法可在对网站作出更改时更新缓存内
 
 1. 它从缓存中删除修改过的文件。
 1. 它从缓存中删除以相同句柄开头的所有文件。 例如，如果更新了文件 `/en/index.html`，则会删除所有以 `/en/index.` 开头的文件。 通过此机制，您可设计出缓存效率高的网站，尤其是涉及图片导航的网站。
-1. 它“接触”**&#x200B;所谓的 &#x200B;** statfile**，这样将更新 statfile 的时间戳以指示上次更改的日期。
+1. 它“接触”**&#x200B;所谓的 **statfile**，这样将更新 statfile 的时间戳以指示上次更改的日期。
 
 应注意以下几点：
 
@@ -274,13 +268,13 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 可通过多种方式控制 CDN 对某个资源执行缓存的持续时间，这个时间过去后会从 Dispatcher 重新获取该资源。
 
 1. 显式配置。
-根据 mime 类型、文件扩展名、请求类型等情况配置某些特定资源在 CDN 缓存中的保留时长。
+根据mime类型、扩展、请求类型等，配置特定资源在CDN缓存中的保留时间。
 
-1. 有效期限和缓存控制标头。
-如果上游服务器发送 `Expires:` 和 `Cache-Control:` HTTP 标头，则大多数 CDN 都将采用这些标头。 例如，可使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模块实现此方法。
+1. 到期和缓存控制标头。
+如果由上游服务器发送，则大多数CDN都采用`Expires:`和`Cache-Control:` HTTP标头。例如，可使用[mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache模块实现此方法。
 
 1. 手动失效。
-CDN 支持通过 Web 界面从缓存中移除资源。
+CDN允许通过Web界面从缓存中删除资源。
 1. 基于 API 的缓存失效。\
    大多数 CDN 还提供 REST 和/或 SOAP API，用于从缓存中移除资源。
 
@@ -292,7 +286,7 @@ CDN 支持通过 Web 界面从缓存中移除资源。
 
 >[!NOTE]
 >
->另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/events/experience-manager-gems-recordings/overview#)的录制演示。
+>另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#)的录制演示。
 
 ## 将 Dispatcher 与 Author 服务器结合使用 {#using-a-dispatcher-with-an-author-server}
 
