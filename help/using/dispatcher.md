@@ -292,7 +292,7 @@ CDN允许通过Web界面从缓存中删除资源。
 
 >[!NOTE]
 >
->另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#)的录制演示。
+>另请参阅 [AEM (CQ) Dispatcher 安全性与 CDN+浏览器缓存](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)，以及关于 [Dispatcher 缓存](https://experienceleague.adobe.com/zh-hans/docs/events/experience-manager-gems-recordings/overview#)的录制演示。
 
 ## 将 Dispatcher 与 Author 服务器结合使用 {#using-a-dispatcher-with-an-author-server}
 
