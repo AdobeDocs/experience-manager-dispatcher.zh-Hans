@@ -18,7 +18,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -274,13 +274,13 @@ Dispatcher 一般就是下一个可能从缓存提供文档并影响返回到 CD
 可通过多种方式控制 CDN 对某个资源执行缓存的持续时间，这个时间过去后会从 Dispatcher 重新获取该资源。
 
 1. 显式配置。
-根据 mime 类型、文件扩展名、请求类型等情况配置某些特定资源在 CDN 缓存中的保留时长。
+根据mime类型、扩展、请求类型等，配置特定资源在CDN缓存中的保留时间。
 
-1. 有效期限和缓存控制标头。
-如果上游服务器发送 `Expires:` 和 `Cache-Control:` HTTP 标头，则大多数 CDN 都将采用这些标头。 例如，可使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模块实现此方法。
+1. 到期和缓存控制标头。
+如果由上游服务器发送，则大多数CDN都采用`Expires:`和`Cache-Control:` HTTP标头。例如，可使用[mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache模块实现此方法。
 
 1. 手动失效。
-CDN 支持通过 Web 界面从缓存中移除资源。
+CDN允许通过Web界面从缓存中删除资源。
 1. 基于 API 的缓存失效。\
    大多数 CDN 还提供 REST 和/或 SOAP API，用于从缓存中移除资源。
 
