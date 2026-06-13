@@ -7,9 +7,14 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 TQID: https://experienceleague.adobe.com/o-B8WewNSKJhcw8UXJsWg6scuVEgrUU30R1q6VkYMnQ
-product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
 source-wordcount: 3754
