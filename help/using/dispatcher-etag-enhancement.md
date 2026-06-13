@@ -1,7 +1,8 @@
 ---
 title: 用于CDN重新验证的Dispatcher ETag增强功能
 description: AEM as a Cloud Service中INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT的可用性、支持状态和行为。
-source-git-commit: ac0fafd060643903735ff565072ef2c5bee970be
+exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
+source-git-commit: cddffe2194beea628f71b6631faada5df4555267
 workflow-type: tm+mt
 source-wordcount: '308'
 ht-degree: 0%
