@@ -1,21 +1,22 @@
 ---
 title: 优化网站以提升缓存性能
-description: 了解如何设计网站，以最大限度提升缓存性能优势。
+description: 了解如何设计网站，以最大限度地发挥缓存的优势。
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/cn/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: true
-internal: n
-snippet: y
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+internal: 'n'
+snippet: 'y'
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+source-git-commit: e2e1f00ed10637e4cbc09d879ef91ec657cab914
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 100%
-
 ---
-
 
 # 优化网站以提升缓存性能 {#optimizing-a-website-for-cache-performance}
 
@@ -77,7 +78,7 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 
 如果您允许用户更改字体大小（或任何其他版面自定义设置），请确保各种自定义设置都反映在 URL 中。
 
-例如，由于不会缓存 cookie，因此如果您将字体大小存储在 cookie（或类似机制）中，则不会为缓存的页面保留字体大小。 因此，Dispatcher 会随机返回任意字体大小的文档。
+例如，由于不会缓存 Cookie，因此如果您将字体大小存储在 Cookie（或类似机制）中，则不会为缓存的页面保留字体大小。 因此，Dispatcher 会随机返回任意字体大小的文档。
 
 在 URL 中包含字体大小作为选择器可避免出现此问题：
 
@@ -97,7 +98,7 @@ www.myCompany.com/news/main.large.html
 
 ## 使用作标题的图像文件失效 {#invalidating-image-files-used-as-titles}
 
-如果您将页面标题或其他文本渲染为图片，建议您存储文件，以便在页面内容更新时将其删除：
+如果您将页面标题或其他文本渲染为图片，请存储这些文件，以便在页面内容更新时将其删除：
 
 1. 将图像文件放入与页面相同的文件夹中。
 1. 对图像文件使用以下命名格式：
@@ -112,7 +113,7 @@ www.myCompany.com/news/main.large.html
 
 ## 使用于导航的图像文件失效 {#invalidating-image-files-used-for-navigation}
 
-如果将图片用于导航条目，则采用的方法与标题的大致相同，只是稍微复杂一些。 将所有导航图像与目标页面一起存储。 如果将两张图片用于一般或活动场景，则可以使用以下脚本：
+如果将图片用于导航条目，则采用的方法与标题的大致相同，只是稍微复杂一些。 将所有导航图像与目标页面一起存储。 如果将两张图片分别用于普通和活跃状态，则可以使用以下脚本：
 
 * 一个正常显示页面的脚本。
 * 一个处理 `.normal` 请求并返回正常图片的脚本。
@@ -124,9 +125,9 @@ www.myCompany.com/news/main.large.html
 
 ## 个性化 {#personalization}
 
-Dispatcher 无法缓存个性化数据，因此建议您仅允许在必要时进行个性化设置。 原因如下：
+Dispatcher 无法缓存个性化数据，因此建议您仅在必要时使用个性化。 原因如下：
 
-* 如果您使用可随意自定义的开始页面，则用户每次请求该页面时都必须对它进行编辑。
+* 如果您使用可随意自定义的开始页面，则用户每次请求该页面时都必须重新生成该页面。
 * 相反，如果您有十个不同的开始页面可供选择，则可以缓存其中的每个页面，从而提高性能。
 
 >[!NOTE]
