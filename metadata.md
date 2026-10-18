@@ -3,6 +3,7 @@ cloud: Experience Cloud
 solution: Experience Manager
 product_v2:
   - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: "Experience Manager"
 usetq: true
 landing-page-name: experience-manager
 landing-page-breadcrumb-title: AEM
@@ -12,11 +13,9 @@ index: true
 recommendations: noDisplay
 source-git-commit: 0537f50f0ef351e8960e42ffcd4555546f923d56
 workflow-type: tm+mt
-source-wordcount: 129
+source-wordcount: '123'
 ht-degree: 0%
-
 ---
-
 
 # 元数据供内部使用
 
