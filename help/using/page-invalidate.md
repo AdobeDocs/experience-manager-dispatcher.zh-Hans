@@ -12,11 +12,15 @@ exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
 product_v2:
   - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
+    internal-label: Security
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+    internal-label: Administration
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
 source-wordcount: 1447
